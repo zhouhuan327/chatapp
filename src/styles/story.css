@@ -1,0 +1,6 @@
+.row {
+    display: flex;
+}
+.row > * {
+    margin: 8px;
+}

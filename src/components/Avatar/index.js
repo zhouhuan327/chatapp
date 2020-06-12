@@ -1,17 +1,22 @@
 import React from 'react';
-import head1 from '../../assets/images/avatar.jpeg';
-import { StyledAvatar } from './style.js';
-function Avatar(props) {
+import PropTypes from 'prop-types';
+import { StyledAvatar, StatusIcon, AvatarWrapper } from './style.js';
+function Avatar({ src, size = '48px', status, statusIconSize = '8px', ...rest }) {
     return (
-        <StyledAvatar>
-            <div className="statusIcon"></div>
-            <div className="avatar-wrapper">
-                <img src={head1} alt="" />
-            </div>
+        <StyledAvatar {...rest}>
+            {status && <StatusIcon status={status} size={statusIconSize} />}
+            <AvatarWrapper size={size}>
+                <img src={src} alt="" />
+            </AvatarWrapper>
         </StyledAvatar>
     );
 }
 
-Avatar.propTypes = {};
+Avatar.propTypes = {
+    src: PropTypes.string.isRequired,
+    size: PropTypes.string,
+    status: PropTypes.oneOf(['online', 'offline']),
+    statusIconSize: PropTypes.string,
+};
 
 export default Avatar;
