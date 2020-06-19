@@ -1,7 +1,7 @@
 import React from 'react';
 import Avatar from '.';
-import Image from '../../assets/images/avatar.jpeg';
-import '../../styles/story.css';
+import Image from 'assets/images/avatar.jpeg';
+import 'styles/story.css';
 export default {
     title: 'Avatar',
     component: Avatar,
