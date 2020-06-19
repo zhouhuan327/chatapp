@@ -1,5 +1,5 @@
 ---
-to:src/components/<%= name %>/<%= h.changeCase.lcFirst(name) %>.stories.js
+to: src/components/<%= name %>/<%= h.changeCase.lcFirst(name) %>.stories.js
 ---
 
 import React from 'react';
