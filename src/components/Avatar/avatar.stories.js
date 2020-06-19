@@ -3,7 +3,7 @@ import Avatar from '.';
 import Image from 'assets/images/avatar.jpeg';
 import 'styles/story.css';
 export default {
-    title: 'Avatar',
+    title: 'UI组件/Avatar',
     component: Avatar,
 };
 
