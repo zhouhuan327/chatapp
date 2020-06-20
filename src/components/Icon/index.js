@@ -11,7 +11,15 @@ function Icon({ icon: IconComponent, width = 24, height = 24, color, opacity, ..
 }
 
 Icon.propTypes = {
-    children: PropTypes.any
+    icon: PropTypes.element,
+    width: PropTypes.oneOfType(
+        [PropTypes.number, PropTypes.string]
+    ),
+    height: PropTypes.oneOfType(
+        [PropTypes.number, PropTypes.string]
+    ),
+    color: PropTypes.string,
+    opacity: PropTypes.number
 };
 
 export default Icon;
