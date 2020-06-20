@@ -1,13 +1,11 @@
 import styled, { css } from 'styled-components'
+import { circle } from 'utils/mixin'
 
 const circleMixin = (color, size = '8px') => css`
     content:'';
     display:block;
     position:absolute;
-    width: ${size};
-    height:${size};
-    border-radius:50%;
-    background-color:${color};
+   ${circle(color, size)}
 `
 
 const StyledAvatar = styled.div`
