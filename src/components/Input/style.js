@@ -11,8 +11,12 @@ const StyledInput = styled.input`
         color: ${({ theme }) => theme.gray3};
     }
 `;
-const Prefix = styled.div``;
-const Suffx = styled.div``;
+const Prefix = styled.div`
+    margin-right: 16px;
+`;
+const Suffx = styled.div`
+    margin-left: 16px;
+`;
 const InputContainer = styled.div`
     display: flex;
     align-items: center;
