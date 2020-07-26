@@ -8,7 +8,7 @@ export default {
 };
 
 export const Default = () => {
-    return <NavBar>默认</NavBar>;
+    return <NavBar></NavBar>;
 };
 
 export const Menu = () => {
