@@ -1,9 +1,9 @@
-import React from 'react';
-import Badge from '.';
-import Icon from 'components/Icon/.';
-import { ReactComponent as smileIcon } from 'assets/icons/smile.svg';
+import React from "react";
+import Badge from ".";
+import Icon from "components/Icon/.";
+import { ReactComponent as smileIcon } from "assets/icons/smile.svg";
 export default {
-    title: 'UI组件/Badge',
+    title: "UI组件/Badge",
     component: Badge,
 };
 
