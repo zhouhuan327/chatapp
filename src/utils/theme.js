@@ -10,4 +10,10 @@ export default {
 
     normal: "1.4rem",
     medium: "1.6rem",
+    large: "1.8rem",
+    xlarge: "2rem",
+    xxlarge: "2.4rem",
+    small: "1.2rem",
+    xsmall: "1rem",
+    xxsmall: "0.8rem",
 };
