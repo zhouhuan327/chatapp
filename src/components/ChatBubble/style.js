@@ -27,8 +27,8 @@ const typeVarients = {
     ${Bubble} {
       background-color: ${({ theme }) => theme.primaryColor};
     }
-    ${Bubble} {
-      transform: roateteY(180deg);
+    ${Tip} {
+      transform: rotateY(180deg);
       left: unset;
       right: 0;
       path {
