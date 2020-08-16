@@ -1,6 +1,8 @@
+/* eslint-disable jsx-a11y/accessible-emoji */
 import React from 'react';
 import ChatBubble from '.';
 import VoiceMessage from 'components/VoiceMessage';
+import Emoji from 'components/Emoji';
 
 export default {
   title: 'UI组件/ChatBubble',
@@ -8,7 +10,12 @@ export default {
 };
 
 export const FromOthers = () => {
-  return <ChatBubble time="昨天 下午12：23">住在山里的感觉真不错</ChatBubble>;
+  return (
+    <ChatBubble time="昨天 下午12：23">
+      住在山里的感觉真不错
+      <Emoji label="smile">😁</Emoji>
+    </ChatBubble>
+  );
 };
 export const FromMine = () => {
   return (
