@@ -1,7 +1,6 @@
 import React from 'react';
 import Popover from '.';
 import Button from 'components/Button';
-import { faFileExcel } from '@fortawesome/free-solid-svg-icons';
 
 export default {
   title: 'UI组件/Popover',
