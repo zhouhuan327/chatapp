@@ -2,7 +2,6 @@ import React from "react";
 import PropTypes from "prop-types";
 import StyledMessageList from "./style.js";
 import { ChatList } from "./style.js";
-import Input from "components/Input/index.js";
 import MessageCard from "components/MessageCard/index.js";
 import face1 from "assets/images/avatar.jpeg";
 import FilterList from "components/FilterList";
