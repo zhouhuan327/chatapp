@@ -31,7 +31,7 @@ function FilterList({
         )}
         {actionLabel && (
           <Action label={actionLabel}>
-            <Button>
+            <Button size="20px">
               <Icon icon={Plus} width={12} height={12} />
             </Button>
           </Action>

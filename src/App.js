@@ -1,9 +1,13 @@
-import React from 'react';
-import Avatar from './components/Avatar/index'
+import ChatApp from "components/ChatAppDemo";
+import React from "react";
+import { ThemeProvider } from "styled-components";
+import theme from "./utils/theme";
 function App() {
-    return <div>
-        <Avatar />
-    </div>;
+  return (
+    <ThemeProvider theme={theme}>
+      <ChatApp />
+    </ThemeProvider>
+  );
 }
 
 export default App;

@@ -17,7 +17,8 @@ export default {
   small: "1.2rem",
   xsmall: "1rem",
   xxsmall: "0.8rem",
-
+  grediantGray:
+    "liner-gradient(119.19deg,#FFFFFF 0%,#F8F8F8 65.34%,#FFFFFF 100%)",
   bakcground: "white",
 
   inactiveColor: "rgba(41,47,76,0.3)",

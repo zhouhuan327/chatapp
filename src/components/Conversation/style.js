@@ -1,5 +1,6 @@
-import styled from 'styled-components';
-import ChatBubble from 'components/ChatBubble';
+import styled from "styled-components";
+import ChatBubble from "components/ChatBubble";
+import { scrollbar } from "utils/mixin";
 export const Conversations = styled.div`
   display: flex;
   flex-direction: column;
@@ -11,16 +12,17 @@ export const Conversations = styled.div`
   & > * {
     margin: 10px 0;
   }
+  ${scrollbar()}
 `;
 
-export const MyChatBubble = styled(ChatBubble).attrs({ type: 'mine' })`
+export const MyChatBubble = styled(ChatBubble).attrs({ type: "mine" })`
   align-self: flex-end;
 `;
 const StyledConversation = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
-  border: 1px solid ${({ theme }) => theme.grey4};
+  /* border: 1px solid ${({ theme }) => theme.grey4}; */
 
   & > *:last-child {
     align-self: end;
