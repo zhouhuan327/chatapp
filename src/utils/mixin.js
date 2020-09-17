@@ -18,6 +18,7 @@ export const activeBar = ({
     position: absolute;
     height: 100%;
     left: 0;
+    transition: 0.3s cubic-bezier(0.16, 1, 0.3, 1);
   }
   &::before {
     width: ${barWidth};

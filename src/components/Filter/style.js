@@ -19,6 +19,7 @@ const StyledFilter = styled.div`
   grid-template-columns: 2fr 1fr;
   align-items: center;
   padding: 0 1rem;
+  margin: 10px 0;
 `;
 
 export default StyledFilter;

@@ -7,47 +7,59 @@ import Avatar from "components/Avatar/index.js";
 import img from "assets/images/avatar.jpeg";
 import "styled-components/macro";
 import {
-    faCommentDots,
-    faUsers,
-    faFolder,
-    faStamp,
-    faEllipsisH,
-    faCog,
+  faCommentDots,
+  faUsers,
+  faFolder,
+  faStamp,
+  faEllipsisH,
+  faCog,
 } from "@fortawesome/free-solid-svg-icons";
+import {
+  Link,
+  matchPath,
+  useLocation,
+} from "react-router-dom/cjs/react-router-dom.min";
 function NavBar({ children, ...rest }) {
-    return (
-        <StyledNavBar {...rest}>
-            <Avatar src={img} status="online"></Avatar>
-            <MenuItems>
-                <MenuItem showBadge active icon={faCommentDots} />
-                <MenuItem icon={faUsers} />
-                <MenuItem icon={faFolder} />
-                <MenuItem icon={faStamp} />
-                <MenuItem icon={faEllipsisH} />
-                <MenuItem
-                    icon={faCog}
-                    css={`
-                        align-self: end;
-                    `}
-                />
-            </MenuItems>
-        </StyledNavBar>
-    );
+  return (
+    <StyledNavBar {...rest}>
+      <Avatar src={img} status="online"></Avatar>
+      <MenuItems>
+        <MenuItem to="/" showBadge icon={faCommentDots} />
+        <MenuItem to="/contacts" icon={faUsers} />
+        <MenuItem to="/files" icon={faFolder} />
+        <MenuItem to="/notes" icon={faStamp} />
+        <MenuItem icon={faEllipsisH} />
+        <MenuItem
+          to="settings"
+          icon={faCog}
+          css={`
+            align-self: end;
+          `}
+        />
+      </MenuItems>
+    </StyledNavBar>
+  );
 }
-function MenuItem({ icon, active, showBadge, ...rest }) {
-    return (
-        <StyledMenuItem active={active} {...rest}>
-            <a href="#">
-                <Badge show={showBadge}>
-                    <MenuIcon active={active} icon={icon}></MenuIcon>
-                </Badge>
-            </a>
-        </StyledMenuItem>
-    );
+function MenuItem({ to, icon, showBadge, ...rest }) {
+  const location = useLocation();
+  const active = matchPath(location.pathname, {
+    path: to,
+    exact: to === "/",
+  });
+
+  return (
+    <StyledMenuItem active={active} {...rest}>
+      <Link to={to}>
+        <Badge show={showBadge}>
+          <MenuIcon active={active} icon={icon}></MenuIcon>
+        </Badge>
+      </Link>
+    </StyledMenuItem>
+  );
 }
 
 NavBar.propTypes = {
-    active: PropTypes.bool,
+  active: PropTypes.bool,
 };
 
 export default NavBar;
