@@ -53,7 +53,7 @@ export const scrollbar = () => css`
     /*滚动条里面小方块*/
     border-radius: 10px;
     box-shadow: inset 0 0 5px rgba(0, 0, 0, 0.2);
-    background: #9aa2a95e;
+    background: #d4d6d7;
     :hover {
       background: #00050875;
     }

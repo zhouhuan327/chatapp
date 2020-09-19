@@ -4,7 +4,7 @@ import StyledTitleBar, { Actions, Drawer } from './style.js';
 import Avatar from 'components/Avatar/index.js';
 import { Title } from './style';
 import ParaGraph from 'components/ParaGraph/index.js';
-import Text from 'components/Text/index';
+import Text from 'components/Text';
 import Icon from 'components/Icon/index.js';
 import { ReactComponent as Call } from 'assets/icons/call.svg';
 import { ReactComponent as Camera } from 'assets/icons/camera.svg';

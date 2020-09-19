@@ -1,8 +1,8 @@
-import React from "react";
-import ContactCard from ".";
+import React from 'react';
+import ContactCard from '.';
 
 export default {
-  title: "UI组件/ContactCard",
+  title: '页面组件/ContactCard',
   component: ContactCard,
 };
 

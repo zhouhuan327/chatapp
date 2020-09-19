@@ -1,13 +1,13 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import StyledChatApp, { Nav, SideBar, Content, Drawer } from './style.js';
-import NavBar from 'components/NavBar/index.js';
-import MessageList from 'components/MessageList/index.js';
-import Conversation from 'components/Conversation/index.js';
-import FileList from 'components/FileList/index.js';
-import Profile from 'components/Profile/index.js';
+import NavBar from 'PageDemo/NavBar/index.js';
+import MessageList from 'PageDemo/MessageList/index.js';
+import Conversation from 'PageDemo/Conversation/index.js';
+import FileList from 'PageDemo/FileList/index.js';
+import Profile from 'PageDemo/Profile/index.js';
 import { Route, Switch } from 'react-router-dom';
-import ContactList from 'components/ContactList/index.js';
+import ContactList from 'PageDemo/ContactList/index.js';
 function ChatApp({ ...rest }) {
   return (
     <StyledChatApp {...rest}>

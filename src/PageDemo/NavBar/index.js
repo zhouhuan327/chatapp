@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import PropTypes from "prop-types";
-import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from "./style.js";
-import Badge from "components/Badge/index.js";
-import Avatar from "components/Avatar/index.js";
-import img from "assets/images/avatar.jpeg";
-import "styled-components/macro";
+import React from 'react';
+import PropTypes from 'prop-types';
+import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from './style.js';
+import Badge from 'components/Badge/index.js';
+import Avatar from 'components/Avatar/index.js';
+import img from 'assets/images/avatar.jpeg';
+import 'styled-components/macro';
 import {
   faCommentDots,
   faUsers,
@@ -13,12 +13,8 @@ import {
   faStamp,
   faEllipsisH,
   faCog,
-} from "@fortawesome/free-solid-svg-icons";
-import {
-  Link,
-  matchPath,
-  useLocation,
-} from "react-router-dom/cjs/react-router-dom.min";
+} from '@fortawesome/free-solid-svg-icons';
+import { Link, matchPath, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 function NavBar({ children, ...rest }) {
   return (
     <StyledNavBar {...rest}>
@@ -44,7 +40,7 @@ function MenuItem({ to, icon, showBadge, ...rest }) {
   const location = useLocation();
   const active = matchPath(location.pathname, {
     path: to,
-    exact: to === "/",
+    exact: to === '/',
   });
 
   return (

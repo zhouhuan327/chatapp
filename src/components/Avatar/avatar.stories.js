@@ -1,8 +1,8 @@
-import React from "react";
-import Avatar from ".";
-import Image from "assets/images/avatar.jpeg";
+import React from 'react';
+import Avatar from '.';
+import Image from 'assets/images/avatar.jpeg';
 export default {
-  title: "UI组件/Avatar",
+  title: 'UI组件/Avatar',
   component: Avatar,
 };
 

@@ -1,8 +1,8 @@
-import ChatApp from "components/ChatAppDemo";
-import React from "react";
-import { ThemeProvider } from "styled-components";
-import theme from "./utils/theme";
-import { BrowserRouter } from "react-router-dom";
+import ChatApp from 'PageDemo/ChatAppDemo';
+import React from 'react';
+import { ThemeProvider } from 'styled-components';
+import theme from './utils/theme';
+import { BrowserRouter } from 'react-router-dom';
 function App() {
   return (
     <BrowserRouter>

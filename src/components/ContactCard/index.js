@@ -1,8 +1,8 @@
-import React from "react";
-import PropTypes from "prop-types";
-import StyledContactCard, { Name, Intro } from "./style.js";
-import avatar from "assets/images/avatar.jpeg";
-import Avatar from "components/Avatar/index.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import StyledContactCard, { Name, Intro } from './style.js';
+import avatar from 'assets/images/avatar.jpeg';
+import Avatar from 'components/Avatar/index.js';
 function ContactCard({ ...rest }) {
   return (
     <StyledContactCard {...rest}>
