@@ -16,18 +16,20 @@ function Conversation({ children, ...rest }) {
           <VoiceMessage time="01:44" />
         </ChatBubble>
         <MyChatBubble time="昨天 下午15：45">顶不住了</MyChatBubble>
-        <ChatBubble time="昨天 下午15：25">
-          <VoiceMessage time="01:44" />
-        </ChatBubble>
+        <ChatBubble time="昨天 下午15：25">啊这</ChatBubble>
         <MyChatBubble time="昨天 下午15：45">顶不住了</MyChatBubble>
         <ChatBubble time="昨天 下午15：25">
           <VoiceMessage time="01:44" />
         </ChatBubble>
         <MyChatBubble time="昨天 下午15：45">顶不住了</MyChatBubble>
         <ChatBubble time="昨天 下午15：25">
-          <VoiceMessage time="01:44" />
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
         </ChatBubble>
-        <MyChatBubble time="昨天 下午15：45">顶不住了</MyChatBubble>
+        <MyChatBubble time="昨天 下午15：45">
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+        </MyChatBubble>
       </Conversations>
       <Footer />
     </StyledConversation>

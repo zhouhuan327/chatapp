@@ -1,6 +1,6 @@
-import styled from "styled-components";
-import arrowRight from "assets/icons/arrowRight.svg";
-import Icon from "components/Icon";
+import styled from 'styled-components';
+import arrowRight from 'assets/icons/arrowRight.svg';
+import Icon from 'components/Icon';
 const StyledProfile = styled.div`
   position: relative;
   display: grid;
@@ -58,12 +58,4 @@ const CloseIcon = styled(Icon).attrs({ opacity: 0.3 })`
   cursor: pointer;
 `;
 export default StyledProfile;
-export {
-  SocialLinks,
-  ContactSection,
-  AlbmnSection,
-  AlbmnTitle,
-  Albmn,
-  Photo,
-  CloseIcon,
-};
+export { SocialLinks, ContactSection, AlbmnSection, AlbmnTitle, Albmn, Photo, CloseIcon };

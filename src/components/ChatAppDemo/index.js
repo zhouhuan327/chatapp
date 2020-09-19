@@ -1,13 +1,13 @@
-import React from "react";
-import PropTypes from "prop-types";
-import StyledChatApp, { Nav, SideBar, Content, Drawer } from "./style.js";
-import NavBar from "components/NavBar/index.js";
-import MessageList from "components/MessageList/index.js";
-import Conversation from "components/Conversation/index.js";
-import FileList from "components/FileList/index.js";
-import Profile from "components/Profile/index.js";
-import { Route, Switch } from "react-router-dom";
-import ContactList from "components/ContactList/index.js";
+import React from 'react';
+import PropTypes from 'prop-types';
+import StyledChatApp, { Nav, SideBar, Content, Drawer } from './style.js';
+import NavBar from 'components/NavBar/index.js';
+import MessageList from 'components/MessageList/index.js';
+import Conversation from 'components/Conversation/index.js';
+import FileList from 'components/FileList/index.js';
+import Profile from 'components/Profile/index.js';
+import { Route, Switch } from 'react-router-dom';
+import ContactList from 'components/ContactList/index.js';
 function ChatApp({ ...rest }) {
   return (
     <StyledChatApp {...rest}>
@@ -30,9 +30,9 @@ function ChatApp({ ...rest }) {
       <Content>
         <Conversation />
       </Content>
-      {/* <Drawer>
+      <Drawer>
         <Profile />
-      </Drawer> */}
+      </Drawer>
     </StyledChatApp>
   );
 }

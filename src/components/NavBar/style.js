@@ -1,7 +1,7 @@
-import styled, { css } from "styled-components";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { activeBar } from "utils/mixin";
-import { StyledAvatar, StatusIcon } from "components/Avatar/style";
+import styled, { css } from 'styled-components';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { activeBar } from 'utils/mixin';
+import { StyledAvatar, StatusIcon } from 'components/Avatar/style';
 const StyledMenuItem = styled.div`
   & > a {
     width: 100%;
@@ -32,7 +32,7 @@ const StyledMenuItem = styled.div`
 `;
 const MenuIcon = styled(FontAwesomeIcon)`
   color: white;
-  font-size: 24px;
+  font-size: 20px;
   opacity: ${({ active }) => (active ? 1 : 0.3)};
 
   transform: scale(1);
@@ -41,7 +41,7 @@ const MenuIcon = styled(FontAwesomeIcon)`
 const StyledNavBar = styled.nav`
   display: grid;
   grid-template-rows: 1fr 4fr;
-  width: 100px;
+  width: 80px;
   height: 100vh;
   background-color: ${({ theme }) => theme.darkPurple};
   padding: 30px 0;

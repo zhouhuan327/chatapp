@@ -1,6 +1,6 @@
 import React from 'react';
 import PropTypes from 'prop-types';
-import StyledTitleBar, { Actions } from './style.js';
+import StyledTitleBar, { Actions, Drawer } from './style.js';
 import Avatar from 'components/Avatar/index.js';
 import { Title } from './style';
 import ParaGraph from 'components/ParaGraph/index.js';

@@ -20,5 +20,4 @@ const StyledTitleBar = styled.div`
   padding: 30px;
   border-bottom: 1px solid ${({ theme }) => theme.gray4};
 `;
-
 export default StyledTitleBar;

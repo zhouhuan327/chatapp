@@ -67,7 +67,8 @@ const StyledMessageCard = styled.div`
       ${activeBar({ barWidth: '4px', shadowWidth: '14px' })}
 
       /* 隐藏指示条露在外边的部分 */
-      overflow: hidden;`}
+      overflow: hidden;
+    `}
 `;
 
 export default StyledMessageCard;

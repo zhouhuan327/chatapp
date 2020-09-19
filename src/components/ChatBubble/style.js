@@ -2,28 +2,35 @@ import styled, { css } from 'styled-components';
 import ParaGraph from 'components/ParaGraph';
 import Icon from 'components/Icon';
 import Text from 'components/Text';
-
-export const Time = styled(ParaGraph).attrs({ type: 'secondary', size: 'small' })`
+import Avatar from 'components/Avatar/index.js';
+const Ava = styled(Avatar)`
+  margin: 0 10px;
+`;
+const Time = styled(ParaGraph).attrs({ type: 'secondary', size: 'small' })`
   margin: 6px;
   margin-left: 24px;
   word-spacing: 1rem;
 `;
-export const Tip = styled(Icon)`
+const Tip = styled(Icon)`
   position: absolute;
-  bottom: -12px;
+  bottom: -9px;
   left: 0;
   z-index: 1;
 `;
-export const Bubble = styled.div`
-  padding: 15px 20px;
+const Bubble = styled.div`
+  padding: 10px 16px;
   box-shadow: 0px 8px 24px rgba(0, 0, 0, 0.1);
-  border-radius: 100px;
+  border-radius: 10px;
   position: relative;
   z-index: 10;
 `;
-export const MessageText = styled(Text)``;
+const MessageText = styled(Text)`
+  display: inline-block;
+  max-width: 300px;
+`;
 const typeVarients = {
   mine: css`
+    flex-direction: row-reverse;
     ${Bubble} {
       background-color: ${({ theme }) => theme.primaryColor};
     }
@@ -48,8 +55,9 @@ const typeVarients = {
 
 const StyledChatBubble = styled.div`
   display: flex;
-  flex-direction: column;
-  ${({ type }) => typeVarients[type]}
+  flex-direction: row;
+  ${({ type }) => typeVarients[type]};
 `;
 
 export default StyledChatBubble;
+export { Ava as Avatar, Bubble, Tip, MessageText, Time };
