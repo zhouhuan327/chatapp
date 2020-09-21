@@ -4,14 +4,14 @@ import StyledMessageList from "./style.js";
 import { ChatList } from "./style.js";
 import MessageCard from "components/MessageCard/index.js";
 import face1 from "assets/images/avatar.jpeg";
-import FilterList from "components/FilterList";
+import FilterList from "../FilterList";
 
 function MessageList({ children, ...rest }) {
   return (
     <StyledMessageList {...rest}>
       <FilterList
         filterLabel="列表排序"
-        actionLabel="创建会画"
+        actionLabel="创建会话"
         option={["最新消息优先", "在线好友优先"]}
       >
         <ChatList>

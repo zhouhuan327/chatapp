@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledContactList, { Contacts } from "./style.js";
-import FilterList from "components/FilterList/index.js";
+import FilterList from "../FilterList/index.js";
 import ContactCard from "components/ContactCard/index.js";
 function ContactList({ children, ...rest }) {
   return (

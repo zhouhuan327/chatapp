@@ -1,10 +1,10 @@
-import React from 'react';
-import PropTypes from 'prop-types';
-import StyledConversation, { Conversations, MyChatBubble } from './style.js';
-import TitleBar from 'PageDemo/TitleBar/index.js';
-import Footer from 'components/Footer/index.js';
-import ChatBubble from 'components/ChatBubble/index.js';
-import VoiceMessage from 'components/VoiceMessage/index.js';
+import React from "react";
+import PropTypes from "prop-types";
+import StyledConversation, { Conversations, MyChatBubble } from "./style.js";
+import TitleBar from "PageDemo/TitleBar/index.js";
+import Footer from "../Footer/index.js";
+import ChatBubble from "components/ChatBubble/index.js";
+import VoiceMessage from "components/VoiceMessage/index.js";
 function Conversation({ children, ...rest }) {
   return (
     <StyledConversation {...rest}>
@@ -23,12 +23,14 @@ function Conversation({ children, ...rest }) {
         </ChatBubble>
         <MyChatBubble time="昨天 下午15：45">顶不住了</MyChatBubble>
         <ChatBubble time="昨天 下午15：25">
-          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
-          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长
         </ChatBubble>
         <MyChatBubble time="昨天 下午15：45">
-          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
-          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长 很长很长 很长很长 很长很长
+          很长很长 很长很长 很长很长 很长很长
         </MyChatBubble>
       </Conversations>
       <Footer />
