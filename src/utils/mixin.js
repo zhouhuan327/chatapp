@@ -1,17 +1,20 @@
-import { css } from 'styled-components';
-export const circle = (color, size = '8px') => css`
+import { css } from "styled-components";
+export const circle = (color, size = "8px") => css`
   width: ${size};
   height: ${size};
   border-radius: 50%;
   background-color: ${color};
 `;
 
-export const activeBar = ({ barWidth = '6px', shadowWidth = '18px' } = {}) => css`
+export const activeBar = ({
+  barWidth = "6px",
+  shadowWidth = "18px",
+} = {}) => css`
   position: relative;
   &::after,
   &::before {
     display: block;
-    content: '';
+    content: "";
     position: absolute;
     height: 100%;
     left: 0;
@@ -35,7 +38,7 @@ export const activeBar = ({ barWidth = '6px', shadowWidth = '18px' } = {}) => cs
     opacity: 0.6;
   }
 `;
-export const card = (raidus = '6px', padding = '20px') => css`
+export const card = (raidus = "6px", padding = "20px") => css`
   padding: ${padding};
   background: ${({ theme }) => theme.background};
   box-shadow: 0px 18px 40px 0px rgba(0, 0, 0, 0.04);
@@ -46,7 +49,7 @@ export const card = (raidus = '6px', padding = '20px') => css`
 export const scrollbar = () => css`
   ::-webkit-scrollbar {
     /*滚动条整体样式*/
-    width: 8px; /*高宽分别对应横竖滚动条的尺寸*/
+    width: 4px; /*高宽分别对应横竖滚动条的尺寸*/
     height: 1px;
   }
   ::-webkit-scrollbar-thumb {

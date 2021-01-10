@@ -15,7 +15,7 @@ import {
   faCog,
 } from '@fortawesome/free-solid-svg-icons';
 import { Link, matchPath, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
-function NavBar({ children, ...rest }) {
+function NavBar({  ...rest }) {
   return (
     <StyledNavBar {...rest}>
       <Avatar src={img} status="online"></Avatar>

@@ -22,7 +22,7 @@ import photo1 from 'assets/images/photo1.jpg';
 import photo2 from 'assets/images/photo2.jpg';
 import photo3 from 'assets/images/photo3.jpg';
 import { ReactComponent as Cross } from 'assets/icons/cross.svg';
-function Profile({ children, ...rest }) {
+function Profile({ ...rest }) {
   return (
     <StyledProfile {...rest}>
       <CloseIcon icon={Cross} />
@@ -101,8 +101,6 @@ function Description({ label, children }) {
     </ParaGraph>
   );
 }
-Profile.propTypes = {
-  children: PropTypes.any,
-};
+
 
 export default Profile;

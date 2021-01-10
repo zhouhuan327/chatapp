@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import StyledIcon from 'components/Icon/style';
-
+import styled from "styled-components";
+import StyledIcon from "components/Icon/style";
+import { animated } from "react-spring";
 export const Title = styled.div`
   display: grid;
 `;
@@ -13,7 +13,7 @@ export const Actions = styled.div`
   }
 `;
 
-const StyledTitleBar = styled.div`
+const StyledTitleBar = styled(animated.div)`
   display: grid;
   grid-template-columns: 62px 1fr 112px;
   max-height: 110px;

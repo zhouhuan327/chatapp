@@ -1,4 +1,5 @@
-import styled from 'styled-components';
+import styled from "styled-components";
+import { animated } from "react-spring";
 export const IconContainer = styled.div`
   display: flex;
   align-items: center;
@@ -16,7 +17,7 @@ export const StyledPopoverContent = styled.div`
   }
 `;
 
-const StyledFooter = styled.footer`
+const StyledFooter = styled(animated.footer)`
   padding: 12px 30px;
   width: 100%;
 `;

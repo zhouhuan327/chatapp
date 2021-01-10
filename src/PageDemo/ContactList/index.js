@@ -1,9 +1,11 @@
 import React from "react";
-import PropTypes from "prop-types";
 import StyledContactList, { Contacts } from "./style.js";
 import FilterList from "../FilterList/index.js";
 import ContactCard from "components/ContactCard/index.js";
-function ContactList({ children, ...rest }) {
+import { animated } from "react-spring";
+import useAnimesList from "hooks/useAnimesList";
+function ContactList({ ...rest }) {
+  const animes = useAnimesList(10);
   return (
     <StyledContactList {...rest}>
       <FilterList
@@ -12,16 +14,14 @@ function ContactList({ children, ...rest }) {
       >
         <Contacts>
           {new Array(10).fill(0).map((item, index) => (
-            <ContactCard key={index} />
+            <animated.div key={index} style={animes[index]}>
+              <ContactCard />
+            </animated.div>
           ))}
         </Contacts>
       </FilterList>
     </StyledContactList>
   );
 }
-
-ContactList.propTypes = {
-  children: PropTypes.any,
-};
 
 export default ContactList;

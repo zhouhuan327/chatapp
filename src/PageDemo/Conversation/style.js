@@ -1,7 +1,8 @@
-import styled from 'styled-components';
-import ChatBubble from 'components/ChatBubble';
-import { scrollbar } from 'utils/mixin';
-export const Conversations = styled.div`
+import styled from "styled-components";
+import ChatBubble from "components/ChatBubble";
+import { scrollbar } from "utils/mixin";
+import { animated } from "react-spring";
+export const Conversations = styled(animated.div)`
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
@@ -15,7 +16,7 @@ export const Conversations = styled.div`
   ${scrollbar()}
 `;
 
-export const MyChatBubble = styled(ChatBubble).attrs({ type: 'mine' })`
+export const MyChatBubble = styled(ChatBubble).attrs({ type: "mine" })`
   align-self: flex-end;
 `;
 const StyledConversation = styled.div`
@@ -23,7 +24,7 @@ const StyledConversation = styled.div`
   flex-direction: column;
   height: 100vh;
   border: 1px solid ${(props) => props.theme.gray4};
-
+  overflow: hidden;
   & > *:last-child {
     align-self: end;
   }
