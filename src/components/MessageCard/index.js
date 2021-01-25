@@ -10,7 +10,7 @@ import StyledMessageCard, {
 } from "./style.js";
 import Avatar from "components/Avatar";
 import { useTheme } from "styled-components";
-import Icon from "components/Icon/index.js";
+import Icon from "components/Icon";
 import { ReactComponent as Replied } from "assets/icons/replied.svg";
 function MessageCard({
   avatarSrc,

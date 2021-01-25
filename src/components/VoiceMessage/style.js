@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import StyledButton from 'components/Button/style';
-import StyledIcon from 'components/Icon/style';
-import StyledText from 'components/Text/style';
+import styled, { css } from "styled-components";
+import StyledButton from "components/Button/style";
+import StyledIcon from "components/Icon/style.ts";
+import StyledText from "components/Text/style";
 
 const typeVariants = {
   mine: css`

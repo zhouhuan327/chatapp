@@ -1,9 +1,9 @@
 import React from "react";
 import StyledConversation, { Conversations, MyChatBubble } from "./style.js";
-import TitleBar from "PageDemo/TitleBar/index.js";
-import Footer from "../Footer/index.js";
-import ChatBubble from "components/ChatBubble/index.js";
-import VoiceMessage from "components/VoiceMessage/index.js";
+import TitleBar from "PageDemo/TitleBar";
+import Footer from "../Footer";
+import ChatBubble from "components/ChatBubble";
+import VoiceMessage from "components/VoiceMessage";
 import { useSpring } from "react-spring";
 function Conversation({ ...rest }) {
   const tBarAnimeProps = useSpring({

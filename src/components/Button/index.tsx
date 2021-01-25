@@ -5,6 +5,7 @@ export interface ButtonProps {
   shape?: "circle" | "rect";
   bgColor?: string;
   size?: string;
+  [rest: string]: any;
 }
 const Button: React.FC<ButtonProps> = ({
   children,

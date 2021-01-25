@@ -1,7 +1,7 @@
 import React from "react";
 import PropTypes from "prop-types";
-import StyledInput, { InputContainer, Prefix, Suffx } from "./style.js";
-import Icon from "components/Icon/index.js";
+import StyledInput, { InputContainer, Prefix, Suffx } from "./style";
+import Icon from "components/Icon";
 import { ReactComponent as SearchIcon } from "assets/icons/search.svg";
 import { useTheme } from "styled-components";
 import InputText from "./InputText/index";

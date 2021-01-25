@@ -3,6 +3,7 @@ import ParaGraph from "components/ParaGraph";
 import Icon from "components/Icon";
 import Text from "components/Text";
 import Avatar from "components/Avatar";
+import { ChatBubbleProps } from ".";
 const Ava = styled(Avatar)`
   margin: 0 10px;
 `;
@@ -28,35 +29,34 @@ const MessageText = styled(Text)`
   display: inline-block;
   max-width: 300px;
 `;
-const typeVarients = {
-  mine: css`
-    flex-direction: row-reverse;
-    ${Bubble} {
-      background-color: ${({ theme }) => theme.primaryColor};
-    }
-    ${Tip} {
-      transform: rotateY(180deg);
-      left: unset;
-      right: 0;
-      path {
-        fill: ${({ theme }) => theme.primaryColor};
-      }
-    }
-    ${Time} {
-      text-align: right;
-      margin-left: 0;
-      margin-right: 24px;
-    }
-    ${MessageText} {
-      color: white;
-    }
-  `,
-};
 
-const StyledChatBubble = styled.div`
+const StyledChatBubble = styled.div<ChatBubbleProps>`
   display: flex;
   flex-direction: row;
-  ${({ type }) => typeVarients[type]};
+  ${({ type }) =>
+    type === "mine" &&
+    css`
+      flex-direction: row-reverse;
+      ${Bubble} {
+        background-color: ${({ theme }) => theme.primaryColor};
+      }
+      ${Tip} {
+        transform: rotateY(180deg);
+        left: unset;
+        right: 0;
+        path {
+          fill: ${({ theme }) => theme.primaryColor};
+        }
+      }
+      ${Time} {
+        text-align: right;
+        margin-left: 0;
+        margin-right: 24px;
+      }
+      ${MessageText} {
+        color: white;
+      }
+    `};
 `;
 
 export default StyledChatBubble;

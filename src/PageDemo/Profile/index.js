@@ -11,12 +11,12 @@ import StyledProfile, {
 import "styled-components/macro";
 import Avatar from "components/Avatar";
 import avatar from "assets/images/avatar.jpeg";
-import ParaGraph from "components/ParaGraph/index.js";
-import Emoji from "components/Emoji/index.js";
-import Icon from "components/Icon/index.js";
+import ParaGraph from "components/ParaGraph";
+import Emoji from "components/Emoji";
+import Icon from "components/Icon";
 import { faLink } from "@fortawesome/free-solid-svg-icons";
-import Divider from "components/Divider/index.js";
-import Text from "components/Text/index.js";
+import Divider from "components/Divider";
+import Text from "components/Text";
 import photo1 from "assets/images/photo1.jpg";
 import photo2 from "assets/images/photo2.jpg";
 import photo3 from "assets/images/photo3.jpg";
