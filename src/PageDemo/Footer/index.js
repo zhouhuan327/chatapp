@@ -2,17 +2,16 @@
 import React from "react";
 import PropTypes from "prop-types";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style.js";
-import Input from "components/Input/index.js";
-import Icon from "components/Icon/index.js";
+import Input from "components/Input";
+import Icon from "components/Icon";
 import { ReactComponent as ClipIcon } from "assets/icons/clip.svg";
 import { ReactComponent as SmileIcon } from "assets/icons/smile.svg";
 import { ReactComponent as MicrophoneIcon } from "assets/icons/microphone.svg";
 import { ReactComponent as PlaneIcon } from "assets/icons/plane.svg";
 import { ReactComponent as OptionsIcon } from "assets/icons/options.svg";
-import Button from "components/Button/index.js";
-import Emoji from "components/Emoji/index.js";
-import Popover from "components/Popover/index.js";
-import { useSpring } from "react-spring";
+import Button from "components/Button";
+import Emoji from "components/Emoji";
+import Popover from "components/Popover";
 const PopoverContent = () => (
   <StyledPopoverContent>
     <Emoji lable="smile">😁</Emoji>

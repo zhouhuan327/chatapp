@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import PropTypes from "prop-types";
 import StyledChatApp, { Nav, SideBar, Content, Drawer } from "./style";
 import NavBar from "PageDemo/NavBar/index.js";
@@ -20,8 +20,8 @@ function ChatApp({ ...rest }) {
     enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
     leave: { opacity: 0, transform: "translate3d(-100px, 0, 1)" },
   });
-  const [show, setShow] = useState(false);
 
+  const [show, setShow] = useState(false);
   return (
     <StyledChatApp {...rest}>
       <Nav>

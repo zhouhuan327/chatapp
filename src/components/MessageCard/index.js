@@ -1,5 +1,5 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
+import PropTypes from "prop-types";
 import StyledMessageCard, {
   Name,
   Status,
@@ -7,11 +7,11 @@ import StyledMessageCard, {
   Message,
   MessageText,
   UnreadBadge,
-} from './style.js';
-import Avatar from 'components/Avatar/index.js';
-import { useTheme } from 'styled-components';
-import Icon from 'components/Icon/index.js';
-import { ReactComponent as Replied } from 'assets/icons/replied.svg';
+} from "./style.js";
+import Avatar from "components/Avatar";
+import { useTheme } from "styled-components";
+import Icon from "components/Icon/index.js";
+import { ReactComponent as Replied } from "assets/icons/replied.svg";
 function MessageCard({
   avatarSrc,
   avatarStatus,
@@ -41,7 +41,7 @@ function MessageCard({
             color={active ? theme.inactiveColorDark : theme.inactiveColor}
             opacity={active ? 0.4 : 1}
             style={{
-              justifyContent: 'start',
+              justifyContent: "start",
             }}
           />
         )}

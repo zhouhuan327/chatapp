@@ -1,7 +1,7 @@
-import styled, { css } from 'styled-components';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import { activeBar } from 'utils/mixin';
-import { StyledAvatar, StatusIcon } from 'components/Avatar/style';
+import styled, { css } from "styled-components";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { activeBar } from "utils/mixin";
+import { StyledAvatar, StatusIcon } from "components/Avatar/style";
 const StyledMenuItem = styled.div`
   & > a {
     width: 100%;

@@ -1,4 +1,4 @@
-import styled, { css, StyledFunction } from "styled-components";
+import styled, { css } from "styled-components";
 
 const Nav = styled.nav`
   flex-shrink: 0;

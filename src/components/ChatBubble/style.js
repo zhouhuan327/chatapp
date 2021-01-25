@@ -1,12 +1,12 @@
-import styled, { css } from 'styled-components';
-import ParaGraph from 'components/ParaGraph';
-import Icon from 'components/Icon';
-import Text from 'components/Text';
-import Avatar from 'components/Avatar/index.js';
+import styled, { css } from "styled-components";
+import ParaGraph from "components/ParaGraph";
+import Icon from "components/Icon";
+import Text from "components/Text";
+import Avatar from "components/Avatar";
 const Ava = styled(Avatar)`
   margin: 0 10px;
 `;
-const Time = styled(ParaGraph).attrs({ type: 'secondary', size: 'small' })`
+const Time = styled(ParaGraph).attrs({ type: "secondary", size: "small" })`
   margin: 6px;
   margin-left: 24px;
   word-spacing: 1rem;

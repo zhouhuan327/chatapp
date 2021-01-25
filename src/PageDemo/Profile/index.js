@@ -1,5 +1,4 @@
-import React from 'react';
-import PropTypes from 'prop-types';
+import React from "react";
 import StyledProfile, {
   SocialLinks,
   ContactSection,
@@ -8,20 +7,20 @@ import StyledProfile, {
   Albmn,
   Photo,
   CloseIcon,
-} from './style.js';
-import 'styled-components/macro';
-import Avatar from 'components/Avatar/index.js';
-import avatar from 'assets/images/avatar.jpeg';
-import ParaGraph from 'components/ParaGraph/index.js';
-import Emoji from 'components/Emoji/index.js';
-import Icon from 'components/Icon/index.js';
-import { faLink } from '@fortawesome/free-solid-svg-icons';
-import Divider from 'components/Divider/index.js';
-import Text from 'components/Text/index.js';
-import photo1 from 'assets/images/photo1.jpg';
-import photo2 from 'assets/images/photo2.jpg';
-import photo3 from 'assets/images/photo3.jpg';
-import { ReactComponent as Cross } from 'assets/icons/cross.svg';
+} from "./style.js";
+import "styled-components/macro";
+import Avatar from "components/Avatar";
+import avatar from "assets/images/avatar.jpeg";
+import ParaGraph from "components/ParaGraph/index.js";
+import Emoji from "components/Emoji/index.js";
+import Icon from "components/Icon/index.js";
+import { faLink } from "@fortawesome/free-solid-svg-icons";
+import Divider from "components/Divider/index.js";
+import Text from "components/Text/index.js";
+import photo1 from "assets/images/photo1.jpg";
+import photo2 from "assets/images/photo2.jpg";
+import photo3 from "assets/images/photo3.jpg";
+import { ReactComponent as Cross } from "assets/icons/cross.svg";
 function Profile({ ...rest }) {
   return (
     <StyledProfile {...rest}>
@@ -101,6 +100,5 @@ function Description({ label, children }) {
     </ParaGraph>
   );
 }
-
 
 export default Profile;

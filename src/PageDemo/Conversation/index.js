@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React from "react";
 import StyledConversation, { Conversations, MyChatBubble } from "./style.js";
 import TitleBar from "PageDemo/TitleBar/index.js";
 import Footer from "../Footer/index.js";
