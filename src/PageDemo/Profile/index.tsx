@@ -81,7 +81,7 @@ function Profile({ ...rest }) {
       <AlbmnSection>
         <AlbmnTitle>
           <Text type="secondary">相册(31)</Text>
-          <a href="#">查看全部</a>
+          {/* <a>查看全部</a> */}
         </AlbmnTitle>
         <Albmn>
           <Photo src={photo1} />

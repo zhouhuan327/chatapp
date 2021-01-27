@@ -9,8 +9,8 @@ interface RadioGroupProps {
   label: string;
   [rest: string]: any;
 }
-type Radio = FC<RadioProps> & { Group: FC<RadioGroupProps> };
-const Radio: Radio = ({ name, children, ...rest }) => {
+type RadioType = FC<RadioProps> & { Group: FC<RadioGroupProps> };
+const Radio: RadioType = ({ name, children, ...rest }) => {
   return (
     <StyledRadio {...rest}>
       {children}

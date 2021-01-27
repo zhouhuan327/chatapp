@@ -10,8 +10,8 @@ export interface IconProps {
   opacity?: number;
   [rest: string]: any;
 }
-type Icon = FC<IconProps> & { Social: FC<SocialIconProps> };
-const Icon: Icon = ({
+type IconType = FC<IconProps> & { Social: FC<SocialIconProps> };
+const Icon: IconType = ({
   icon: IconComponent,
   width = 24,
   height = 24,

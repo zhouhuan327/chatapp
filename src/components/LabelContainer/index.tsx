@@ -12,7 +12,7 @@ const LabelContainer = ({ label, children }) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  font-size: ${(props) => props.theme.normal};
+  font-size: ${props => props.theme.normal};
   > span {
     margin-bottom: 6px;
   }

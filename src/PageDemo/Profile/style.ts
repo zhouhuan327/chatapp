@@ -1,6 +1,6 @@
-import styled from 'styled-components';
-import arrowRight from 'assets/icons/arrowRight.svg';
-import Icon from 'components/Icon';
+import styled from "styled-components";
+import arrowRight from "assets/icons/arrowRight.svg";
+import Icon from "components/Icon";
 const StyledProfile = styled.div`
   position: relative;
   display: grid;
@@ -29,8 +29,8 @@ const AlbmnTitle = styled.div`
   align-items: center;
   & > a {
     text-decoration: none;
-    font-size: ${(props) => props.theme.nomal};
-    color: ${(props) => props.theme.primaryColor};
+    font-size: ${props => props.theme.nomal};
+    color: ${props => props.theme.primaryColor};
     &::after {
       display: inline-block;
       content: url(${arrowRight});
@@ -58,4 +58,12 @@ const CloseIcon = styled(Icon).attrs({ opacity: 0.3 })`
   cursor: pointer;
 `;
 export default StyledProfile;
-export { SocialLinks, ContactSection, AlbmnSection, AlbmnTitle, Albmn, Photo, CloseIcon };
+export {
+  SocialLinks,
+  ContactSection,
+  AlbmnSection,
+  AlbmnTitle,
+  Albmn,
+  Photo,
+  CloseIcon,
+};

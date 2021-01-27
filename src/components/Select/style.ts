@@ -1,4 +1,4 @@
-import styled, { css } from "styled-components";
+import styled from "styled-components";
 import CaretDown from "assets/icons/caret_down.svg";
 // import CareDown2 from "assets/icons/caretDown2.svg";
 

@@ -13,7 +13,7 @@ import { animated } from "react-spring";
 function ChatApp({ ...rest }) {
   const location = useLocation();
 
-  const getFirstSgmtPath = (location) => location.pathname.split("/")[1];
+  const getFirstSgmtPath = location => location.pathname.split("/")[1];
 
   const transitions = useTransition(location, getFirstSgmtPath, {
     from: { opacity: 0, transform: "translate3d(-100px, 0, 0)" },
@@ -21,7 +21,7 @@ function ChatApp({ ...rest }) {
     leave: { opacity: 0, transform: "translate3d(-100px, 0, 1)" },
   });
 
-  const [show, setShow] = useState(false);
+  const [show] = useState(false);
   return (
     <StyledChatApp {...rest}>
       <Nav>

@@ -8,7 +8,7 @@ const StyledSwitch = styled.label`
   cursor: pointer;
 `;
 const Slider = styled.span`
-  background-color: ${(props) => props.theme.gray4};
+  background-color: ${props => props.theme.gray4};
   position: absolute;
   left: 0;
   right: 0;
@@ -35,7 +35,7 @@ const Checkbox = styled.input.attrs({ type: "checkbox" })`
   height: 0;
   opacity: 0;
   :checked + ${Slider} {
-    background-color: ${(props) => props.theme.primaryColor};
+    background-color: ${props => props.theme.primaryColor};
     ::before {
       transform: translateX(20px);
     }

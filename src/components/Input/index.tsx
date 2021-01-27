@@ -13,11 +13,11 @@ interface InputProps {
 interface SearchProps {
   placeholder?: string;
 }
-type Input = FC<InputProps> & {
+type InputType = FC<InputProps> & {
   Search: FC<SearchProps>;
   Text: FC<InputTextProps>;
 };
-const Input: Input = ({
+const Input: InputType = ({
   placeholder = "请输入文字",
   prefix,
   suffix,

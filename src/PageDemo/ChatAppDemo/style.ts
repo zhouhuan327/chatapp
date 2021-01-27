@@ -10,7 +10,7 @@ const SideBar = styled.aside`
   min-width: 344px;
   height: 100vh;
   flex: 1;
-  background-color: ${(props) => props.theme.grediantGray};
+  background-color: ${props => props.theme.grediantGray};
   position: relative;
   z-index: 50;
   > div {

@@ -6,7 +6,7 @@ const StyledRadio = styled.label`
   padding-left: 22px;
   cursor: pointer;
   line-height: 16px;
-  font-size: ${(props) => props.theme.normal};
+  font-size: ${props => props.theme.normal};
 `;
 const StyledRadioGroup = styled.div`
   display: flex;
@@ -18,7 +18,7 @@ const Circle = styled.span`
   line-height: 16px;
   width: 16px;
   height: 16px;
-  border: 1px solid ${(props) => props.theme.primaryColor};
+  border: 1px solid ${props => props.theme.primaryColor};
   border-radius: 50%;
   position: absolute;
   left: 0;
@@ -27,7 +27,7 @@ const Circle = styled.span`
     content: "";
     width: 10px;
     height: 10px;
-    background-color: ${(props) => props.theme.primaryColor};
+    background-color: ${props => props.theme.primaryColor};
     border-radius: 50%;
     position: absolute;
     left: 2px;

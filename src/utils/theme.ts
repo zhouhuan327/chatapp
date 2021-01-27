@@ -1,4 +1,4 @@
-export default {
+const theme = {
   primaryColor: "#4f9dde",
   green: "#34d895",
   gray: "rgba(24,28,47,0.5)",
@@ -24,3 +24,4 @@ export default {
   inactiveColor: "rgba(41,47,76,0.3)",
   inactiveColorDard: "white",
 };
+export default theme;
