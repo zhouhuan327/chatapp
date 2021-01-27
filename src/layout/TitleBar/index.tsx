@@ -10,7 +10,7 @@ import { ReactComponent as Call } from "assets/icons/call.svg";
 import { ReactComponent as Camera } from "assets/icons/camera.svg";
 import { ReactComponent as Options } from "assets/icons/options.svg";
 import face1 from "assets/images/avatar.jpeg";
-function TitleBar({ name, status, children, animeProps }) {
+function TitleBar({ name, status, animeProps }) {
   return (
     <StyledTitleBar style={{ ...animeProps }}>
       <Avatar status={status} src={face1} />
@@ -22,9 +22,9 @@ function TitleBar({ name, status, children, animeProps }) {
         </ParaGraph>
       </Title>
       <Actions>
-        <Icon opacity={0.3} icon={Call}></Icon>
-        <Icon opacity={0.3} icon={Camera}></Icon>
-        <Icon opacity={0.3} icon={Options}></Icon>
+        <Icon opacity={0.3} icon={Call} />
+        <Icon opacity={0.3} icon={Camera} />
+        <Icon opacity={0.3} icon={Options} />
       </Actions>
     </StyledTitleBar>
   );

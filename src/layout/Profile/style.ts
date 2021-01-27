@@ -39,7 +39,7 @@ const AlbmnTitle = styled.div`
   }
 `;
 const Albmn = styled.div`
-  margin-top: 14p;
+  margin-top: 14px;
   justify-self: start;
   width: 100%;
   display: grid;

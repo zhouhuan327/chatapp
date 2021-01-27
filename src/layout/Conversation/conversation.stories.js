@@ -1,8 +1,8 @@
-import React from 'react';
-import Conversation from '.';
+import React from "react";
+import Conversation from ".";
 
 export default {
-  title: '页面组件/Conversation',
+  title: "页面组件/Conversation",
   component: Conversation,
 };
 
