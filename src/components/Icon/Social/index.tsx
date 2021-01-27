@@ -1,7 +1,7 @@
 import React, { FC } from "react";
 import Button from "components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-interface SocialIconProps {
+export interface SocialIconProps {
   icon?: any;
   bgColor?: string;
   href?: string;

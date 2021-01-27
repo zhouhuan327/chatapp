@@ -1,7 +1,7 @@
 import React from "react";
 import styled from "styled-components";
-function Divider({ children, ...rest }) {
-  return <StyledDivider {...rest}>{children}</StyledDivider>;
+function Divider({ ...rest }) {
+  return <StyledDivider {...rest}></StyledDivider>;
 }
 
 const StyledDivider = styled.div`

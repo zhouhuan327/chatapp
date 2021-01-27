@@ -9,6 +9,7 @@ interface AvatarProps {
   status?: "online" | "offline";
   /** 状态icon尺寸 默认8px */
   statusIconSize?: string;
+  [rest: string]: any;
 }
 const Avatar: FC<AvatarProps> = ({
   src,
