@@ -18,7 +18,7 @@ import { Link, matchPath, useLocation } from "react-router-dom";
 function NavBar({ ...rest }) {
   return (
     <StyledNavBar {...rest}>
-      <Avatar src={img} status="online"></Avatar>
+      <Avatar src={img} status="online" />
       <MenuItems>
         <MenuItem to="/" showBadge icon={faCommentDots} />
         <MenuItem to="/contacts" icon={faUsers} />
@@ -47,7 +47,7 @@ const MenuItem = ({ to, icon, showBadge = false, ...rest }) => {
     <StyledMenuItem active={active} {...rest}>
       <Link to={to}>
         <Badge show={showBadge}>
-          <MenuIcon active={active} icon={icon}></MenuIcon>
+          <MenuIcon active={active} icon={icon} />
         </Badge>
       </Link>
     </StyledMenuItem>

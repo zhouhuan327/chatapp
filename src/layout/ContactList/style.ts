@@ -10,5 +10,6 @@ const Contacts = styled.div`
   overflow-y: auto;
   ${scrollbar}
 `;
+
 export default StyledContactList;
 export { Contacts };

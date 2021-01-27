@@ -56,7 +56,7 @@ const StyledFilterList = styled.div`
 const StyledFilter = styled.div`
   display: flex;
   justify-content: space-between;
-  margin: 10px 0px;
+  margin: 10px 0;
   span {
     padding: 0 10px;
   }

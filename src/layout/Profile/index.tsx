@@ -60,9 +60,9 @@ function Profile({ ...rest }) {
         <Emoji label="fire">winter is comming</Emoji>
       </ParaGraph>
       <SocialLinks>
-        <Icon.Social icon={faLink} bgColor="#f06767"></Icon.Social>
-        <Icon.Social icon={faLink} bgColor="black"></Icon.Social>
-        <Icon.Social icon={faLink} bgColor="#2438c0"></Icon.Social>
+        <Icon.Social icon={faLink} bgColor="#f06767" />
+        <Icon.Social icon={faLink} bgColor="black" />
+        <Icon.Social icon={faLink} bgColor="#2438c0" />
       </SocialLinks>
       <Divider
         css={`

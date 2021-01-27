@@ -2,7 +2,7 @@ import React from "react";
 import StyledMessageList, { ChatList } from "./style";
 import MessageCard from "components/MessageCard";
 import face1 from "assets/images/avatar.jpeg";
-import FilterList from "../FilterList";
+import FilterList from "../../components/FilterList";
 import { animated } from "react-spring";
 import useAnimesList from "hooks/useAnimesList";
 function MessageList({ ...rest }) {

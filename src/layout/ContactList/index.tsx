@@ -1,6 +1,6 @@
 import React from "react";
 import StyledContactList, { Contacts } from "./style";
-import FilterList from "../FilterList";
+import FilterList from "../../components/FilterList";
 import ContactCard from "components/ContactCard";
 import { animated } from "react-spring";
 import useAnimesList from "hooks/useAnimesList";

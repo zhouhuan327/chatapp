@@ -1,6 +1,6 @@
 import React from "react";
 import StyledFileList, { Files } from "./style";
-import FilterList from "../FilterList";
+import FilterList from "../../components/FilterList";
 import FileCard from "components/FileCard";
 import { animated } from "react-spring";
 import useAnimesList from "hooks/useAnimesList";

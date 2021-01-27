@@ -1,6 +1,6 @@
 import React from "react";
 import StyledConversation, { Conversations, MyChatBubble } from "./style";
-import TitleBar from "PageDemo/TitleBar";
+import TitleBar from "layout/TitleBar";
 import Footer from "../Footer";
 import ChatBubble from "components/ChatBubble";
 import VoiceMessage from "components/VoiceMessage";

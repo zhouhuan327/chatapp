@@ -1,4 +1,4 @@
-import ChatApp from "PageDemo/ChatAppDemo";
+import ChatApp from "layout";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/theme";

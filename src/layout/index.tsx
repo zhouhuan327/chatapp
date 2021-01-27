@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import PropTypes from "prop-types";
 import StyledChatApp, { Nav, SideBar, Content, Drawer } from "./style";
-import NavBar from "PageDemo/NavBar";
-import MessageList from "PageDemo/MessageList";
-import Conversation from "PageDemo/Conversation";
-import FileList from "PageDemo/FileList";
-import Profile from "PageDemo/Profile";
+import NavBar from "layout/NavBar";
+import MessageList from "layout/MessageList";
+import Conversation from "layout/Conversation";
+import FileList from "layout/FileList";
+import Profile from "layout/Profile";
 import { Route, Switch, useLocation } from "react-router-dom";
-import ContactList from "PageDemo/ContactList";
+import ContactList from "layout/ContactList";
 import { useTransition } from "react-spring";
 import { animated } from "react-spring";
 function ChatApp({ ...rest }) {
