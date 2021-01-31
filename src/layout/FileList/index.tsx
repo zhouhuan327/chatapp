@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledFileList, { Files } from "./style";
 import FilterList from "../../components/FilterList";
 import FileCard from "components/FileCard";
@@ -24,4 +24,4 @@ function FileList({ ...rest }) {
   );
 }
 
-export default FileList;
+export default memo(FileList);

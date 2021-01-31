@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React from "react";
-import PropTypes from "prop-types";
+import React, { memo } from "react";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style";
 import Input from "components/Input";
 import Icon from "components/Icon";
@@ -47,8 +46,4 @@ function Footer({ animeProps, ...rest }) {
   );
 }
 
-Footer.propTypes = {
-  children: PropTypes.any,
-};
-
-export default Footer;
+export default memo(Footer);

@@ -3,12 +3,14 @@ import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/theme";
 import { BrowserRouter } from "react-router-dom";
-
+import { RecoilRoot } from "recoil";
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
-        <ChatApp />
+        <RecoilRoot>
+          <ChatApp />
+        </RecoilRoot>
       </ThemeProvider>
     </BrowserRouter>
   );

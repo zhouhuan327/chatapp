@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledContactList, { Contacts } from "./style";
 import FilterList from "../../components/FilterList";
 import ContactCard from "components/ContactCard";
@@ -24,4 +24,4 @@ function ContactList({ ...rest }) {
   );
 }
 
-export default ContactList;
+export default memo(ContactList);

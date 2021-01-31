@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledMessageList, { ChatList } from "./style";
 import MessageCard from "components/MessageCard";
 import face1 from "assets/images/avatar.jpeg";
@@ -37,4 +37,4 @@ function MessageList({ ...rest }) {
   );
 }
 
-export default MessageList;
+export default memo(MessageList);

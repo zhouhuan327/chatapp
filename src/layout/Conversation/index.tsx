@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledConversation, { Conversations, MyChatBubble } from "./style";
 import TitleBar from "layout/TitleBar";
 import Footer from "../Footer";
@@ -58,4 +58,4 @@ function Conversation({ ...rest }) {
   );
 }
 
-export default Conversation;
+export default memo(Conversation);

@@ -1,5 +1,4 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { memo } from "react";
 import StyledTitleBar, { Actions } from "./style";
 import Avatar from "components/Avatar";
 import { Title } from "./style";
@@ -10,10 +9,17 @@ import { ReactComponent as Call } from "assets/icons/call.svg";
 import { ReactComponent as Camera } from "assets/icons/camera.svg";
 import { ReactComponent as Options } from "assets/icons/options.svg";
 import face1 from "assets/images/avatar.jpeg";
+import { useSetRecoilState } from "recoil";
+import { profileVisible } from "store/root";
 function TitleBar({ name, status, animeProps }) {
+  const setVisible = useSetRecoilState(profileVisible);
+  console.log("titlebar render");
+  const toggleDraw = () => {
+    setVisible(v => !v);
+  };
   return (
     <StyledTitleBar style={{ ...animeProps }}>
-      <Avatar status={status} src={face1} />
+      <Avatar status={status} src={face1} onClick={toggleDraw} />
       <Title>
         <ParaGraph size="large">{name}</ParaGraph>
         <ParaGraph type="secondary">
@@ -30,8 +36,4 @@ function TitleBar({ name, status, animeProps }) {
   );
 }
 
-TitleBar.propTypes = {
-  children: PropTypes.any,
-};
-
-export default TitleBar;
+export default memo(TitleBar);

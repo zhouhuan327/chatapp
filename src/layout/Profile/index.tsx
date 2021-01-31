@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledProfile, {
   SocialLinks,
   ContactSection,
@@ -21,10 +21,13 @@ import photo1 from "assets/images/photo1.jpg";
 import photo2 from "assets/images/photo2.jpg";
 import photo3 from "assets/images/photo3.jpg";
 import { ReactComponent as Cross } from "assets/icons/cross.svg";
+import { useSetRecoilState } from "recoil";
+import { profileVisible } from "store/root";
 function Profile({ ...rest }) {
+  const setVisible = useSetRecoilState(profileVisible);
   return (
     <StyledProfile {...rest}>
-      <CloseIcon icon={Cross} />
+      <CloseIcon icon={Cross} onClick={() => setVisible(false)} />
       <Avatar
         css={`
           margin: 26px 0;
@@ -101,4 +104,4 @@ function Description({ label, children }) {
   );
 }
 
-export default Profile;
+export default memo(Profile);

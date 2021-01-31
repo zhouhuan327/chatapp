@@ -1,6 +1,5 @@
 /* eslint-disable jsx-a11y/anchor-is-valid */
-import React from "react";
-import PropTypes from "prop-types";
+import React, { memo } from "react";
 import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from "./style";
 import Badge from "components/Badge";
 import Avatar from "components/Avatar";
@@ -54,9 +53,5 @@ const MenuItem = ({ to, icon, showBadge = false, ...rest }) => {
   );
 };
 
-NavBar.propTypes = {
-  active: PropTypes.bool,
-};
-
-export default NavBar;
+export default memo(NavBar);
 export { MenuItem };
