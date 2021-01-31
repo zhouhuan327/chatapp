@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledMessageCard, {
   Name,
   Status,
@@ -11,7 +11,7 @@ import Avatar from "components/Avatar";
 import { useTheme } from "styled-components";
 import Icon from "components/Icon";
 import { ReactComponent as Replied } from "assets/icons/replied.svg";
-interface MessgeCardProps {
+interface MessageCardProps {
   avatarSrc: string;
   avatarStatus: any;
   statusText: any;
@@ -22,7 +22,7 @@ interface MessgeCardProps {
   active: boolean;
   replied: boolean;
 }
-const MessageCard: React.FC<MessgeCardProps> = ({
+const MessageCard: React.FC<MessageCardProps> = ({
   avatarSrc,
   avatarStatus,
   statusText,
@@ -32,7 +32,6 @@ const MessageCard: React.FC<MessgeCardProps> = ({
   unreadCount,
   active,
   replied,
-  children,
 }) => {
   const theme: any = useTheme();
   return (
@@ -55,10 +54,10 @@ const MessageCard: React.FC<MessgeCardProps> = ({
           />
         )}
         <MessageText>{message}</MessageText>
-        <UnreadBadge count={unreadCount}></UnreadBadge>
+        <UnreadBadge count={unreadCount} />
       </Message>
     </StyledMessageCard>
   );
 };
 
-export default MessageCard;
+export default memo(MessageCard);

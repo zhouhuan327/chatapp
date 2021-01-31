@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import StyledBadge, { Count } from "./style";
 export interface BadgePros {
   show?: boolean;
@@ -26,4 +26,4 @@ const Badge: FC<BadgePros> = ({
   );
 };
 
-export default Badge;
+export default memo(Badge);

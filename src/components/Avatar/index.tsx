@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, memo } from "react";
 import { StyledAvatar, StatusIcon, AvatarWrapper } from "./style";
 interface AvatarProps {
   /** 图片路径 */
@@ -26,4 +26,4 @@ const Avatar: FC<AvatarProps> = ({
   </StyledAvatar>
 );
 
-export default Avatar;
+export default memo(Avatar);

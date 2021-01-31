@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledButton from "./style";
 export interface ButtonProps {
   type?: "primary";
@@ -28,4 +28,4 @@ const Button: React.FC<ButtonProps> = ({
   );
 };
 
-export default Button;
+export default memo(Button);

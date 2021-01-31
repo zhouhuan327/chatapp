@@ -1,4 +1,4 @@
-import React from "react";
+import React, { memo } from "react";
 import StyledChatBubble, {
   Avatar,
   Bubble,
@@ -33,4 +33,4 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   );
 };
 
-export default ChatBubble;
+export default memo(ChatBubble);

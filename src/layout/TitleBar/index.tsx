@@ -11,15 +11,20 @@ import { ReactComponent as Options } from "assets/icons/options.svg";
 import face1 from "assets/images/avatar.jpeg";
 import { useSetRecoilState } from "recoil";
 import { profileVisible } from "store/root";
+
 function TitleBar({ name, status, animeProps }) {
   const setVisible = useSetRecoilState(profileVisible);
-  console.log("titlebar render");
   const toggleDraw = () => {
     setVisible(v => !v);
   };
   return (
     <StyledTitleBar style={{ ...animeProps }}>
-      <Avatar status={status} src={face1} onClick={toggleDraw} />
+      <Avatar
+        style={{ cursor: "pointer" }}
+        status={status}
+        src={face1}
+        onClick={toggleDraw}
+      />
       <Title>
         <ParaGraph size="large">{name}</ParaGraph>
         <ParaGraph type="secondary">

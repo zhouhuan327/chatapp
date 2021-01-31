@@ -3,9 +3,10 @@ import StyledContactList, { Contacts } from "./style";
 import FilterList from "../../components/FilterList";
 import ContactCard from "components/ContactCard";
 import { animated } from "react-spring";
-import useAnimesList from "hooks/useAnimesList";
+import face1 from "assets/images/avatar.jpeg";
+import useAnimeList from "hooks/useAnimesList";
 function ContactList({ ...rest }) {
-  const animes = useAnimesList(10);
+  const anime = useAnimeList(10);
   return (
     <StyledContactList {...rest}>
       <FilterList
@@ -14,8 +15,8 @@ function ContactList({ ...rest }) {
       >
         <Contacts>
           {new Array(10).fill(0).map((item, index) => (
-            <animated.div key={index} style={animes[index]}>
-              <ContactCard />
+            <animated.div key={index} style={anime[index]}>
+              <ContactCard avatarSrc={face1} name="周杰伦" intro="wu" />
             </animated.div>
           ))}
         </Contacts>
