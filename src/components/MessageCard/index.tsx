@@ -21,6 +21,7 @@ interface MessageCardProps {
   unreadCount: number;
   active: boolean;
   replied: boolean;
+  [rest: string]: any;
 }
 const MessageCard: React.FC<MessageCardProps> = ({
   avatarSrc,
@@ -32,10 +33,11 @@ const MessageCard: React.FC<MessageCardProps> = ({
   unreadCount,
   active,
   replied,
+  ...rest
 }) => {
   const theme: any = useTheme();
   return (
-    <StyledMessageCard active={active}>
+    <StyledMessageCard active={active} {...rest}>
       <Avatar status={avatarStatus} src={avatarSrc} />
       <Name>{name}</Name>
       <Status>{statusText}</Status>

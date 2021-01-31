@@ -5,6 +5,7 @@ import MessageList from "layout/MessageList";
 import Conversation from "layout/Conversation";
 import FileList from "layout/FileList";
 import Profile from "layout/Profile";
+import Settings from "./setting";
 import { Route, Switch, useLocation } from "react-router-dom";
 import ContactList from "layout/ContactList";
 import { useTransition } from "react-spring";
@@ -38,6 +39,9 @@ function ChatApp({ ...rest }) {
               </Route>
               <Route exact path="/files">
                 <FileList />
+              </Route>
+              <Route exact path="/settings">
+                <Settings />
               </Route>
             </Switch>
           </animated.div>

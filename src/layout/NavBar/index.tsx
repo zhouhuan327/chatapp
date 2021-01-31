@@ -22,8 +22,8 @@ function NavBar({ ...rest }) {
         <MenuItem to="/" showBadge icon={faCommentDots} />
         <MenuItem to="/contacts" icon={faUsers} />
         <MenuItem to="/files" icon={faFolder} />
-        <MenuItem to="/notes" icon={faStamp} />
-        <MenuItem to="/setting" icon={faEllipsisH} />
+        {/*<MenuItem to="/notes" icon={faStamp} />*/}
+        {/*<MenuItem to="/setting" icon={faEllipsisH} />*/}
         <MenuItem
           to="settings"
           icon={faCog}
