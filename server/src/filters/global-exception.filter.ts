@@ -8,10 +8,13 @@ import {
 
 @Catch()
 export class GlobalExceptionFilter implements ExceptionFilter {
-  catch(exception: HttpException | Error, host: ArgumentsHost) {
+  catch(exception: Error & any, host: ArgumentsHost) {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
-    const message = exception.message;
+    const errorInfo = exception.response;
+    console.log(errorInfo);
+    // 拼接错误类型和错误信息
+    const message = `${errorInfo.error}  ${errorInfo.message}`;
     const status =
       exception instanceof HttpException
         ? exception.getStatus()
