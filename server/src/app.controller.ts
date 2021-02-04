@@ -1,12 +1,19 @@
-import { Controller, Get } from '@nestjs/common';
-import { AppService } from './app.service';
+import { Controller, Get, Post, Req } from '@nestjs/common';
+import { Request } from 'express';
+import { NoAuth } from './decorators/noAuth';
 
 @Controller()
 export class AppController {
-  constructor(private readonly appService: AppService) {}
-
+  @NoAuth()
   @Get()
-  getHello(): string {
-    return this.appService.getHello();
+  getQuery(@Req() request: Request): string {
+    return `hello, service is running
+     your query param: ${JSON.stringify(request.query)}`;
+  }
+  @NoAuth()
+  @Post()
+  getBody(@Req() request: Request): string {
+    return `hello, service is running
+     your body: ${JSON.stringify(request.body)}`;
   }
 }

@@ -1,8 +1,8 @@
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
-# ChatApp Components
-这个分支下面只有组件和页面demo
+# ChatApp 
 
+前端技术栈:`React Recoil StyledComponent Typescript`
 
 
 
