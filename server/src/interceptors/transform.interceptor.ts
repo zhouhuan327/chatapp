@@ -6,22 +6,19 @@ import {
 } from '@nestjs/common';
 import { map } from 'rxjs/operators';
 import { Observable } from 'rxjs';
-interface Response<T> {
-  code: number;
-  message: string;
-  data: T;
-}
+import { StatusCode } from '../constants';
+
 @Injectable()
 export class TransformInterceptor<T>
-  implements NestInterceptor<T, Response<T>> {
+  implements NestInterceptor<T, ResponseData<T>> {
   intercept(
     context: ExecutionContext,
     next: CallHandler<T>,
-  ): Observable<Response<T>> {
+  ): Observable<ResponseData<T>> {
     return next.handle().pipe(
-      map(data => {
+      map((data: any) => {
         return {
-          code: 200,
+          code: StatusCode.Success,
           message: '请求成功',
           data,
         };

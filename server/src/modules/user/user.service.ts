@@ -16,4 +16,7 @@ export class UserService {
   async getUserByName(username: string) {
     return this.userRepository.findOne({ username });
   }
+  async addUser(user) {
+    return this.userRepository.save(user);
+  }
 }

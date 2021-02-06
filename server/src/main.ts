@@ -12,7 +12,7 @@ async function bootstrap() {
   app.useGlobalFilters(new GlobalExceptionFilter());
   // 全局拦截器,封装返回体
   app.useGlobalInterceptors(new TransformInterceptor());
-  // 参数校验
+  // 全局参数校验
   app.useGlobalPipes(new ValidationPipe());
   await app.listen(3000);
 }

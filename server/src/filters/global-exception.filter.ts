@@ -12,9 +12,8 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const errorInfo = exception.response;
-    console.log(errorInfo);
-    // 拼接错误类型和错误信息
-    const message = `${errorInfo.error}  ${errorInfo.message}`;
+
+    const message = `${errorInfo?.message}`;
     const status =
       exception instanceof HttpException
         ? exception.getStatus()
