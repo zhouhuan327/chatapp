@@ -6,10 +6,19 @@ export class User {
   id: number;
 
   @Column('text')
-  username: string;
+  avatarSrc: string;
 
   @Column('text')
+  username: string;
+
+  @Column({ default: '123' })
   password: string;
+
+  @Column({ default: '这个人很懒' })
+  intro: string;
+
+  @Column('text')
+  email: string;
 
   @Column({ type: 'double', default: new Date().valueOf() })
   createTime: number;

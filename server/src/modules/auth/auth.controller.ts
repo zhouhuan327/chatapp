@@ -10,7 +10,6 @@ import {
 import { AuthService } from './auth.service';
 import { AuthGuard } from '@nestjs/passport';
 import { NoAuth } from '../../decorators/noAuth';
-import { registerDto } from './dto/index.dto';
 
 @Controller('auth')
 export class AuthController {
@@ -25,7 +24,7 @@ export class AuthController {
 
   @NoAuth()
   @Post('register')
-  async register(@Body() body: registerDto) {
+  async register(@Body() body) {
     return this.authService.register(body);
   }
 

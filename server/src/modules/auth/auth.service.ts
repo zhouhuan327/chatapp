@@ -1,7 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
 import { UserService } from '../user/user.service';
-import { registerDto } from './dto/index.dto';
 import CommonException from '../../utils/common.exception';
 
 @Injectable()
@@ -24,15 +23,12 @@ export class AuthService {
   async login(user) {
     const payload = { id: user.id, username: user.username };
     const token = this.jwtService.sign(payload);
-    return token;
+    return { token };
   }
-  async register(dto: registerDto) {
-    const isExist = await this.userService.getUserByName(dto.username);
-    if (isExist) throw new CommonException('用户已存在');
-
+  async register(dto) {
     const newUser = await this.userService.addUser(dto);
     const payload = { id: newUser.id, username: newUser.username };
     const token = this.jwtService.sign(payload);
-    return token;
+    return { token };
   }
 }
