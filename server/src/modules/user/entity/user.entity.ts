@@ -1,11 +1,16 @@
-import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  Column,
+  CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 @Entity()
 export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column('text')
+  @Column({ default: '' })
   avatarSrc: string;
 
   @Column('text')
@@ -17,9 +22,9 @@ export class User {
   @Column({ default: '这个人很懒' })
   intro: string;
 
-  @Column('text')
+  @Column({ default: '' })
   email: string;
 
-  @Column({ type: 'double', default: new Date().valueOf() })
+  @CreateDateColumn()
   createTime: number;
 }
