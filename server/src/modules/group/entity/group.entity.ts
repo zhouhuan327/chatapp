@@ -1,26 +1,22 @@
 import {
-  Entity,
   Column,
-  PrimaryGeneratedColumn,
   CreateDateColumn,
+  Entity,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
-
 @Entity()
-export class FriendMessage {
+export class Group {
   @PrimaryGeneratedColumn()
   id: number;
 
   @Column()
-  senderId: string;
+  groupName: string;
 
   @Column()
-  receiverId: string;
+  groupManagerId: number;
 
-  @Column()
-  content: string;
-
-  @Column()
-  type: MessageType;
+  @Column({ default: '群主很懒,没写公告' })
+  intro: string;
 
   @CreateDateColumn()
   createTime: number;

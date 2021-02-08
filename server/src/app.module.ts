@@ -6,6 +6,8 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { APP_GUARD } from '@nestjs/core';
 import { tokenAuthGuard } from './guards/token.guard';
 import { FriendModule } from './modules/friend/friend.module';
+import { MessageModule } from './modules/message/message.module';
+import { GroupModule } from './modules/group/group.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { FriendModule } from './modules/friend/friend.module';
     AuthModule,
     UserModule,
     FriendModule,
+    MessageModule,
+    GroupModule,
   ],
   controllers: [AppController],
   providers: [

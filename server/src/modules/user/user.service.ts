@@ -20,7 +20,7 @@ export class UserService {
   }
   async addUser(user: newUserDto) {
     const isExist = await this.getUserByName(user.username);
-    if (isExist) throw new CommonException('用户已存在');
+    if (isExist) throw new CommonException('用户名已存在');
 
     return this.userRepository.save(user);
   }

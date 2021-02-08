@@ -15,9 +15,9 @@ export class FriendController {
 
   @Get()
   getFriends(@Req() req, @Query('username') username) {
-    const user = req.user;
+    const userId = req.user?.userId;
 
-    return this.friendService.getFriends(user.userId, username);
+    return this.friendService.getFriends(userId, username);
   }
 
   @Post()

@@ -26,12 +26,14 @@ export class FriendService {
         id,
         username: Like(`%${username}%`),
       });
-      if (user) delete user.password;
-      users.push(user);
+      if (user) {
+        delete user.password;
+        users.push(user);
+      }
     }
     return users;
   }
-
+  // 是否是好友
   async checkIsFriend(userId, friendId) {
     if (userId === friendId) {
       throw new CommonException('不能添加/删除自己');
