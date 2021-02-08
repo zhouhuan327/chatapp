@@ -5,5 +5,5 @@ declare global {
     message: string;
     data: T | any;
   }
-  type MessageType = 'text' | 'image';
+  type MessageType = string | 'text' | 'image';
 }

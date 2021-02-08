@@ -3,24 +3,29 @@ import {
   Column,
   PrimaryGeneratedColumn,
   CreateDateColumn,
+  ManyToOne,
+  JoinColumn,
 } from 'typeorm';
+import { User } from '../../user/entity/user.entity';
 
 @Entity()
 export class FriendMessage {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column()
-  senderId: string;
+  @ManyToOne(() => User, user => user.id)
+  @JoinColumn({ name: 'senderId' })
+  sender: User;
 
-  @Column()
-  receiverId: string;
+  @ManyToOne(() => User, user => user.id)
+  @JoinColumn({ name: 'receiverId' })
+  receiver: User;
 
   @Column()
   content: string;
 
   @Column()
-  type: MessageType;
+  type: string;
 
   @CreateDateColumn()
   createTime: number;
