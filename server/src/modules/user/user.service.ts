@@ -15,8 +15,20 @@ export class UserService {
   async getUsers() {
     return this.userRepository.find();
   }
-  async getUserByName(username: string) {
-    return this.userRepository.findOne({ username });
+  // 默认是查不出来密码的,要加addSelect手动查
+  async getUserById(id) {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.id = :id', { id })
+      .addSelect('user.password')
+      .getOne();
+  }
+  async getUserByName(username) {
+    return this.userRepository
+      .createQueryBuilder('user')
+      .where('user.username = :username', { username })
+      .addSelect('user.password')
+      .getOne();
   }
   async addUser(user: newUserDto) {
     const isExist = await this.getUserByName(user.username);

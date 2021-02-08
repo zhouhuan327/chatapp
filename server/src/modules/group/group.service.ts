@@ -14,6 +14,9 @@ export class GroupService {
     @InjectRepository(GroupRelation)
     private readonly relationRepository: Repository<GroupRelation>,
   ) {}
+  async getGroupById(id) {
+    return this.groupRepository.findOne({ id });
+  }
   // 创建群
   async addGroup(group: newGroupDto) {
     const isExist = await this.groupRepository.findOne({

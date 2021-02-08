@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { GroupMessage } from '../../message/entity/groupMessage.entity';
 @Entity()
 export class Group {
   @PrimaryGeneratedColumn()
@@ -20,4 +22,7 @@ export class Group {
 
   @CreateDateColumn()
   createTime: number;
+
+  @OneToMany(() => GroupMessage, msg => msg.group)
+  groupMessage: GroupMessage[];
 }

@@ -11,6 +11,7 @@ export class FriendService {
     @InjectRepository(UserRelation) private readonly relationRepository,
     @InjectRepository(User) private readonly userRepository,
   ) {}
+
   // 查询好友信息
   async getFriends(userId, username = '') {
     const relations = await this.relationRepository
@@ -27,7 +28,6 @@ export class FriendService {
         username: Like(`%${username}%`),
       });
       if (user) {
-        delete user.password;
         users.push(user);
       }
     }

@@ -2,8 +2,10 @@ import {
   Column,
   CreateDateColumn,
   Entity,
+  OneToMany,
   PrimaryGeneratedColumn,
 } from 'typeorm';
+import { GroupMessage } from '../../message/entity/groupMessage.entity';
 
 @Entity()
 export class User {
@@ -16,7 +18,7 @@ export class User {
   @Column('text')
   username: string;
 
-  @Column({ default: '123' })
+  @Column({ select: false })
   password: string;
 
   @Column({ default: '这个人很懒' })
@@ -27,4 +29,7 @@ export class User {
 
   @CreateDateColumn()
   createTime: number;
+
+  @OneToMany(() => GroupMessage, msg => msg.user)
+  groupMessage: GroupMessage[];
 }
