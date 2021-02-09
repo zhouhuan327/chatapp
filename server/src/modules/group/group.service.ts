@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Group } from './entity/group.entity';
 import CommonException from '../../utils/common.exception';
 import { newGroupDto } from './dto/newGroup.dto';
-import { Like, Repository } from 'typeorm';
+import { Repository } from 'typeorm';
 import { GroupRelation } from './entity/groupRelation.entity';
 
 @Injectable()
@@ -23,8 +23,7 @@ export class GroupService {
       groupName: group.groupName,
     });
     if (isExist) throw new CommonException('该群已存在');
-    const newGroup = await this.groupRepository.save(group);
-    return newGroup;
+    return this.groupRepository.save(group);
   }
   // 删除群
   async deleteGroup(id) {
@@ -37,6 +36,9 @@ export class GroupService {
       .leftJoinAndSelect('relation.group', 'group')
       .leftJoinAndSelect('relation.user', 'user')
       .where('user.id = :id', { id: userId })
+      .andWhere('group.groupName like :groupName', {
+        groupName: '%' + groupName + '%',
+      })
       .getMany();
     const groups = relations.map(item => item.group);
 

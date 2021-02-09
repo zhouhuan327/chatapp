@@ -25,12 +25,6 @@ export class MessageController {
 
   @Post('friend')
   sendFriendMsg(@Body() body: FriendMessageDto) {
-    const { senderId, receiverId, content, type } = body;
-    return this.messageService.sendFriendMessage(
-      senderId,
-      receiverId,
-      content,
-      type,
-    );
+    return this.messageService.sendFriendMessage(body);
   }
 }

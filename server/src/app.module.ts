@@ -8,6 +8,7 @@ import { tokenAuthGuard } from './guards/token.guard';
 import { FriendModule } from './modules/friend/friend.module';
 import { MessageModule } from './modules/message/message.module';
 import { GroupModule } from './modules/group/group.module';
+import { ChatModule } from './modules/chat/chat.module';
 
 @Module({
   imports: [
@@ -27,6 +28,7 @@ import { GroupModule } from './modules/group/group.module';
     FriendModule,
     MessageModule,
     GroupModule,
+    ChatModule,
   ],
   controllers: [AppController],
   providers: [

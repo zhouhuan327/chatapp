@@ -36,9 +36,14 @@ export class MessageService {
 
     return messages;
   }
-  async sendFriendMessage(userId, friendId, content = '', type = 'text') {
-    const senderUser = await this.userService.getUserById(userId);
-    const receiverUser = await this.userService.getUserById(friendId);
+  async sendFriendMessage({
+    senderId,
+    receiverId,
+    content = '',
+    type = 'text',
+  }) {
+    const senderUser = await this.userService.getUserById(senderId);
+    const receiverUser = await this.userService.getUserById(receiverId);
 
     if (!receiverUser) throw new CommonException('该用户不存在');
 
