@@ -33,6 +33,7 @@ export class MessageService {
         receiverId: friendId,
       })
       .getMany();
+
     return messages;
   }
   async sendFriendMessage(userId, friendId, content = '', type = 'text') {

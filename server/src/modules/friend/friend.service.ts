@@ -3,7 +3,6 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { UserRelation } from './entity/userRelation.entity';
 import CommonException from '../../utils/common.exception';
 import { User } from '../user/entity/user.entity';
-import { Like } from 'typeorm';
 
 @Injectable()
 export class FriendService {
@@ -16,67 +15,51 @@ export class FriendService {
   async getFriends(userId, username = '') {
     const relations = await this.relationRepository
       .createQueryBuilder('relation')
-      .leftJoinAndSelect(User, 'user', 'user.id = relation.userId')
+      .leftJoinAndSelect('relation.user', 'user')
+      .leftJoinAndSelect('relation.friend', 'friend')
       .where('user.id = :id', { id: userId })
+      .andWhere('friend.username like :username', {
+        username: '%' + username + '%',
+      })
       .getMany();
-
-    const friendIds = relations.map(item => item.friendId);
-    const users = [];
-    for (const id of friendIds) {
-      const user = await this.userRepository.findOne({
-        id,
-        username: Like(`%${username}%`),
-      });
-      if (user) {
-        users.push(user);
-      }
-    }
-    return users;
-  }
-  // 是否是好友
-  async checkIsFriend(userId, friendId) {
-    if (userId === friendId) {
-      throw new CommonException('不能添加/删除自己');
-    }
-
-    const isFriendExist = await this.userRepository.findOne({ id: friendId });
-    if (!isFriendExist) throw new CommonException('该用户不存在');
-
-    // 检查是否已经加过好友
-    const relation1 = await this.relationRepository.findOne({
-      userId: userId,
-      friendId: friendId,
-    });
-    const relation2 = await this.relationRepository.findOne({
-      userId: friendId,
-      friendId: userId,
-    });
-    return relation1 || relation2 ? true : false;
+    const friends = relations.map(item => item.friend);
+    return friends;
   }
 
   async addFriend(userId, friendId) {
-    const isFriend = await this.checkIsFriend(userId, friendId);
-    if (isFriend) {
-      throw new CommonException('已经是好友');
+    if (userId === friendId) {
+      throw new CommonException('不能添加/删除自己');
+    }
+    const user = await this.userRepository.findOne({ id: userId });
+    const friend = await this.userRepository.findOne({ id: friendId });
+
+    if (!friend) throw new CommonException('好友不存在');
+
+    // 检查是否已经加过好友
+    const relation1 = await this.relationRepository.findOne({
+      user: user,
+      friend: friend,
+    });
+    const relation2 = await this.relationRepository.findOne({
+      user: friend,
+      friend: user,
+    });
+    if (relation1 || relation2) {
+      throw new CommonException('已经是好友了');
     }
 
-    await this.relationRepository.save({ userId: userId, friendId: friendId });
-    await this.relationRepository.save({ userId: friendId, friendId: userId });
+    await this.relationRepository.save({ user: user, friend: friend });
+    await this.relationRepository.save({ user: friend, friend: user });
     return null;
   }
   async deleteFriend(userId, friendId) {
-    const isFriend = await this.checkIsFriend(userId, friendId);
-    if (!isFriend) {
-      throw new CommonException('已经不是好友');
-    }
-
     await this.relationRepository.delete({
-      userId: userId,
-      friendId: friendId,
+      user: { id: userId },
+      friend: { id: friendId },
     });
     await this.relationRepository.delete({
-      userId: friendId,
-      friendId: userId,
+      user: { id: friendId },
+      friend: { id: userId },
     });
   }
 }

@@ -14,7 +14,7 @@ export class FriendController {
   constructor(private readonly friendService: FriendService) {}
 
   @Get()
-  getFriends(@Req() req, @Query('username') username) {
+  getFriends(@Req() req, @Query('name') username) {
     const userId = req.user?.userId;
 
     return this.friendService.getFriends(userId, username);
