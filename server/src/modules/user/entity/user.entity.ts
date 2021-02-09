@@ -8,6 +8,8 @@ import {
 import { GroupMessage } from '../../message/entity/groupMessage.entity';
 import { FriendMessage } from '../../message/entity/friendMessage.entity';
 import { UserRelation } from '../../friend/entity/userRelation.entity';
+import { GroupRelation } from '../../group/entity/groupRelation.entity';
+import { Group } from '../../group/entity/group.entity';
 
 @Entity()
 export class User {
@@ -34,6 +36,9 @@ export class User {
 
   @OneToMany(() => UserRelation, relation => relation.user)
   friend: User[];
+
+  @OneToMany(() => GroupRelation, relation => relation.user)
+  group: Group[];
 
   @OneToMany(() => FriendMessage, msg => msg.sender)
   friendMessage: FriendMessage[];

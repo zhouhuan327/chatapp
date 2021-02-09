@@ -30,40 +30,32 @@ export class GroupService {
   async deleteGroup(id) {
     return this.groupRepository.delete({ id });
   }
-  // 加群
-  async joinGroup(userId, groupId) {
-    const isGroupExist = await this.groupRepository.findOne({ id: groupId });
-    if (!isGroupExist) throw new CommonException('该群已解散');
-    const isInGroup = await this.relationRepository.findOne({
-      userId,
-      groupId,
-    });
-    if (isInGroup) throw new CommonException('已加入该群');
-    return this.relationRepository.save({ userId, groupId });
-  }
-  // 退群
-  async exitGroup(userId, groupId) {
-    const isGroupExist = await this.groupRepository.findOne({ id: groupId });
-    if (!isGroupExist) throw new CommonException('该群已解散');
-
-    return this.relationRepository.delete({ userId, groupId });
-  }
   // 查询所有加入群的信息
   async getMyGroups(userId, groupName = '') {
     const relations = await this.relationRepository
       .createQueryBuilder('relation')
-      .leftJoinAndSelect(Group, 'group', 'relation.groupId = group.id')
-      .where('relation.userId = :id', { id: userId })
+      .leftJoinAndSelect('relation.group', 'group')
+      .leftJoinAndSelect('relation.user', 'user')
+      .where('user.id = :id', { id: userId })
       .getMany();
-    const groupIds = relations.map(item => item.id);
-    const groups = [];
-    for (const id of groupIds) {
-      const group = await this.groupRepository.findOne({
-        id,
-        groupName: Like(`%${groupName}%`),
-      });
-      if (group) groups.push(group);
-    }
+    const groups = relations.map(item => item.group);
+
     return groups;
+  }
+  // 加群
+  async joinGroup(userId, groupId) {
+    const group = await this.groupRepository.findOne({ id: groupId });
+    if (!group) throw new CommonException('该群已解散');
+    const user = { id: userId };
+    const isInGroup = await this.relationRepository.findOne({ user, group });
+    if (isInGroup) throw new CommonException('已加入该群');
+    return this.relationRepository.save({ user, group });
+  }
+  // 退群
+  async exitGroup(userId, groupId) {
+    const group = await this.groupRepository.findOne({ id: groupId });
+    if (!group) throw new CommonException('该群已解散');
+
+    return this.relationRepository.delete({ user: { id: userId }, group });
   }
 }
