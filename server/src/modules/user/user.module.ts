@@ -1,11 +1,28 @@
-import { Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
 import { UserController } from './user.controller';
+import { Repository } from 'typeorm';
 @Module({
   imports: [TypeOrmModule.forFeature([User])],
   providers: [UserService],
   controllers: [UserController],
 })
-export class UserModule {}
+export class UserModule implements OnModuleInit {
+  constructor(
+    @InjectRepository(User) private readonly userRepository: Repository<User>,
+  ) {}
+  async onModuleInit() {
+    const defaultUser = await this.userRepository.findOne({ id: 1 });
+    if (!defaultUser) {
+      await this.userRepository.save({
+        id: 1,
+        username: '管理员',
+        password: 'QWER',
+        intro: '是作者',
+      });
+      console.log('初始化管理员...');
+    }
+  }
+}

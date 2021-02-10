@@ -1,11 +1,4 @@
-import {
-  Entity,
-  JoinColumn,
-  ManyToMany,
-  ManyToOne,
-  OneToOne,
-  PrimaryGeneratedColumn,
-} from 'typeorm';
+import { Entity, JoinColumn, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { Group } from './group.entity';
 import { User } from '../../user/entity/user.entity';
 @Entity()

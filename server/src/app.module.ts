@@ -24,11 +24,11 @@ import { ChatModule } from './modules/chat/chat.module';
       synchronize: true,
     }),
     AuthModule,
-    UserModule,
     FriendModule,
     MessageModule,
     GroupModule,
     ChatModule,
+    UserModule,
   ],
   controllers: [AppController],
   providers: [

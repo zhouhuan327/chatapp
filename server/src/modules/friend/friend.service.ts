@@ -10,7 +10,6 @@ export class FriendService {
     @InjectRepository(UserRelation) private readonly relationRepository,
     private readonly userService: UserService,
   ) {}
-
   // 查询好友信息
   async getFriends(userId, username = '') {
     const relations = await this.relationRepository
@@ -22,8 +21,7 @@ export class FriendService {
         username: '%' + username + '%',
       })
       .getMany();
-    const friends = relations.map(item => item.friend);
-    return friends;
+    return relations.map(item => item.friend);
   }
   // 检查是否已经是好友
   async checkRelation(userId, friendId) {
