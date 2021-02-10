@@ -2,13 +2,13 @@ import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { UserRelation } from './entity/userRelation.entity';
 import CommonException from '../../utils/common.exception';
-import { User } from '../user/entity/user.entity';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class FriendService {
   constructor(
     @InjectRepository(UserRelation) private readonly relationRepository,
-    @InjectRepository(User) private readonly userRepository,
+    private readonly userService: UserService,
   ) {}
 
   // 查询好友信息
@@ -25,17 +25,15 @@ export class FriendService {
     const friends = relations.map(item => item.friend);
     return friends;
   }
-
-  async addFriend(userId, friendId) {
+  // 检查是否已经是好友
+  async checkRelation(userId, friendId) {
+    let isFriend = false;
     if (userId === friendId) {
       throw new CommonException('不能添加/删除自己');
     }
-    const user = await this.userRepository.findOne({ id: userId });
-    const friend = await this.userRepository.findOne({ id: friendId });
+    const user = await this.userService.getUserById(userId);
+    const friend = await this.userService.getUserById(friendId);
 
-    if (!friend) throw new CommonException('好友不存在');
-
-    // 检查是否已经加过好友
     const relation1 = await this.relationRepository.findOne({
       user: user,
       friend: friend,
@@ -44,9 +42,19 @@ export class FriendService {
       user: friend,
       friend: user,
     });
+
     if (relation1 || relation2) {
-      throw new CommonException('已经是好友了');
+      isFriend = true;
     }
+    return { isFriend, user, friend };
+  }
+  async addFriend(userId, friendId) {
+    const { isFriend, user, friend } = await this.checkRelation(
+      userId,
+      friendId,
+    );
+    if (isFriend)
+      throw new CommonException(`你与${friend.username}已经是好友了`);
 
     await this.relationRepository.save({ user: user, friend: friend });
     await this.relationRepository.save({ user: friend, friend: user });

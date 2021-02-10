@@ -15,14 +15,11 @@ export class UserService {
   async getUsers() {
     return this.userRepository.find();
   }
-  // 默认是查不出来密码的,要加addSelect手动查
+
   async getUserById(id) {
-    return this.userRepository
-      .createQueryBuilder('user')
-      .where('user.id = :id', { id })
-      .addSelect('user.password')
-      .getOne();
+    return this.userRepository.findOne({ id });
   }
+  // 默认是查不出来密码的,要加addSelect
   async getUserByName(username) {
     return this.userRepository
       .createQueryBuilder('user')

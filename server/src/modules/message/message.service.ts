@@ -66,10 +66,10 @@ export class MessageService {
 
     return messages;
   }
-  async sendGroupMessage(userId, groupId, content = '', type = 'text') {
+  async sendGroupMessage({ senderId, groupId, content = '', type = 'text' }) {
     const group = await this.groupService.getGroupById(groupId);
     if (!group) throw new CommonException('该群不存在');
-    const user = await this.userService.getUserById(userId);
+    const user = await this.userService.getUserById(senderId);
     if (!user) throw new CommonException('该用户不存在');
     const message = new GroupMessage();
     message.user = user;

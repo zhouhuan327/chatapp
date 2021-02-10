@@ -5,6 +5,7 @@ import CommonException from '../../utils/common.exception';
 import { newGroupDto } from './dto/newGroup.dto';
 import { Repository } from 'typeorm';
 import { GroupRelation } from './entity/groupRelation.entity';
+import { UserService } from '../user/user.service';
 
 @Injectable()
 export class GroupService {
@@ -13,6 +14,7 @@ export class GroupService {
     private readonly groupRepository: Repository<Group>,
     @InjectRepository(GroupRelation)
     private readonly relationRepository: Repository<GroupRelation>,
+    private readonly userService: UserService,
   ) {}
   async getGroupById(id) {
     return this.groupRepository.findOne({ id });
@@ -29,7 +31,7 @@ export class GroupService {
   async deleteGroup(id) {
     return this.groupRepository.delete({ id });
   }
-  // 查询所有加入群的信息
+  // 查询所有加入的群的信息
   async getMyGroups(userId, groupName = '') {
     const relations = await this.relationRepository
       .createQueryBuilder('relation')
@@ -44,12 +46,25 @@ export class GroupService {
 
     return groups;
   }
+  // 检查是否加入了群
+  async checkRelation(userId, groupId) {
+    let isInGroup = false;
+    const user = await this.userService.getUserById(userId);
+    if (!user) throw new CommonException('用户不存在');
+
+    const group = await this.groupRepository.findOne({ id: groupId });
+    if (!group) throw new CommonException('该群不存在或已解散');
+
+    const relation = await this.relationRepository.findOne({ user, group });
+    if (relation) isInGroup = true;
+    return { isInGroup, user, group };
+  }
   // 加群
   async joinGroup(userId, groupId) {
-    const group = await this.groupRepository.findOne({ id: groupId });
-    if (!group) throw new CommonException('该群已解散');
-    const user = { id: userId };
-    const isInGroup = await this.relationRepository.findOne({ user, group });
+    const { isInGroup, user, group } = await this.checkRelation(
+      userId,
+      groupId,
+    );
     if (isInGroup) throw new CommonException('已加入该群');
     return this.relationRepository.save({ user, group });
   }

@@ -2,7 +2,7 @@ import { HttpException } from '@nestjs/common';
 import { StatusCode } from '../constants';
 
 export default class CommonException extends HttpException {
-  constructor(msg: string) {
-    super({ statusCode: StatusCode.Error, message: msg }, StatusCode.Error);
+  constructor(msg: string, statusCode = StatusCode.Error) {
+    super({ statusCode, message: msg }, StatusCode.Error);
   }
 }

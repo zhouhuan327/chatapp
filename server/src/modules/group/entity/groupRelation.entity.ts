@@ -1,6 +1,7 @@
 import {
   Entity,
   JoinColumn,
+  ManyToMany,
   ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -12,7 +13,7 @@ export class GroupRelation {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @OneToOne(() => Group, group => group.id)
+  @ManyToOne(() => Group, group => group.id)
   @JoinColumn({ name: 'groupId' })
   group: Group;
 

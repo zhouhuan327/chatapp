@@ -6,6 +6,8 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 import { GroupMessage } from '../../message/entity/groupMessage.entity';
+import { User } from '../../user/entity/user.entity';
+import { GroupRelation } from './groupRelation.entity';
 @Entity()
 export class Group {
   @PrimaryGeneratedColumn()
@@ -22,6 +24,9 @@ export class Group {
 
   @CreateDateColumn()
   createTime: number;
+
+  // @OneToMany(() => GroupRelation,relation => relation.)
+  // user: User[];
 
   @OneToMany(() => GroupMessage, msg => msg.group)
   groupMessage: GroupMessage[];

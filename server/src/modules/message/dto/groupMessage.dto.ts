@@ -2,7 +2,7 @@ import { IsNotEmpty } from 'class-validator';
 
 export class GroupMessageDto {
   @IsNotEmpty()
-  userId: number;
+  senderId: number;
   @IsNotEmpty()
   groupId: number;
   @IsNotEmpty()

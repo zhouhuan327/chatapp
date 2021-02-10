@@ -13,8 +13,7 @@ export class MessageController {
 
   @Post('group')
   async sendGroupMsg(@Body() body: GroupMessageDto) {
-    const { userId, groupId, content, type } = body;
-    return this.messageService.sendGroupMessage(userId, groupId, content, type);
+    return this.messageService.sendGroupMessage(body);
   }
 
   @Get('friend')
