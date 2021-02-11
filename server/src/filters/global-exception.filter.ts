@@ -4,6 +4,7 @@ import {
   ExceptionFilter,
   HttpException,
   HttpStatus,
+  Logger,
 } from '@nestjs/common';
 
 @Catch()
@@ -12,8 +13,10 @@ export class GlobalExceptionFilter implements ExceptionFilter {
     const ctx = host.switchToHttp();
     const response = ctx.getResponse();
     const errorInfo = exception.response;
-
     const message = errorInfo?.message || exception.toString();
+
+    Logger.error('filtered error', message);
+
     const status =
       exception instanceof HttpException
         ? exception.getStatus()

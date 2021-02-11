@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { UserService } from './user.service';
 import { User } from './entity/user.entity';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
@@ -22,7 +22,7 @@ export class UserModule implements OnModuleInit {
         password: 'QWER',
         intro: '是作者',
       });
-      console.log('初始化管理员...');
+      Logger.log('初始化管理员...');
     }
   }
 }

@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Logger, Module, OnModuleInit } from '@nestjs/common';
 import { GroupService } from './group.service';
 import { InjectRepository, TypeOrmModule } from '@nestjs/typeorm';
 import { Group } from './entity/group.entity';
@@ -31,7 +31,7 @@ export class GroupModule implements OnModuleInit {
         intro: '这是默认的聊天室',
       });
       await this.relationRepository.save({ id: 1, user: { id: 1 }, group });
-      console.log('初始化默认群聊...');
+      Logger.log('初始化默认群聊...');
     }
   }
 }

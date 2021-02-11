@@ -32,7 +32,7 @@ export class GroupService {
     return this.groupRepository.delete({ id });
   }
   // 查询所有加入的群的信息
-  async getMyGroups(userId, groupName = '') {
+  async getJoinedGroups(userId, groupName = '') {
     const relations = await this.relationRepository
       .createQueryBuilder('relation')
       .leftJoinAndSelect('relation.group', 'group')
@@ -45,6 +45,13 @@ export class GroupService {
     const groups = relations.map(item => item.group);
 
     return groups;
+  }
+  async getGroupMembers(groupId) {
+    return this.relationRepository
+      .createQueryBuilder('relation')
+      .leftJoinAndSelect('relation.user', 'user')
+      .where('relation.group.id = :groupId', { groupId })
+      .getMany();
   }
   // 检查是否加入了群
   async checkRelation(userId, groupId) {

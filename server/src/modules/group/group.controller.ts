@@ -38,6 +38,10 @@ export class GroupController {
   @Get()
   getGroups(@Req() req, @Query('groupName') groupName) {
     const userId = req.user?.userId;
-    return this.groupService.getMyGroups(userId, groupName);
+    return this.groupService.getJoinedGroups(userId, groupName);
+  }
+  @Get('/members')
+  getGroupMMembers(@Query('groupId') groupId) {
+    return this.groupService.getGroupMembers(groupId);
   }
 }

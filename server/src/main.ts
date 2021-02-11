@@ -5,7 +5,9 @@ import { TransformInterceptor } from './interceptors/transform.interceptor';
 import { ValidationPipe } from '@nestjs/common';
 
 async function bootstrap() {
-  const app = await NestFactory.create(AppModule);
+  const app = await NestFactory.create(AppModule, {
+    logger: ['error', 'warn'],
+  });
   // 开启cors
   app.enableCors();
   // 全局错误过滤器
