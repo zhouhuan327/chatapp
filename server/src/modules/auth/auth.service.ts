@@ -29,7 +29,7 @@ export class AuthService {
   async login(user) {
     const payload = { id: user.id, username: user.username };
     const token = this.jwtService.sign(payload);
-    return { token };
+    return { token, ...payload };
   }
   async register(dto) {
     const newUser = await this.userService.addUser(dto);

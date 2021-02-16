@@ -11,10 +11,9 @@ import { profileVisible } from "store/root";
 import { routers } from "../router";
 function ChatApp({ ...rest }) {
   const location = useLocation();
-  const getFirstSgmtPath = location => location.pathname.split("/")[1];
   const show = useRecoilValue(profileVisible);
 
-  const transitions = useTransition(location, getFirstSgmtPath, {
+  const transitions = useTransition(location, location.pathname, {
     from: { opacity: 0, transform: "translate3d(-100px, 0, 0)" },
     enter: { opacity: 1, transform: "translate3d(0, 0, 0)" },
     leave: { opacity: 0, transform: "translate3d(-100px, 0, 1)" },
@@ -29,7 +28,7 @@ function ChatApp({ ...rest }) {
           <animated.div key={key} style={props}>
             <Switch location={item}>
               {routers.map(route => (
-                <Route exact={route.exact} path={route.path}>
+                <Route key={route.path} path={route.path} exact={route.exact}>
                   {route.component}
                 </Route>
               ))}

@@ -1,15 +1,22 @@
-import ChatApp from "layout";
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/theme";
-import { BrowserRouter } from "react-router-dom";
+import { BrowserRouter, Route, Switch } from "react-router-dom";
 import { RecoilRoot } from "recoil";
+import { pageRouters } from "./router";
+import "antd/dist/antd.css";
 function App() {
   return (
     <BrowserRouter>
       <ThemeProvider theme={theme}>
         <RecoilRoot>
-          <ChatApp />
+          <Switch>
+            {pageRouters.map(route => (
+              <Route key={route.path} path={route.path} exact={route.exact}>
+                {route.component}
+              </Route>
+            ))}
+          </Switch>
         </RecoilRoot>
       </ThemeProvider>
     </BrowserRouter>

@@ -12,7 +12,7 @@ const NavBar = () => {
       <Avatar src={img} status="online" />
       <MenuItems>
         {routers.map(route => (
-          <MenuItem to={route.path} icon={route.icon} />
+          <MenuItem key={route.path} to={route.path} icon={route.icon} />
         ))}
       </MenuItems>
     </StyledNavBar>

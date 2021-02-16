@@ -16,6 +16,6 @@ async function bootstrap() {
   app.useGlobalInterceptors(new TransformInterceptor());
   // 全局参数校验
   app.useGlobalPipes(new ValidationPipe());
-  await app.listen(3001);
+  await app.listen(3000);
 }
 bootstrap();

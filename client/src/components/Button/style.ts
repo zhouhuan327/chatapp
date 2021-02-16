@@ -8,10 +8,18 @@ const shapeVariants = {
     display: inline-flex;
     align-items: center;
     justify-content: center;
+    &:hover {
+      transform: scale(1.1);
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+    }
   `,
   rect: css`
-    padding: 12px 18px;
+    padding: 10px 16px;
     border-radius: 6px;
+    &:hover {
+      background-color: ${({ theme }) => theme.primaryColorHover};
+      box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
+    }
   `,
 };
 const typeVariants = {
@@ -32,10 +40,6 @@ const StyledButton = styled.button<any>`
 
   transform: scale(1);
   transition: 0.4s ease;
-  &:hover {
-    transform: scale(1.1);
-    box-shadow: 0px 6px 16px rgba(0, 0, 0, 0.12);
-  }
 `;
 
 export default StyledButton;

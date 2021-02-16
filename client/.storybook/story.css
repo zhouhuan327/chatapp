@@ -1,4 +1,4 @@
-@import '../index.css';
+@import '../src/index.css';
 .row {
     display: flex;
 }
