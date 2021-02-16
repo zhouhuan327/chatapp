@@ -43,9 +43,9 @@ export class ChatGateway
     const id = client.handshake?.query?.userId;
 
     if (id) {
-      Logger.log(`id = ${id}的用户上线了`);
       client.join(id);
       this.liveUserIds.add(id);
+      Logger.log(`id = ${id}的用户上线了`);
     }
   }
 
@@ -146,7 +146,7 @@ export class ChatGateway
     const liveGroupMember = userIds
       .filter(item => this.liveUserIds.has(item))
       .filter(item => item != String(senderId));
-
+    // 通知在线的群员有新消息
     for (const i of liveGroupMember) {
       this.server.to(String(i)).emit('notice', content);
     }

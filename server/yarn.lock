@@ -609,10 +609,10 @@
     multer "1.4.2"
     tslib "2.1.0"
 
-"@nestjs/platform-socket.io@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.npm.taobao.org/@nestjs/platform-socket.io/download/@nestjs/platform-socket.io-7.6.11.tgz#893b50804c423d0d37fb61162123ef696476b4d5"
-  integrity sha1-iTtQgExCPQ03+2EWISPvaWR2tNU=
+"@nestjs/platform-socket.io@^7.2.0":
+  version "7.6.12"
+  resolved "https://registry.npm.taobao.org/@nestjs/platform-socket.io/download/@nestjs/platform-socket.io-7.6.12.tgz#65493962c35a3e6bd9d1109680a48389c7ad7f26"
+  integrity sha1-ZUk5YsNaPmvZ0RCWgKSDicetfyY=
   dependencies:
     socket.io "2.4.1"
     tslib "2.1.0"
@@ -642,10 +642,10 @@
   dependencies:
     uuid "8.3.1"
 
-"@nestjs/websockets@^7.6.11":
-  version "7.6.11"
-  resolved "https://registry.npm.taobao.org/@nestjs/websockets/download/@nestjs/websockets-7.6.11.tgz#f990ca1be4065c1ff1be16696523b5f656a81ef2"
-  integrity sha1-+ZDKG+QGXB/xvhZpZSO19laoHvI=
+"@nestjs/websockets@^7.2.0":
+  version "7.6.12"
+  resolved "https://registry.npm.taobao.org/@nestjs/websockets/download/@nestjs/websockets-7.6.12.tgz#d053967d972fe5bd86bb83cbf82db86116e0eaf5"
+  integrity sha1-0FOWfZcv5b2Gu4PL+C24YRbg6vU=
   dependencies:
     iterare "1.2.1"
     tslib "2.1.0"

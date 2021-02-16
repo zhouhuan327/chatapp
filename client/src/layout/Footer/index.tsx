@@ -1,5 +1,4 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
-import React, { memo } from "react";
+import React, { memo, useEffect } from "react";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style";
 import Input from "components/Input";
 import Icon from "components/Icon";
@@ -11,6 +10,9 @@ import { ReactComponent as OptionsIcon } from "assets/icons/options.svg";
 import Button from "components/Button";
 import Emoji from "components/Emoji";
 import Popover from "components/Popover";
+import { useRecoilValue } from "recoil";
+import { socketInstance } from "../../store/socket";
+
 const PopoverContent = () => (
   <StyledPopoverContent>
     <Emoji label="smile">😁</Emoji>
@@ -21,6 +23,13 @@ const PopoverContent = () => (
   </StyledPopoverContent>
 );
 function Footer({ animeProps, ...rest }) {
+  const socket = useRecoilValue(socketInstance);
+  useEffect(() => {
+    socket.emit("groupChatConnect", {
+      senderId: 3,
+      groupId: 1,
+    });
+  }, [socket]);
   return (
     <StyledFooter style={{ ...animeProps }} {...rest}>
       <Input
