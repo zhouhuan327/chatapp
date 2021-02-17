@@ -30,7 +30,9 @@ const Message = styled.div<any>`
     `}
 `;
 
-const MessageText = styled(ParaGraph).attrs({ ellipsis: true })``;
+const MessageText = styled(ParaGraph).attrs({ ellipsis: true })`
+  margin-bottom: 0;
+`;
 
 const UnreadBadge = styled(Badge)`
   justify-self: end;

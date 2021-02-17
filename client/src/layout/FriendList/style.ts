@@ -1,14 +1,16 @@
 import styled from "styled-components";
 import { scrollbar } from "utils/mixin";
 
-const StyledFileList = styled.div``;
-const Files = styled.div`
+const StyledFriendList = styled.div``;
+const Friends = styled.div`
   margin-top: -8px;
   & > * {
     margin: 8px 0;
   }
   overflow-y: auto;
+  height: 100%;
   ${scrollbar}
 `;
-export default StyledFileList;
-export { Files };
+
+export default StyledFriendList;
+export { Friends };

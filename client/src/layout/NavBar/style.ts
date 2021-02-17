@@ -41,7 +41,7 @@ const MenuIcon = styled(FontAwesomeIcon)<any>`
 `;
 const StyledNavBar = styled.nav`
   display: grid;
-  grid-template-rows: 1fr 4fr;
+  grid-template-rows: 1fr 5fr;
   width: 80px;
   height: 100vh;
   background-color: ${({ theme }) => theme.darkPurple};

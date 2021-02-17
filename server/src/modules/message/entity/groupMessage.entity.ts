@@ -30,5 +30,5 @@ export class GroupMessage {
   type: MessageType;
 
   @CreateDateColumn()
-  createTime: number;
+  createTime: string;
 }

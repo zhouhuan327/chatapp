@@ -38,11 +38,11 @@ export const activeBar = ({
     opacity: 0.6;
   }
 `;
-export const card = (raidus = "6px", padding = "20px") => css`
+export const card = (radius = "6px", padding = "20px") => css`
   padding: ${padding};
   background: ${({ theme }) => theme.background};
   box-shadow: 0px 18px 40px 0px rgba(0, 0, 0, 0.04);
-  border-radius: ${raidus};
+  border-radius: ${radius};
   cursor: pointer;
 `;
 

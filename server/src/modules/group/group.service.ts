@@ -6,7 +6,8 @@ import { newGroupDto } from './dto/newGroup.dto';
 import { Repository } from 'typeorm';
 import { GroupRelation } from './entity/groupRelation.entity';
 import { UserService } from '../user/user.service';
-
+import * as moment from 'moment';
+import { formatTime } from '../../utils';
 @Injectable()
 export class GroupService {
   constructor(
@@ -81,5 +82,32 @@ export class GroupService {
     if (!group) throw new CommonException('该群已解散');
 
     return this.relationRepository.delete({ user: { id: userId }, group });
+  }
+  // 最近聊天的群以及最新的一条消息
+  async getRecentChatGroup(userId) {
+    const groups = await this.relationRepository
+      .createQueryBuilder('relation')
+      .leftJoinAndSelect('relation.group', 'group')
+      .leftJoinAndSelect('relation.user', 'user')
+      .leftJoinAndSelect('group.groupMessage', 'msg')
+      .where('user.id = :userId', { userId })
+      .andWhere('msg.groupId = group.id')
+      .getMany();
+    const recentChatGroup = groups.map(item => {
+      const group = item?.group;
+      const recentGroupMessage = group?.groupMessage?.pop();
+      const obj: RecentChat = {
+        id: group.id,
+        avatar: group.avatarSrc,
+        name: group.groupName,
+        intro: group.intro,
+        content: recentGroupMessage.content,
+        contentType: recentGroupMessage.type,
+        time: formatTime(recentGroupMessage.createTime),
+        type: 'group',
+      };
+      return obj;
+    });
+    return recentChatGroup;
   }
 }

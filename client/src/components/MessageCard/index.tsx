@@ -20,7 +20,7 @@ interface MessageCardProps {
   message: any;
   unreadCount: number;
   active: boolean;
-  replied: boolean;
+  replied: boolean; // 是否回复
   [rest: string]: any;
 }
 const MessageCard: React.FC<MessageCardProps> = ({

@@ -26,4 +26,9 @@ export class MessageController {
   sendFriendMsg(@Body() body: FriendMessageDto) {
     return this.messageService.sendFriendMessage(body);
   }
+  @Get('list')
+  getAll(@Req() req) {
+    const userId = req.user.userId;
+    return this.messageService.getRecentMessageList(userId);
+  }
 }

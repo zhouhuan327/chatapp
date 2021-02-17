@@ -11,6 +11,9 @@ export class Group {
   @PrimaryGeneratedColumn()
   id: number;
 
+  @Column({ default: '' })
+  avatarSrc: string;
+
   @Column()
   groupName: string;
 
@@ -21,7 +24,7 @@ export class Group {
   intro: string;
 
   @CreateDateColumn()
-  createTime: number;
+  createTime: string;
 
   @OneToMany(() => GroupMessage, msg => msg.group)
   groupMessage: GroupMessage[];

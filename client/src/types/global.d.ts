@@ -4,7 +4,8 @@ declare global {
   interface Route {
     path: string;
     exact: boolean;
-    icon: any;
+    icon?: any;
+    title?: string;
     component: lazyLoad<any>;
   }
 }

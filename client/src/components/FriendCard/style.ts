@@ -9,7 +9,7 @@ const Name = styled(ParaGraph).attrs({ size: "large" })`
 const Intro = styled(ParaGraph).attrs({ type: "secondary" })`
   grid-area: intro;
 `;
-const StyledContactCard = styled.div`
+const StyledFriendCard = styled.div`
   ${card()};
   display: grid;
   grid-template-areas:
@@ -20,5 +20,5 @@ const StyledContactCard = styled.div`
     grid-area: avatar;
   }
 `;
-export default StyledContactCard;
+export default StyledFriendCard;
 export { Name, Intro };

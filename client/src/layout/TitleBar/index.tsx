@@ -10,7 +10,7 @@ import { ReactComponent as Camera } from "assets/icons/camera.svg";
 import { ReactComponent as Options } from "assets/icons/options.svg";
 import face1 from "assets/images/avatar.jpeg";
 import { useSetRecoilState } from "recoil";
-import { profileVisible } from "store/root";
+import { profileVisible } from "store";
 
 function TitleBar({ name, status, animeProps }) {
   const setVisible = useSetRecoilState(profileVisible);

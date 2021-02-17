@@ -28,5 +28,5 @@ export class FriendMessage {
   type: string;
 
   @CreateDateColumn()
-  createTime: number;
+  createTime: string;
 }

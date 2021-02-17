@@ -7,7 +7,7 @@ import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition } from "react-spring";
 import { animated } from "react-spring";
 import { useRecoilValue } from "recoil";
-import { profileVisible } from "store/root";
+import { profileVisible } from "store";
 import { routers } from "../router";
 function ChatApp({ ...rest }) {
   const location = useLocation();

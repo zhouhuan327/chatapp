@@ -4,6 +4,7 @@ import { User } from './entity/user.entity';
 import { Repository } from 'typeorm';
 import CommonException from '../../utils/common.exception';
 import { newUserDto, updateUserDto } from './dto/user.dto';
+import { formatTime } from '../../utils';
 
 @Injectable()
 export class UserService {
@@ -41,5 +42,36 @@ export class UserService {
   }
   async deleteUser(id) {
     return this.userRepository.delete(id);
+  }
+  // 最近聊天的好友以及最新的一条消息
+  async getRecentChatUser(userId) {
+    const user = await this.userRepository
+      .createQueryBuilder('user')
+      .leftJoinAndSelect('user.friendMessage', 'msg')
+      // 排除自己
+      .where('user.id <> :userId', {
+        userId: userId,
+      })
+      .andWhere('msg.senderId = :userId Or msg.receiverId = :userId', {
+        userId: userId,
+      })
+      .getMany();
+    const recentChatUser: Array<RecentChat> = user.map(item => {
+      // 最新的一条消息
+      const recentMessage = item.friendMessage[0];
+      console.log(item.friendMessage);
+      const obj: RecentChat = {
+        id: item.id,
+        avatar: item.avatarSrc,
+        name: item.username,
+        intro: item.intro,
+        content: recentMessage.content,
+        contentType: recentMessage.type,
+        time: formatTime(recentMessage.createTime),
+        type: 'friend',
+      };
+      return obj;
+    });
+    return recentChatUser;
   }
 }

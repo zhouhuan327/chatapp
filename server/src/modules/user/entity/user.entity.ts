@@ -32,7 +32,7 @@ export class User {
   email: string;
 
   @CreateDateColumn()
-  createTime: number;
+  createTime: string;
 
   @OneToMany(() => UserRelation, relation => relation.user)
   friend: User[];

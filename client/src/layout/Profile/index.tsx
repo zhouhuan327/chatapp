@@ -22,7 +22,7 @@ import photo2 from "assets/images/photo2.jpg";
 import photo3 from "assets/images/photo3.jpg";
 import { ReactComponent as Cross } from "assets/icons/cross.svg";
 import { useSetRecoilState } from "recoil";
-import { profileVisible } from "store/root";
+import { profileVisible } from "store";
 function Profile({ ...rest }) {
   const setVisible = useSetRecoilState(profileVisible);
   return (

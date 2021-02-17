@@ -1,5 +1,5 @@
 import { StatusCode } from '../constants';
-
+import * as moment from 'moment';
 // 通过两个id生成一个不大会重复的固定数值
 export const genRoomId = (senderId, receiverId) => {
   const [max, min] =
@@ -17,4 +17,8 @@ export const errorResp = (e): ResponseData<any> => {
     data: null,
     message: e.response?.message || e.toString(),
   };
+};
+
+export const formatTime = time => {
+  return moment(time).format('YYYY-MM-DD HH:mm');
 };

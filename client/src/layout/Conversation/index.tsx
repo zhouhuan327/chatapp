@@ -6,7 +6,7 @@ import ChatBubble from "components/ChatBubble";
 import VoiceMessage from "components/VoiceMessage";
 import { useSpring } from "react-spring";
 import { useRecoilValue } from "recoil";
-import { activeMessage } from "../../store/root";
+import { activeMessage } from "../../store";
 function Conversation({ ...rest }) {
   const currentMessage = useRecoilValue(activeMessage);
   const [list, setList] = useState([

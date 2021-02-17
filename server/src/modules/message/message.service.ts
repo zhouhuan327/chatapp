@@ -6,7 +6,7 @@ import { GroupMessage } from './entity/groupMessage.entity';
 import { UserService } from '../user/user.service';
 import CommonException from '../../utils/common.exception';
 import { GroupService } from '../group/group.service';
-
+import * as moment from 'moment';
 @Injectable()
 export class MessageService {
   constructor(
@@ -17,6 +17,17 @@ export class MessageService {
     private readonly userService: UserService,
     private readonly groupService: GroupService,
   ) {}
+  // 最近聊天的群/好友
+  async getRecentMessageList(userId) {
+    const recentChatUser = await this.userService.getRecentChatUser(userId);
+    const recentChatGroup = await this.groupService.getRecentChatGroup(userId);
+    const all = recentChatUser.concat(recentChatGroup);
+    const recentChat = all.sort((a: any, b: any) => {
+      console.log(a.time + 'isAfter' + b.time, moment(a.time).isAfter(b.time));
+      return moment(a.time).isAfter(b.time) ? -1 : 0;
+    });
+    return recentChat;
+  }
   async getFriendMessage(userId, friendId) {
     // 查询我发给好友的/好友发给我的 消息
     const messages = await this.friendMessageRepository

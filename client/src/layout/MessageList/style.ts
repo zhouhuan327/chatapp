@@ -6,6 +6,7 @@ const ChatList = styled.div`
     margin-bottom: 20px;
   }
   overflow-y: auto;
+  height: 100%;
   ${scrollbar}
 `;
 const StyledMessageList = styled.div`

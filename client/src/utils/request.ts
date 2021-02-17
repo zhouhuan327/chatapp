@@ -11,7 +11,7 @@ service.interceptors.request.use(
   config => {
     console.log(config);
     if (authAction.get()) {
-      config.headers["Authorization"] = "Bearer " + authAction.get();
+      config.headers["Authorization"] = authAction.get();
     }
     return config;
   },
@@ -35,11 +35,13 @@ service.interceptors.response.use(
         message.warning("登录已过期,将重新登录...", 2, () => {
           // 移除登录状态
           authAction.remove();
-          history.push("/chat/message");
+          // history.push("/login");
+          window.location.href = "/login";
         });
       } else {
         message.error(data.message);
       }
+      return Promise.reject(data);
     } else {
       message.warn("网络连接异常,请稍后再试!");
       return Promise.reject("网络连接异常,请稍后再试!");

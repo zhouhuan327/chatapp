@@ -12,20 +12,25 @@ const NavBar = () => {
       <Avatar src={img} status="online" />
       <MenuItems>
         {routers.map(route => (
-          <MenuItem key={route.path} to={route.path} icon={route.icon} />
+          <MenuItem
+            key={route.path}
+            to={route.path}
+            icon={route.icon}
+            title={route.title}
+          />
         ))}
       </MenuItems>
     </StyledNavBar>
   );
 };
-const MenuItem = ({ to, icon, showBadge = false, ...rest }) => {
+const MenuItem = ({ to, icon, title, showBadge = false, ...rest }) => {
   const location = useLocation();
   const active = matchPath(location.pathname, {
     path: to,
     exact: to === "/",
   });
   return (
-    <StyledMenuItem active={active} {...rest}>
+    <StyledMenuItem active={active} title={title} {...rest}>
       <Link to={to}>
         <Badge show={showBadge}>
           <MenuIcon active={active} icon={icon} />
