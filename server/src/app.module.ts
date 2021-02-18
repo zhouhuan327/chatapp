@@ -22,6 +22,7 @@ import { ChatModule } from './modules/chat/chat.module';
       autoLoadEntities: true,
       charset: 'utf8mb4',
       synchronize: true,
+      timezone: '+00.00',
     }),
     AuthModule,
     FriendModule,

@@ -1,15 +1,12 @@
 import axios from "axios";
 import { message } from "antd";
-import { createBrowserHistory } from "history";
 import { authAction } from "./auth";
 
-const history = createBrowserHistory();
 const service = axios.create({
   timeout: 50000,
 });
 service.interceptors.request.use(
   config => {
-    console.log(config);
     if (authAction.get()) {
       config.headers["Authorization"] = authAction.get();
     }
@@ -32,10 +29,9 @@ service.interceptors.response.use(
     if (typeof data === "object") {
       // 请求已发出，但是不在2xx的范围
       if (data.code === 401) {
-        message.warning("登录已过期,将重新登录...", 2, () => {
+        message.warning("登录已过期,将重新登录...", 1, () => {
           // 移除登录状态
           authAction.remove();
-          // history.push("/login");
           window.location.href = "/login";
         });
       } else {

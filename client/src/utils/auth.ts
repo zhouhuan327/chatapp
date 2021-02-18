@@ -1,8 +1,9 @@
 // import CryptoJS from "crypto-js";
 export const authAction = {
   get: () => localStorage.getItem("Authorization"),
-  set: (state: any) => {
-    localStorage.setItem("Authorization", "Bearer " + state);
+  set: data => {
+    localStorage.setItem("Authorization", "Bearer " + data.token);
+    localStorage.setItem("user", JSON.stringify(data.user));
   },
   remove: () => {
     localStorage.removeItem("Authorization");

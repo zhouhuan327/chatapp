@@ -3,18 +3,18 @@ import StyledGroupList, { Groups } from "./style";
 import FilterList from "../../components/FilterList";
 import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
-import useAnimeList from "hooks/useAnimesList";
+import useAnimeList from "hooks/useAnimeList";
 import face1 from "../../assets/images/avatar.jpeg";
 import { atom, selector, useRecoilValue } from "recoil";
 import { getGroups } from "../../api";
-const groupSearch = atom({
-  key: "groupSearch",
+const searchState = atom({
+  key: "groupSearchState",
   default: "",
 });
-const groups = selector({
-  key: "groups",
+const groupsState = selector({
+  key: "groupsState",
   get: async ({ get }) => {
-    const param = get(groupSearch);
+    const param = get(searchState);
     const res = await getGroups(param);
     if (res?.code === 200) {
       return res.data;
@@ -24,7 +24,7 @@ const groups = selector({
 });
 const GroupList = () => {
   const anime = useAnimeList(6);
-  const groupList = useRecoilValue(groups);
+  const groupList = useRecoilValue(groupsState);
   return (
     <StyledGroupList>
       <FilterList option={["按时间排序", "按名称排序"]} actionLabel="添加文件">

@@ -1,6 +1,7 @@
 import { useTrail } from "react-spring";
-const useAnimesList = number => {
-  const animes = useTrail(number, {
+
+const useAnimeList = number => {
+  return useTrail(number, {
     transform: "translate3d(0px,0px,0px)",
     from: { transform: "translate3d(-50px,0px,0px)" },
     config: {
@@ -10,7 +11,5 @@ const useAnimesList = number => {
     },
     delay: 100,
   });
-
-  return animes;
 };
-export default useAnimesList;
+export default useAnimeList;

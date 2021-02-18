@@ -6,7 +6,6 @@ import { newGroupDto } from './dto/newGroup.dto';
 import { Repository } from 'typeorm';
 import { GroupRelation } from './entity/groupRelation.entity';
 import { UserService } from '../user/user.service';
-import * as moment from 'moment';
 import { formatTime } from '../../utils';
 @Injectable()
 export class GroupService {
@@ -98,7 +97,7 @@ export class GroupService {
       const recentGroupMessage = group?.groupMessage?.pop();
       const obj: RecentChat = {
         id: group.id,
-        avatar: group.avatarSrc,
+        avatarSrc: group.avatarSrc,
         name: group.groupName,
         intro: group.intro,
         content: recentGroupMessage.content,

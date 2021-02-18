@@ -13,8 +13,8 @@ const Index = () => {
   const submit = async () => {
     const res = await login(data);
     if (res.code === 200) {
+      authAction.set(res.data);
       message.success("登陆成功");
-      authAction.set(res.data?.token);
       history.push("/chat/message");
     }
   };

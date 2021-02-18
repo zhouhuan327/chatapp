@@ -45,24 +45,25 @@ export class UserService {
   }
   // 最近聊天的好友以及最新的一条消息
   async getRecentChatUser(userId) {
+    console.log(new Date());
     const user = await this.userRepository
       .createQueryBuilder('user')
       .leftJoinAndSelect('user.friendMessage', 'msg')
-      // 排除自己
+      //排除自己
       .where('user.id <> :userId', {
         userId: userId,
       })
-      .andWhere('msg.senderId = :userId Or msg.receiverId = :userId', {
+      .andWhere('msg.senderId = :userId OR msg.receiverId = :userId', {
         userId: userId,
       })
       .getMany();
     const recentChatUser: Array<RecentChat> = user.map(item => {
       // 最新的一条消息
-      const recentMessage = item.friendMessage[0];
-      console.log(item.friendMessage);
+      const recentMessage = item.friendMessage[item.friendMessage.length - 1];
+      console.log(recentMessage);
       const obj: RecentChat = {
         id: item.id,
-        avatar: item.avatarSrc,
+        avatarSrc: item.avatarSrc,
         name: item.username,
         intro: item.intro,
         content: recentMessage.content,
@@ -72,6 +73,6 @@ export class UserService {
       };
       return obj;
     });
-    return recentChatUser;
+    return [];
   }
 }

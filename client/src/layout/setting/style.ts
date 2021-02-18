@@ -9,7 +9,7 @@ const SettingsItemControl = styled.div`
   justify-content: space-between;
 `;
 
-const StyledSettingsGroup = styled.div`
+const StyledGroup = styled.div`
   margin: 20px 0;
 `;
 
@@ -18,4 +18,4 @@ const StyledSettings = styled.div`
 `;
 
 export default StyledSettings;
-export { StyledSettingsItem, SettingsItemControl, StyledSettingsGroup };
+export { StyledSettingsItem, SettingsItemControl, StyledGroup };

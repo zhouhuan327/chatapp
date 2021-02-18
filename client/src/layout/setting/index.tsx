@@ -1,45 +1,48 @@
-import React from "react";
-import PropTypes from "prop-types";
+import React, { memo } from "react";
 import StyledSettings, {
   StyledSettingsItem,
   SettingsItemControl,
-  StyledSettingsGroup,
+  StyledGroup,
 } from "./style";
 import { ReactComponent as ArrowMenuRight } from "assets/icons/arrowMenuRight.svg";
 import Paragraph from "components/ParaGraph";
 import Switch from "components/Switch";
 import Icon from "components/Icon";
+import { authAction } from "../../utils/auth";
+import { useHistory } from "react-router-dom";
+import { message } from "antd";
 
-function Settings({ ...rest }) {
+const Settings = () => {
+  const history = useHistory();
+  const handleLogout = () => {
+    authAction.remove();
+    history.push("/login");
+    message.success("登出成功");
+  };
   return (
-    <StyledSettings {...rest}>
-      <SettingsGroup groupName="隐私设置">
-        <SettingsItem label="添加好友时需要验证" />
-        <SettingsItem
-          label="推荐通讯录好友"
-          description="上传的通讯录只用来匹配好友列表，本应用不会记录和发送任何信息给其它机构或"
-        />
-        <SettingsItem label="只能通过手机号找到我" />
-      </SettingsGroup>
-      <SettingsGroup groupName="通知设置">
+    <StyledSettings>
+      <Group groupName="通知设置">
         <SettingsItem label="新消息通知" />
-        <SettingsItem label="语音和视频通话提醒" />
         <SettingsItem label="显示通知详情" />
         <SettingsItem label="声音" />
-        <SettingsItem label="查看已静音的好友列表" type="menu" />
-      </SettingsGroup>
+        {/*<SettingsItem*/}
+        {/*  label="推荐通讯录好友"*/}
+        {/*  description="上传的通讯录只用来匹配好友列表，本应用不会记录和发送任何信息给其它机构或"*/}
+        {/*/>*/}
+        <SettingsItem label="退出登录" type="menu" onClick={handleLogout} />
+      </Group>
     </StyledSettings>
   );
-}
+};
 
-function SettingsGroup({ groupName, children, ...rest }) {
+function Group({ groupName, children }) {
   return (
-    <StyledSettingsGroup>
+    <StyledGroup>
       <Paragraph size="xxlarge" style={{ paddingBottom: "24px" }}>
         {groupName}
       </Paragraph>
       {children}
-    </StyledSettingsGroup>
+    </StyledGroup>
   );
 }
 
@@ -66,11 +69,4 @@ export function SettingsItem({
   );
 }
 
-Settings.propTypes = {
-  type: PropTypes.string,
-  label: PropTypes.string,
-  description: PropTypes.string,
-  children: PropTypes.any,
-};
-
-export default Settings;
+export default memo(Settings);

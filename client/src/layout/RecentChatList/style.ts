@@ -9,9 +9,9 @@ const ChatList = styled.div`
   height: 100%;
   ${scrollbar}
 `;
-const StyledMessageList = styled.div`
+const StyledRecentChatList = styled.div`
   height: 100vh;
 `;
 
-export default StyledMessageList;
+export default StyledRecentChatList;
 export { ChatList };

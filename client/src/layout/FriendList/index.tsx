@@ -1,21 +1,21 @@
-import React, { memo, useEffect } from "react";
+import React, { memo } from "react";
 import StyledFriendList, { Friends } from "./style";
 import FilterList from "../../components/FilterList";
 import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
 import face1 from "assets/images/avatar.jpeg";
-import useAnimeList from "hooks/useAnimesList";
+import useAnimeList from "hooks/useAnimeList";
 import { atom, selector, useRecoilValue } from "recoil";
 import { getFriends } from "../../api";
-const friendsSearch = atom({
-  key: "friendsSearch",
+const searchState = atom({
+  key: "friendsSearchState",
   default: "",
 });
-const friends = selector({
-  key: "friends",
+const friendsState = selector({
+  key: "friendsState",
   get: async ({ get }) => {
-    const param = get(friendsSearch);
-    const res = await getFriends(param);
+    const param = get(searchState);
+    const res = await getFriends({ name: param });
     if (res?.code === 200) {
       return res.data;
     }
@@ -24,7 +24,7 @@ const friends = selector({
 });
 const FriendList = () => {
   const anime = useAnimeList(10);
-  const friendList = useRecoilValue(friends);
+  const friendList = useRecoilValue(friendsState);
   console.log(friendList);
   return (
     <StyledFriendList>

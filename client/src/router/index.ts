@@ -23,7 +23,7 @@ export const routers: Array<Route> = [
     exact: false,
     title: "最近聊天",
     icon: faCommentDots,
-    component: lazyLoad(() => import("../layout/MessageList")),
+    component: lazyLoad(() => import("../layout/RecentChatList")),
   },
   {
     path: "/chat/friends",

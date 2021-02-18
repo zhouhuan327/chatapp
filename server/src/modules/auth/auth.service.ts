@@ -22,14 +22,14 @@ export class AuthService {
 
     if (user.password !== String(password))
       throw new CommonException('密码错误');
-
+    delete user.password;
     return user;
   }
 
   async login(user) {
     const payload = { id: user.id, username: user.username };
     const token = this.jwtService.sign(payload);
-    return { token, ...payload };
+    return { token, user };
   }
   async register(dto) {
     const newUser = await this.userService.addUser(dto);

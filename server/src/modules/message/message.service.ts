@@ -7,6 +7,7 @@ import { UserService } from '../user/user.service';
 import CommonException from '../../utils/common.exception';
 import { GroupService } from '../group/group.service';
 import * as moment from 'moment';
+import { formatTime, genRoomId, getTimeDiff } from '../../utils';
 @Injectable()
 export class MessageService {
   constructor(
@@ -19,20 +20,25 @@ export class MessageService {
   ) {}
   // 最近聊天的群/好友
   async getRecentMessageList(userId) {
-    const recentChatUser = await this.userService.getRecentChatUser(userId);
+    const recentChatUser = await this.getRecentChatUser(userId);
     const recentChatGroup = await this.groupService.getRecentChatGroup(userId);
     const all = recentChatUser.concat(recentChatGroup);
-    const recentChat = all.sort((a: any, b: any) => {
-      console.log(a.time + 'isAfter' + b.time, moment(a.time).isAfter(b.time));
-      return moment(a.time).isAfter(b.time) ? -1 : 0;
-    });
+    const recentChat = all
+      .sort((a: any, b: any) => {
+        return moment(a.time).isAfter(b.time) ? -1 : 0;
+      })
+      .map((item, index) => {
+        item._id = index;
+        item.time = getTimeDiff(item.time);
+        return item;
+      });
     return recentChat;
   }
+  // 查询我发给好友的/好友发给我的 消息
   async getFriendMessage(userId, friendId) {
-    // 查询我发给好友的/好友发给我的 消息
-    const messages = await this.friendMessageRepository
+    return this.friendMessageRepository
       .createQueryBuilder('msg')
-      .orderBy('msg.createTime', 'DESC')
+      .orderBy('msg.createTime', 'ASC')
       .leftJoinAndSelect('msg.sender', 'sender')
       .leftJoinAndSelect('msg.receiver', 'receiver')
       .where('sender.id = :senderId And receiver.id = :receiverId', {
@@ -44,8 +50,42 @@ export class MessageService {
         receiverId: friendId,
       })
       .getMany();
-
-    return messages;
+  }
+  async getRecentChatUser(userId) {
+    // 查询和用户有关的消息
+    const message = await this.friendMessageRepository
+      .createQueryBuilder('msg')
+      .orderBy('msg.createTime', 'DESC')
+      .leftJoinAndSelect('msg.sender', 'sender')
+      .leftJoinAndSelect('msg.receiver', 'receiver')
+      .where('sender.id = :userId OR receiver.id = :userId', { userId })
+      .getMany();
+    // 去重,获得发送/接收到的 的最新消息
+    const res = [];
+    const map = new Map();
+    for (const item of message) {
+      const id = genRoomId(item.sender.id, item.receiver.id);
+      if (!map.has(id)) {
+        map.set(id, item.id);
+        res.push(item);
+      }
+    }
+    const recentChatUser = res.map(item => {
+      // 判断一下sender和receiver哪个是好友
+      const friend = item.sender.id === userId ? item.receiver : item.sender;
+      const obj: RecentChat = {
+        id: friend.id,
+        avatarSrc: friend.avatarSrc,
+        name: friend.username,
+        intro: friend.intro,
+        content: item.content,
+        contentType: item.type,
+        time: formatTime(item.createTime),
+        type: 'friend',
+      };
+      return obj;
+    });
+    return recentChatUser;
   }
   async sendFriendMessage({
     senderId,
