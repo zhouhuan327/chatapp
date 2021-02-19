@@ -3,7 +3,7 @@ import StyledGroupList, { Groups } from "./style";
 import FilterList from "../../components/FilterList";
 import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
-import useAnimeList from "hooks/useAnimeList";
+import { useAnimeList } from "hooks/useAnime";
 import face1 from "../../assets/images/avatar.jpeg";
 import { atom, selector, useRecoilValue } from "recoil";
 import { getGroups } from "../../api";

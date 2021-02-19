@@ -58,6 +58,5 @@ const StyledChatBubble = styled.div<ChatBubbleProps>`
       }
     `};
 `;
-
 export default StyledChatBubble;
 export { Ava as Avatar, Bubble, Tip, MessageText, Time };

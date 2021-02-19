@@ -10,8 +10,9 @@ import { ReactComponent as OptionsIcon } from "assets/icons/options.svg";
 import Button from "components/Button";
 import Emoji from "components/Emoji";
 import Popover from "components/Popover";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { socketInstance } from "../../store/socket";
+import { newMessageState } from "../../store";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -22,16 +23,38 @@ const PopoverContent = () => (
     <Icon icon={OptionsIcon} style={{ marginLeft: "24px" }} />
   </StyledPopoverContent>
 );
-function Footer({ animeProps, ...rest }) {
+function Footer({ userId, currentChat, setList, animeProps }) {
   const socket = useRecoilValue(socketInstance);
+  const [newMessage, setNewMessage] = useRecoilState(newMessageState);
   useEffect(() => {
-    socket.emit("groupChatConnect", {
-      senderId: 3,
-      groupId: 1,
+    socket.on("friendChatConnect", res => {
+      addNotice("连接成功");
     });
-  }, [socket]);
+    socket.on("groupChatConnect", res => {
+      addNotice(res.message);
+    });
+  }, []);
+  useEffect(() => {
+    const { id, type } = currentChat;
+    if (!id) return;
+    if (type === "friend") {
+      socket.emit("friendChatConnect", {
+        senderId: userId,
+        receiverId: id,
+      });
+    } else {
+      socket.emit("groupChatConnect", {
+        senderId: userId,
+        groupId: id,
+      });
+    }
+    console.log("current chagne ");
+  }, [currentChat]);
+  const addNotice = msg => {
+    setList(old => [...old, { notice: msg }]);
+  };
   return (
-    <StyledFooter style={{ ...animeProps }} {...rest}>
+    <StyledFooter style={{ ...animeProps }}>
       <Input
         placeholder="输入想要说的话"
         prefix={<Icon icon={ClipIcon} />}

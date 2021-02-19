@@ -1,4 +1,6 @@
 // import CryptoJS from "crypto-js";
+import { message } from "antd";
+
 export const authAction = {
   get: () => localStorage.getItem("Authorization"),
   set: data => {
@@ -8,6 +10,13 @@ export const authAction = {
   remove: () => {
     localStorage.removeItem("Authorization");
   },
+};
+export const logout = () => {
+  message.warning("登录已过期,将重新登录...", 1, () => {
+    // 移除登录状态
+    authAction.remove();
+    window.location.href = "/login";
+  });
 };
 // /**
 //  *加密

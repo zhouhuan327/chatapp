@@ -2,7 +2,7 @@ import styled from "styled-components";
 import ChatBubble from "components/ChatBubble";
 import { scrollbar } from "utils/mixin";
 import { animated } from "react-spring";
-export const Conversations = styled(animated.div)`
+export const Panels = styled(animated.div)`
   display: flex;
   flex-direction: column;
   padding: 10px 15px;
@@ -19,7 +19,7 @@ export const Conversations = styled(animated.div)`
 export const MyChatBubble = styled(ChatBubble).attrs({ type: "mine" })`
   align-self: flex-end;
 `;
-const StyledConversation = styled.div`
+const StyledChatPanel = styled.div`
   display: flex;
   flex-direction: column;
   height: 100vh;
@@ -29,5 +29,12 @@ const StyledConversation = styled.div`
     align-self: end;
   }
 `;
+export const NoticeBubble = styled.div`
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+  width: 100%;
+  color: gray;
+`;
 
-export default StyledConversation;
+export default StyledChatPanel;

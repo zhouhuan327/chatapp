@@ -4,7 +4,7 @@ import MessageCard from "components/MessageCard";
 import face1 from "assets/images/avatar.jpeg";
 import FilterList from "../../components/FilterList";
 import { animated } from "react-spring";
-import useAnimeList from "hooks/useAnimeList";
+import { useAnimeList } from "hooks/useAnime";
 import { selector, useRecoilState, useRecoilValue } from "recoil";
 import { currentChatState } from "store";
 import { getRecentMessage } from "../../api";

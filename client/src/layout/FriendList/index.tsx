@@ -4,7 +4,7 @@ import FilterList from "../../components/FilterList";
 import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
 import face1 from "assets/images/avatar.jpeg";
-import useAnimeList from "hooks/useAnimeList";
+import { useAnimeList } from "hooks/useAnime";
 import { atom, selector, useRecoilValue } from "recoil";
 import { getFriends } from "../../api";
 const searchState = atom({
