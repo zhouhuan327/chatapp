@@ -11,17 +11,20 @@ import { useChatAnime } from "hooks/useAnime";
 import { socketInstance } from "store/socket";
 
 const ChatPanel = () => {
-  // const socket = useRecoilValue(socketInstance);
+  // 动画参数
+  const { topBarAnime, msgAnime, footerAnime } = useChatAnime();
+  // socket
+  const socket = useRecoilValue(socketInstance);
   // 消息列表的引用
   const ref = useRef<HTMLDivElement>(null);
   // 自己的id
-  const { id } = useRecoilValue<UserInfo>(userInfoState);
+  const { id: userId } = useRecoilValue<UserInfo>(userInfoState);
   // 当前的好友/群
   const currentChat = useRecoilValue<RecentChat>(currentChatState);
   // 消息列表
-  const [list, setList] = useState([]);
+  const [list, setList] = useState<Array<any>>([]);
 
-  const fetchList = useCallback(async () => {
+  const fetchList = useCallback(async currentChat => {
     if (!currentChat.id) return;
     if (currentChat.type === "friend") {
       const res = await getFriendMessage({ friendId: currentChat.id });
@@ -30,16 +33,63 @@ const ChatPanel = () => {
       const res = await getGroupMessage({ groupId: currentChat.id });
       res.code === 200 && setList(res.data);
     }
-  }, [currentChat]);
-  // 切换聊天室请求拿到聊天记录
+  }, []);
+  // 记录已经建立过连接的好友/群 id
+  // 避免重复连接
+  const connectedFriend = useRef<Set<number>>(new Set());
+  const connectedGroup = useRef<Set<number>>(new Set());
   useEffect(() => {
-    fetchList().then(() => scrollToBottom());
-  }, [fetchList]);
+    socket.on("friendChatConnect", res => {
+      console.log("friend connect", res);
+      addMessage({ notice: "连接成功" });
+      connectedFriend.current.add(res?.data?.receiverId);
+    });
+    socket.on("groupChatConnect", res => {
+      console.log("group connect", res);
+      addMessage({ notice: res.message });
+      connectedGroup.current.add(res?.data?.groupId);
+    });
+    // 消息实时更新
+    socket.on("friendChatMessage", res => {
+      console.log("new friend message", res);
+      addMessage(res.data);
+    });
+    socket.on("groupChatMessage", res => {
+      console.log("new group message", res);
+      addMessage(res.data);
+    });
+  }, []);
+  useEffect(() => {
+    if (!currentChat.id) return;
+    const { id, type } = currentChat;
+    if (type === "friend" && !connectedFriend.current.has(id)) {
+      socket.emit("friendChatConnect", {
+        senderId: userId,
+        receiverId: id,
+      });
+    } else if (type === "group" && !connectedGroup.current.has(id)) {
+      socket.emit("groupChatConnect", {
+        senderId: userId,
+        groupId: id,
+      });
+    }
+    // 切换聊天时,请求拿到聊天记录
+    fetchList(currentChat).then(() => scrollToBottom());
+  }, [currentChat]);
 
   // 加入连接,发送消息时也要将轮动条拉到最低
   useEffect(() => {
     scrollToBottom();
   }, [list]);
+  const addMessage = obj => {
+    setList(list => [...list, obj]);
+  };
+  const scrollToBottom = () => {
+    const el = ref.current;
+    if (el) {
+      el.scrollTop = el.scrollHeight;
+    }
+  };
   const renderBubbleElement = list => {
     return list.map(item => {
       if (item.notice) {
@@ -47,12 +97,12 @@ const ChatPanel = () => {
       }
       let isMe = false;
       const time = moment(item.createTime).format("HH:mm");
-      // 好友消息
       if (item.receiver?.id) {
-        isMe = item.sender.id === id;
+        // 好友消息
+        isMe = item.sender.id === userId;
+      } else {
         // 群消息
-      } else if (item.group?.id) {
-        isMe = item.user.id === id;
+        isMe = item.user.id === userId;
       }
       return isMe ? (
         <MyChatBubble key={item.id} time={time}>
@@ -65,17 +115,6 @@ const ChatPanel = () => {
       );
     });
   };
-  // 动画参数
-  const { topBarAnime, msgAnime, footerAnime } = useChatAnime();
-
-  const scrollToBottom = () => {
-    const el = ref.current;
-    if (el) {
-      el.scrollTop = el.scrollHeight;
-    }
-  };
-  // 与好友建立连接
-  useEffect(() => {}, []);
   return (
     <StyledChatPanel>
       <TitleBar name="sean" status="online" animeProps={topBarAnime} />
@@ -83,7 +122,7 @@ const ChatPanel = () => {
         {renderBubbleElement(list)}
       </Panels>
       <Footer
-        userId={id}
+        userId={userId}
         currentChat={currentChat}
         setList={setList}
         animeProps={footerAnime}

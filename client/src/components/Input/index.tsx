@@ -1,4 +1,4 @@
-import React, { FC } from "react";
+import React, { FC, useState } from "react";
 import StyledInput, { InputContainer, Prefix, Suffx } from "./style";
 import Icon from "components/Icon";
 import { ReactComponent as SearchIcon } from "assets/icons/search.svg";
@@ -21,12 +21,17 @@ const Input: InputType = ({
   placeholder = "请输入文字",
   prefix,
   suffix,
-  ...rest
+  onChange,
 }) => {
   return (
-    <InputContainer {...rest}>
+    <InputContainer>
       {prefix && <Prefix>{prefix}</Prefix>}
-      <StyledInput placeholder={placeholder}></StyledInput>
+      <StyledInput
+        onChange={e => {
+          onChange && onChange(e.target.value);
+        }}
+        placeholder={placeholder}
+      ></StyledInput>
       {suffix && <Suffx>{suffix}</Suffx>}
     </InputContainer>
   );

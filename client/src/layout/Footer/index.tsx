@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style";
 import Input from "components/Input";
 import Icon from "components/Icon";
@@ -10,9 +10,8 @@ import { ReactComponent as OptionsIcon } from "assets/icons/options.svg";
 import Button from "components/Button";
 import Emoji from "components/Emoji";
 import Popover from "components/Popover";
-import { useRecoilState, useRecoilValue } from "recoil";
-import { socketInstance } from "../../store/socket";
-import { newMessageState } from "../../store";
+import { useRecoilValue } from "recoil";
+import { socketInstance } from "store/socket";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -25,46 +24,42 @@ const PopoverContent = () => (
 );
 function Footer({ userId, currentChat, setList, animeProps }) {
   const socket = useRecoilValue(socketInstance);
-  const [newMessage, setNewMessage] = useRecoilState(newMessageState);
-  useEffect(() => {
-    socket.on("friendChatConnect", res => {
-      addNotice("连接成功");
-    });
-    socket.on("groupChatConnect", res => {
-      addNotice(res.message);
-    });
-  }, []);
-  useEffect(() => {
+  const [message, setMessage] = useState<string>("");
+
+  const onSubmit = () => {
     const { id, type } = currentChat;
     if (!id) return;
     if (type === "friend") {
-      socket.emit("friendChatConnect", {
+      socket.emit("friendChatMessage", {
         senderId: userId,
         receiverId: id,
+        content: message,
+        type: "text",
       });
     } else {
-      socket.emit("groupChatConnect", {
+      socket.emit("groupChatMessage", {
         senderId: userId,
         groupId: id,
+        content: message,
+        type: "text",
       });
     }
-    console.log("current chagne ");
-  }, [currentChat]);
-  const addNotice = msg => {
-    setList(old => [...old, { notice: msg }]);
   };
   return (
     <StyledFooter style={{ ...animeProps }}>
       <Input
         placeholder="输入想要说的话"
         prefix={<Icon icon={ClipIcon} />}
+        onChange={v => {
+          setMessage(v);
+        }}
         suffix={
           <IconContainer>
             <Popover offset={{ x: "-25%" }} content={<PopoverContent />}>
               <Icon icon={SmileIcon} />
             </Popover>
             <Icon icon={MicrophoneIcon} />
-            <Button size="52px">
+            <Button size="52px" onClick={onSubmit}>
               <Icon
                 color="white"
                 icon={PlaneIcon}

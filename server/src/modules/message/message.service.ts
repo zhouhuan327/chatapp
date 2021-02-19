@@ -110,7 +110,7 @@ export class MessageService {
   async getGroupMessage(groupId) {
     const messages = await this.groupMessageRepository
       .createQueryBuilder('msg')
-      .orderBy('msg.createTime', 'DESC')
+      .orderBy('msg.createTime', 'ASC')
       .leftJoinAndSelect('msg.user', 'user')
       .where('msg.group.id = :id', { id: groupId })
       .getMany();
