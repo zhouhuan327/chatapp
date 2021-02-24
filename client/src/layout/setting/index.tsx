@@ -11,11 +11,15 @@ import Icon from "components/Icon";
 import { authAction } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
 import { message } from "antd";
+import { useRecoilValue } from "recoil";
+import { socketInstance } from "../../store/socket";
 
 const Settings = () => {
+  const socket = useRecoilValue(socketInstance);
   const history = useHistory();
   const handleLogout = () => {
     authAction.remove();
+    socket.emit("disconnect");
     history.push("/login");
     message.success("登出成功");
   };

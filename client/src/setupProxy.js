@@ -2,7 +2,7 @@ const { createProxyMiddleware } = require("http-proxy-middleware"); //注意写�
 
 module.exports = function (app) {
   const url =
-    process.env.NODE_ENV === "development" ? "http://localhost:3000/" : "";
+    process.env.NODE_ENV === "development" ? "http://localhost:3000" : "";
   app.use(
     createProxyMiddleware("/api", {
       target: url,

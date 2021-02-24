@@ -1,4 +1,4 @@
 export {};
 declare module "axios" {
-  export interface AxiosResponse<T> extends Promise<T> {}
+  export interface AxiosResponse<any> extends Promise<any> {}
 }

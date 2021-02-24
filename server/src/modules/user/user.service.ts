@@ -57,22 +57,6 @@ export class UserService {
         userId: userId,
       })
       .getMany();
-    const recentChatUser: Array<RecentChat> = user.map(item => {
-      // 最新的一条消息
-      const recentMessage = item.friendMessage[item.friendMessage.length - 1];
-      console.log(recentMessage);
-      const obj: RecentChat = {
-        id: item.id,
-        avatarSrc: item.avatarSrc,
-        name: item.username,
-        intro: item.intro,
-        content: recentMessage.content,
-        contentType: recentMessage.type,
-        time: formatTime(recentMessage.createTime),
-        type: 'friend',
-      };
-      return obj;
-    });
     return [];
   }
 }

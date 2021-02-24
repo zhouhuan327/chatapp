@@ -5,32 +5,38 @@ import face1 from "assets/images/avatar.jpeg";
 import FilterList from "../../components/FilterList";
 import { animated } from "react-spring";
 import { useAnimeList } from "hooks/useAnime";
-import { selector, useRecoilState, useRecoilValue } from "recoil";
-import { currentChatState } from "store";
+import { useRecoilState, useRecoilValue } from "recoil";
+import { currentChatState, recentChatsState } from "store";
+import { socketInstance } from "store/socket";
 import { getRecentMessage } from "../../api";
-
-const recentChatsState = selector({
-  key: "recentChatsState",
-  get: async () => {
-    const res = await getRecentMessage();
-    return res?.code === 200 ? res.data : [];
-  },
-});
+import useSyncOnlineStatus from "hooks/useSyncOnlineStatus";
 
 const RecentChatList = () => {
+  // socket实例
+  const socket = useRecoilValue(socketInstance);
   const anime = useAnimeList(6);
   // 最近消息列表
-  const recentChats = useRecoilValue<Array<RecentChat>>(recentChatsState);
+  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(
+    recentChatsState,
+  );
+  const update = useSyncOnlineStatus(socket, recentChats, setRecentChats);
   // 当前选中的聊天
   const [currentChat, setCurrentChat] = useRecoilState<RecentChat>(
-    currentChatState,
+    currentChatState as any,
   );
-  // 默认用列表的第一条作为当前选中的聊天
+
   useEffect(() => {
-    if (recentChats.length) {
-      setCurrentChat(recentChats[0]);
-    }
-  }, [recentChats, setCurrentChat]);
+    getRecentMessage().then(res => {
+      if (res.code === 200) {
+        update(res.data);
+        if (res.data.length) {
+          // 默认用列表的第一条作为当前选中的聊天
+          setCurrentChat(res.data[0]);
+        }
+      }
+    });
+  }, []);
+
   return (
     <StyledRecentChatList>
       <FilterList
@@ -45,9 +51,9 @@ const RecentChatList = () => {
                 active={item._id === currentChat?._id}
                 replied={index % 2 === 0}
                 avatarSrc={face1}
+                avatarStatus={item.onlineStatus}
                 name={item.name}
-                avatarStatus="online"
-                statusText="在线"
+                statusText={item.onlineStatus === "online" ? "在线" : "离线"}
                 time={item.time}
                 message={item.content}
                 unreadCount={2}

@@ -41,19 +41,24 @@ export class ChatGateway
   handleConnection(client: any, ...args: any[]) {
     // 根据用户id给每个连上的用户分配房间 ,用于消息通知
     const id = client.handshake?.query?.userId;
-
     if (id) {
       client.join(id);
       this.liveUserIds.add(id);
+      this.server.emit('onlineStatus', Array.from(this.liveUserIds));
       Logger.log(`id = ${id}的用户上线了`);
     }
+    // const live = Object.values((this.server.engine as any).clients).map(
+    //   item => {
+    //     return (item as any).request._query.userId;
+    //   },
+    // );
   }
 
   handleDisconnect(client: any) {
     const id = client.handshake?.query?.userId;
 
     this.liveUserIds.delete(id);
-
+    this.server.emit('onlineStatus', Array.from(this.liveUserIds));
     Logger.log(`id = ${id}的用户下线了`);
   }
   // 与好友建立连接
@@ -67,7 +72,7 @@ export class ChatGateway
         receiverId,
       );
       if (!isFriend)
-        throw new CommonException(`你与${friend.username}不是好友关系`);
+        throw new CommonException(`你与${friend?.username}不是好友关系`);
 
       client.join(roomId);
       this.server
@@ -97,6 +102,12 @@ export class ChatGateway
   @SubscribeMessage('notice')
   async notice(client: Socket, data) {
     return '订阅成功';
+  }
+  // 用于在线用户通知
+  @SubscribeMessage('onlineStatus')
+  async onlineStatus(client: Socket, data) {
+    const id = client.handshake?.query?.userId;
+    this.server.to(id).emit('onlineStatus', Array.from(this.liveUserIds));
   }
 
   // 与群建立连接

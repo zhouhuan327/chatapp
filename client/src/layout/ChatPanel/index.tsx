@@ -13,14 +13,14 @@ import { socketInstance } from "store/socket";
 const ChatPanel = () => {
   // 动画参数
   const { topBarAnime, msgAnime, footerAnime } = useChatAnime();
-  // socket
+  // socket实例
   const socket = useRecoilValue(socketInstance);
   // 消息列表的引用
   const ref = useRef<HTMLDivElement>(null);
   // 自己的id
   const { id: userId } = useRecoilValue<UserInfo>(userInfoState);
   // 当前的好友/群
-  const currentChat = useRecoilValue<RecentChat>(currentChatState);
+  const currentChat = useRecoilValue<RecentChat>(currentChatState as any);
   // 消息列表
   const [list, setList] = useState<Array<any>>([]);
 

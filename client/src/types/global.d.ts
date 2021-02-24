@@ -27,7 +27,7 @@ declare global {
   }>;
 
   // 最近聊天的群/好友
-  type RecentChat = Partial<{
+  type RecentChat = {
     _id?: number; // 好友id和群id可能重复,需要额外的唯一值
     id: number; // groupId或者userId
     avatarSrc: string;
@@ -37,9 +37,10 @@ declare global {
     contentType: ContentType;
     time: string;
     type: "friend" | "group";
-  }>;
+    onlineStatus?: "online" | "offline";
+  };
   // 消息类型 私聊消息和群消息
-  type MessageType = "friend" | group;
+  type MessageType = "friend" | "group";
   interface Message {
     id: number;
     content: string;
