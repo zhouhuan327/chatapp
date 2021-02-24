@@ -13,7 +13,7 @@ export const pageRouters: Array<Route> = [
   },
   {
     path: "/login",
-    exact: true,
+    exact: false,
     component: lazyLoad(() => import("../layout/Login")),
   },
 ];
