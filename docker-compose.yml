@@ -12,15 +12,13 @@ services:
       MYSQL_USER: root
       MYSQL_PASSWORD: 123
   chat_be: 
-    image: node:14.16
+    image: my-nest-app
     container_name: chat_be
     restart: always
     ports: 
       - 3301:3301
     depends_on:
-       - chat_db
-    volumes:
-      - ./server/dist:/var/www/dist
+       - chat_d
   chat_fe: 
     image: nginx:latest
     container_name: chat_fe
