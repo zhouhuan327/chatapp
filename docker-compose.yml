@@ -1,0 +1,36 @@
+version: "3"
+services: 
+  chat_db:
+    image: mysql:5.7
+    container_name: chat_db
+    restart: always
+    ports: 
+      - 3306:3306
+    environment: 
+      MYSQL_ROOT_PASSWORD: root
+      MYSQL_DATABASE: test
+      MYSQL_USER: root
+      MYSQL_PASSWORD: 123
+  chat_be: 
+    image: node:14.16
+    container_name: chat_be
+    restart: always
+    ports: 
+      - 3301:3301
+    depends_on:
+       - chat_db
+    volumes:
+      - ./server/dist:/var/www/dist
+  chat_fe: 
+    image: nginx:latest
+    container_name: chat_fe
+    restart: always
+    ports: 
+      - 8080:8080
+    volumes:
+      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./client/build:/usr/share/nginx/html
+networks:
+  webapp-network:
+    driver: bridge
+
