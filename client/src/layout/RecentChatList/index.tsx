@@ -9,7 +9,7 @@ import { useRecoilState, useRecoilValue } from "recoil";
 import { currentChatState, recentChatsState } from "store";
 import { socketInstance } from "store/socket";
 import { getRecentMessage } from "../../api";
-import useSyncOnlineStatus from "hooks/useSyncOnlineStatus";
+import useSyncListStatus from "hooks/useSyncListStatus";
 
 const RecentChatList = () => {
   // socket实例
@@ -19,7 +19,8 @@ const RecentChatList = () => {
   const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(
     recentChatsState,
   );
-  const update = useSyncOnlineStatus(socket, recentChats, setRecentChats);
+  useSyncListStatus(socket, recentChats, setRecentChats);
+
   // 当前选中的聊天
   const [currentChat, setCurrentChat] = useRecoilState<RecentChat>(
     currentChatState as any,
@@ -28,15 +29,17 @@ const RecentChatList = () => {
   useEffect(() => {
     getRecentMessage().then(res => {
       if (res.code === 200) {
-        update(res.data);
+        setRecentChats(res.data);
         if (res.data.length) {
           // 默认用列表的第一条作为当前选中的聊天
-          setCurrentChat(res.data[0]);
+          const first = res.data[0];
+          if (first) {
+            setCurrentChat(res.data[0]);
+          }
         }
       }
     });
   }, []);
-
   return (
     <StyledRecentChatList>
       <FilterList
@@ -51,12 +54,12 @@ const RecentChatList = () => {
                 active={item._id === currentChat?._id}
                 replied={index % 2 === 0}
                 avatarSrc={face1}
-                avatarStatus={item.onlineStatus}
+                avatarStatus={item.onlineStatus ?? "offline"}
                 name={item.name}
                 statusText={item.onlineStatus === "online" ? "在线" : "离线"}
                 time={item.time}
                 message={item.content}
-                unreadCount={2}
+                unreadCount={item.unreadCount}
                 onClick={() => setCurrentChat(item)}
               />
             </animated.div>

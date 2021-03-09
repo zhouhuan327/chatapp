@@ -38,6 +38,7 @@ declare global {
     time: string;
     type: "friend" | "group";
     onlineStatus?: "online" | "offline";
+    unreadCount: number; // 未读消息
   };
   // 消息类型 私聊消息和群消息
   type MessageType = "friend" | "group";
