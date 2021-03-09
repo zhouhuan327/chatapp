@@ -27,9 +27,9 @@ export const recentChatsState = atom<RecentChat[]>({
 // });
 
 // 当前发送的新消息
-export const newMessageState = atom({
+export const newMessageState = atom<string>({
   key: "newMessageState",
-  default: null,
+  default: "",
 });
 
 // 用户信息

@@ -1,6 +1,6 @@
 import styled from "styled-components";
 
-const StyledInput = styled.input`
+const StyledInput = styled.input<any>`
   width: 100%;
   height: 48px;
   border: none;

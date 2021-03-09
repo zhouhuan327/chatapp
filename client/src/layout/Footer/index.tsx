@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useState } from "react";
+import React, { memo } from "react";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style";
 import Input from "components/Input";
 import Icon from "components/Icon";
@@ -10,8 +10,10 @@ import { ReactComponent as OptionsIcon } from "assets/icons/options.svg";
 import Button from "components/Button";
 import Emoji from "components/Emoji";
 import Popover from "components/Popover";
-import { useRecoilValue } from "recoil";
+import { useRecoilState, useRecoilValue } from "recoil";
 import { socketInstance } from "store/socket";
+import { newMessageState } from "../../store";
+import { message } from "antd";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -24,42 +26,45 @@ const PopoverContent = () => (
 );
 function Footer({ userId, currentChat, setList, animeProps }) {
   const socket = useRecoilValue(socketInstance);
-  const [message, setMessage] = useState<string>("");
+  const [content, setContent] = useRecoilState<string>(newMessageState);
 
-  const onSubmit = () => {
+  const handleSubmit = () => {
+    if (content?.length === 0) {
+      message.warn("请输入内容");
+      return;
+    }
     const { id, type } = currentChat;
     if (!id) return;
     if (type === "friend") {
       socket.emit("friendChatMessage", {
         senderId: userId,
         receiverId: id,
-        content: message,
+        content: content,
         type: "text",
       });
     } else {
       socket.emit("groupChatMessage", {
         senderId: userId,
         groupId: id,
-        content: message,
+        content: content,
         type: "text",
       });
     }
+    // 发送后清空消息栏
+    setContent("");
   };
   return (
     <StyledFooter style={{ ...animeProps }}>
       <Input
         placeholder="输入想要说的话"
         prefix={<Icon icon={ClipIcon} />}
-        onChange={v => {
-          setMessage(v);
-        }}
         suffix={
           <IconContainer>
             <Popover offset={{ x: "-25%" }} content={<PopoverContent />}>
               <Icon icon={SmileIcon} />
             </Popover>
             <Icon icon={MicrophoneIcon} />
-            <Button size="52px" onClick={onSubmit}>
+            <Button size="52px" onClick={handleSubmit}>
               <Icon
                 color="white"
                 icon={PlaneIcon}
@@ -68,6 +73,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
             </Button>
           </IconContainer>
         }
+        onEnter={handleSubmit}
       />
     </StyledFooter>
   );

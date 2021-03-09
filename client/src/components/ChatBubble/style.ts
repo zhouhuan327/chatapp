@@ -33,6 +33,7 @@ const MessageText = styled(Text)`
 const StyledChatBubble = styled.div<ChatBubbleProps>`
   display: flex;
   flex-direction: row;
+  flex: 1 0 auto;
   ${({ type }) =>
     type === "mine" &&
     css`
