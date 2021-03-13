@@ -4,21 +4,28 @@ services:
     image: mysql:5.7
     container_name: chat_db
     restart: always
+    command: [
+      '--character-set-server=utf8mb4', #设置数据库表的数据集
+      '--collation-server=utf8mb4_unicode_ci', #设置数据库表的数据集
+    ]
     ports: 
       - 3306:3306
     environment: 
-      MYSQL_ROOT_PASSWORD: root
+      MYSQL_ROOT_PASSWORD: 123
       MYSQL_DATABASE: test
-      MYSQL_USER: root
-      MYSQL_PASSWORD: 123
   chat_be: 
-    image: my-nest-app
+    image: node:12.18.4
     container_name: chat_be
+    working_dir: /home/node/app
+    # command: npm config set registry https://registry.npm.taobao.org
+    command: node dist/main.js
+    volumes:
+      - ./server:/home/node/app
     restart: always
     ports: 
-      - 3301:3301
+      - 3305:3305
     depends_on:
-       - chat_d
+       - chat_db
   chat_fe: 
     image: nginx:latest
     container_name: chat_fe
@@ -26,9 +33,5 @@ services:
     ports: 
       - 8080:8080
     volumes:
-      - ./nginx.conf:/etc/nginx/conf.d/default.conf
+      - ./conf.d:/etc/nginx/conf.d
       - ./client/build:/usr/share/nginx/html
-networks:
-  webapp-network:
-    driver: bridge
-
