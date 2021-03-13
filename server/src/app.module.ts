@@ -14,7 +14,7 @@ import { ChatModule } from './modules/chat/chat.module';
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: 'localhost',
+      host: '10.11.45.205',
       port: 3306,
       username: 'root',
       password: '123',
