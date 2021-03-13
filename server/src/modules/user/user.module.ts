@@ -18,8 +18,8 @@ export class UserModule implements OnModuleInit {
     if (!defaultUser) {
       await this.userRepository.save({
         id: 1,
-        username: '管理员',
-        password: 'QWER',
+        username: 'admin',
+        password: 'qwer',
         intro: '是作者',
       });
       Logger.log('初始化管理员...');

@@ -18,7 +18,7 @@ import { ChatModule } from './modules/chat/chat.module';
       port: 3306,
       username: 'root',
       password: '123',
-      database: 'test',
+      database: 'chat',
       autoLoadEntities: true,
       charset: 'utf8mb4',
       synchronize: true,
