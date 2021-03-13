@@ -12,8 +12,9 @@ import Emoji from "components/Emoji";
 import Popover from "components/Popover";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { socketInstance } from "store/socket";
-import { newMessageState } from "../../store";
+import { newMessageState, recentChatsState } from "../../store";
 import { message } from "antd";
+import produce from "immer";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -27,7 +28,10 @@ const PopoverContent = () => (
 function Footer({ userId, currentChat, setList, animeProps }) {
   const socket = useRecoilValue(socketInstance);
   const [content, setContent] = useRecoilState<string>(newMessageState);
-
+  // 最近消息列表
+  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(
+    recentChatsState,
+  );
   const handleSubmit = () => {
     if (content?.length === 0) {
       message.warn("请输入内容");
@@ -50,8 +54,25 @@ function Footer({ userId, currentChat, setList, animeProps }) {
         type: "text",
       });
     }
+    updateRecentChat(id, content);
     // 发送后清空消息栏
     setContent("");
+  };
+  const updateRecentChat = (receiverId, content) => {
+    setRecentChats(list => {
+      const targetIndex = list.findIndex(item => item.id === receiverId);
+      if (targetIndex > -1) {
+        const newState = produce(list, draft => {
+          const target = draft[targetIndex];
+          target.content = content;
+          draft.splice(targetIndex, 1);
+          draft.unshift(target);
+        });
+        return newState;
+      } else {
+        return list;
+      }
+    });
   };
   return (
     <StyledFooter style={{ ...animeProps }}>

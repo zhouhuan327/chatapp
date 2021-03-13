@@ -82,6 +82,7 @@ export class MessageService {
         contentType: item.type,
         time: formatTime(item.createTime),
         type: 'friend',
+        unreadCount: 0,
       };
       return obj;
     });

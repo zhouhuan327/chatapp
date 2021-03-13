@@ -9,7 +9,7 @@ import { getFriendMessage, getGroupMessage } from "api";
 import moment from "moment";
 import { useChatAnime } from "hooks/useAnime";
 import { socketInstance } from "store/socket";
-
+import produce from "immer";
 const ChatPanel = () => {
   // 动画参数
   const { topBarAnime, msgAnime, footerAnime } = useChatAnime();
@@ -34,31 +34,27 @@ const ChatPanel = () => {
       res.code === 200 && setList(res.data);
     }
   }, []);
-  // 记录已经建立过连接的好友/群 id
-  // 避免重复连接
+  // 记录已经建立过连接的好友/群 id, 避免重复连接
   const connectedFriend = useRef<Set<number>>(new Set());
   const connectedGroup = useRef<Set<number>>(new Set());
   useEffect(() => {
     socket.on("friendChatConnect", res => {
-      console.log("friend connect", res);
       addMessage({ notice: "连接成功" });
       connectedFriend.current.add(res?.data?.receiverId);
     });
     socket.on("groupChatConnect", res => {
-      console.log("group connect", res);
       addMessage({ notice: res.message });
       connectedGroup.current.add(res?.data?.groupId);
     });
     // 消息实时更新
     socket.on("friendChatMessage", res => {
-      console.log("new friend message", res);
       addMessage(res.data);
     });
     socket.on("groupChatMessage", res => {
-      console.log("new group message", res);
       addMessage(res.data);
     });
   }, []);
+
   useEffect(() => {
     if (!currentChat.id) return;
     const { id, type } = currentChat;
@@ -82,7 +78,11 @@ const ChatPanel = () => {
     scrollToBottom();
   }, [list]);
   const addMessage = obj => {
-    setList(list => [...list, obj]);
+    setList(list =>
+      produce(list, draft => {
+        draft.push(obj);
+      }),
+    );
   };
   const scrollToBottom = () => {
     const el = ref.current;

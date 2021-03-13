@@ -17,5 +17,6 @@ declare global {
     contentType: MessageType;
     time: string;
     type: 'friend' | 'group';
+    unreadCount: number; // 未读消息
   }>;
 }
