@@ -12,7 +12,7 @@ services:
       - 3306:3306
     environment: 
       MYSQL_ROOT_PASSWORD: 123
-      MYSQL_DATABASE: test
+      MYSQL_DATABASE: chat
   chat_be: 
     image: node:12.18.4
     container_name: chat_be
@@ -31,7 +31,10 @@ services:
     container_name: chat_fe
     restart: always
     ports: 
-      - 8080:8080
+      - 80:80
+    depends_on:
+       - chat_db
+       - chat_be
     volumes:
-      - ./conf.d:/etc/nginx/conf.d
+      - ./nginx.conf:/etc/nginx/nginx.conf
       - ./client/build:/usr/share/nginx/html

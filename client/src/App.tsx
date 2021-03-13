@@ -1,14 +1,14 @@
 import React from "react";
 import { ThemeProvider } from "styled-components";
 import theme from "./utils/theme";
-import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
+import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { pageRouters } from "./router";
 import "antd/dist/antd.css";
-
+import history from "router/history";
 function App() {
   return (
-    <BrowserRouter>
+    <Router history={history}>
       <ThemeProvider theme={theme}>
         <RecoilRoot>
           <Switch>
@@ -22,7 +22,7 @@ function App() {
           </Switch>
         </RecoilRoot>
       </ThemeProvider>
-    </BrowserRouter>
+    </Router>
   );
 }
 

@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 import { authAction } from "./auth";
-
+import history from "router/history";
 const service = axios.create({
   timeout: 50000,
 });
@@ -32,7 +32,7 @@ service.interceptors.response.use(
         message.warning("登录已过期,将重新登录...", 1, () => {
           // 移除登录状态
           authAction.remove();
-          window.location.href = "/login";
+          history.push("/login");
         });
       } else {
         message.error(data.message);
