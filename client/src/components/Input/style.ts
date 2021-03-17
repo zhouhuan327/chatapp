@@ -1,6 +1,6 @@
 import styled from "styled-components";
-
-const StyledInput = styled.input<any>`
+import { Input } from "antd";
+const StyledInput = styled<any>(Input)`
   width: 100%;
   height: 48px;
   border: none;
@@ -9,6 +9,9 @@ const StyledInput = styled.input<any>`
   font-size: ${({ theme }) => theme.medium};
   &::placehoder {
     color: ${({ theme }) => theme.gray3};
+  }
+  &:focus {
+    box-shadow: none;
   }
 `;
 const Prefix = styled.div`

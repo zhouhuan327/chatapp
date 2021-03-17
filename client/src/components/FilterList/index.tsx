@@ -1,5 +1,5 @@
 import React from "react";
-import Input from "components/Input";
+import { Input, Search } from "components/Input";
 import Select from "components/Select";
 import Option from "components/Option";
 import Button from "components/Button";
@@ -21,7 +21,7 @@ const FilterList: React.FC<FilterListProps> = ({
 }) => {
   return (
     <StyledFilterList {...rest}>
-      <Input.Search />
+      <Search />
       <StyledFilter>
         {option && (
           <div>

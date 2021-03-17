@@ -1,5 +1,4 @@
 import styled from "styled-components";
-import StyledInputText from "../../components/Input/InputText/style";
 
 const ScLogin = styled.div`
   display: flex;
@@ -20,10 +19,6 @@ export const Card = styled.div`
   h1 {
     margin-bottom: 20px;
     text-align: center;
-  }
-  ${StyledInputText} {
-    width: 100%;
-    margin: 20px 0;
   }
 `;
 export default ScLogin;
