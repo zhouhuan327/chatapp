@@ -39,28 +39,17 @@ function Footer({ userId, currentChat, setList, animeProps }) {
     }
     const { id, type } = currentChat;
     if (!id) return;
-    if (type === "friend") {
-      socket.emit("friendChatMessage", {
-        senderId: userId,
-        receiverId: id,
-        content: content,
-        type: "text",
-      });
-    } else {
-      socket.emit("groupChatMessage", {
-        senderId: userId,
-        groupId: id,
-        content: content,
-        type: "text",
-      });
-    }
-    updateRecentChat(id, content);
-    // 发送后清空消息栏
-    setContent("");
-  };
-  const updateRecentChat = (receiverId, content) => {
+    // 发送私聊/群聊消息
+    const sendObj = {
+      senderId: userId,
+      [type === "friend" ? "receiverId" : "groupId"]: id,
+      content: content,
+      type: "text",
+    };
+    socket.emit(`${type}ChatMessage`, sendObj);
+    // 更新左侧列表,把当前放到顶部
     setRecentChats(list => {
-      const targetIndex = list.findIndex(item => item.id === receiverId);
+      const targetIndex = list.findIndex(item => item._id === currentChat._id);
       if (targetIndex > -1) {
         const newState = produce(list, draft => {
           const target = draft[targetIndex];
@@ -73,6 +62,8 @@ function Footer({ userId, currentChat, setList, animeProps }) {
         return list;
       }
     });
+    // 发送后清空消息栏
+    setContent("");
   };
   return (
     <StyledFooter style={{ ...animeProps }}>

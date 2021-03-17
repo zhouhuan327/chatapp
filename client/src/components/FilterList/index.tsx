@@ -9,8 +9,8 @@ import styled from "styled-components";
 import { ReactComponent as Plus } from "assets/icons/plus.svg";
 interface FilterListProps {
   filterLabel?: string;
-  actionLabel: string;
-  option: Array<any>;
+  actionLabel?: string;
+  option?: Array<any>;
 }
 const FilterList: React.FC<FilterListProps> = ({
   filterLabel = "列表排序",

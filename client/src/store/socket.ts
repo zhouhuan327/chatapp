@@ -7,7 +7,7 @@ export const socketInstance = selector({
   get: ({ get }) => {
     const user = get(userInfoState);
     const socket: SocketIOClient.Socket = connect(
-      `http://localhost:3000?userId=${user.id}`,
+      `http://localhost:3305?userId=${user.id}`,
     );
     socket.on("connect", () => {
       console.log("socket连接成功");

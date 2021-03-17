@@ -35,7 +35,7 @@ export class ChatGateway
   }
 
   afterInit(server: any) {
-    Logger.log('ws init');
+    Logger.log('socket gateway init');
   }
 
   handleConnection(client: any, ...args: any[]) {
