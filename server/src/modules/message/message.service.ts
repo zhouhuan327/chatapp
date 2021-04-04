@@ -130,4 +130,11 @@ export class MessageService {
     message.type = type;
     return this.groupMessageRepository.save(message);
   }
+
+  async getFriendMessages() {
+    return this.friendMessageRepository.find();
+  }
+  async getGroupMessages() {
+    return this.groupMessageRepository.find();
+  }
 }

@@ -14,15 +14,21 @@ export class UserModule implements OnModuleInit {
     @InjectRepository(User) private readonly userRepository: Repository<User>,
   ) {}
   async onModuleInit() {
-    const defaultUser = await this.userRepository.findOne({ id: 1 });
-    if (!defaultUser) {
+    const list = await this.userRepository.find();
+    if (!list.length) {
       await this.userRepository.save({
         id: 1,
         username: 'admin',
         password: 'qwer',
-        intro: '是作者',
+        intro: '',
       });
-      Logger.log('初始化管理员...');
+      await this.userRepository.save({
+        id: 2,
+        username: '默认好友',
+        password: '123',
+        intro: '默认好友',
+      });
+      Logger.log('初始化管理员和他的好友...');
     }
   }
 }

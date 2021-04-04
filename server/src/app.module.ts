@@ -1,4 +1,4 @@
-import { Logger, Module } from '@nestjs/common';
+import { Module, OnModuleInit } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -9,26 +9,27 @@ import { FriendModule } from './modules/friend/friend.module';
 import { MessageModule } from './modules/message/message.module';
 import { GroupModule } from './modules/group/group.module';
 import { ChatModule } from './modules/chat/chat.module';
+import { UserService } from './modules/user/user.service';
 
 @Module({
   imports: [
     TypeOrmModule.forRoot({
       type: 'mysql',
-      host: '10.11.45.205',
+      host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '123',
+      password: '',
       database: 'chat',
       autoLoadEntities: true,
       charset: 'utf8mb4',
       synchronize: true,
       timezone: '+00.00',
     }),
-    AuthModule,
-    FriendModule,
-    MessageModule,
-    GroupModule,
     ChatModule,
+    AuthModule,
+    MessageModule,
+    FriendModule,
+    GroupModule,
     UserModule,
   ],
   controllers: [AppController],
