@@ -6,6 +6,7 @@ interface FriendCardProps {
   status?: "online" | "offline";
   name: string;
   intro: string;
+  [rest: string]: any;
 }
 const FriendCard: React.FC<FriendCardProps> = ({
   avatarSrc,

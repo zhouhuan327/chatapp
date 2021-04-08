@@ -27,7 +27,7 @@ const GroupList = () => {
   const groupList = useRecoilValue(groupsState);
   return (
     <StyledGroupList>
-      <FilterList option={["按时间排序", "按名称排序"]} actionLabel="添加文件">
+      <FilterList option={["按时间排序", "按名称排序"]} actionLabel="添加群聊">
         <Groups>
           {groupList.map((item, index) => (
             <animated.div key={index} style={anime[index]}>

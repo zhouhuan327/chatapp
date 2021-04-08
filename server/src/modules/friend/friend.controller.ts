@@ -21,8 +21,9 @@ export class FriendController {
   }
 
   @Post()
-  addFriend(@Body() body) {
-    const { userId, friendId } = body;
+  addFriend(@Req() req, @Body() body) {
+    const userId = req.user?.userId;
+    const { friendId } = body;
     return this.friendService.addFriend(userId, friendId);
   }
 

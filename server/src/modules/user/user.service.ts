@@ -1,7 +1,7 @@
 import { Injectable } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { User } from './entity/user.entity';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import CommonException from '../../utils/common.exception';
 import { newUserDto, updateUserDto } from './dto/user.dto';
 import { formatTime } from '../../utils';
@@ -15,6 +15,10 @@ export class UserService {
 
   async getUsers() {
     return this.userRepository.find();
+  }
+  async getUsersByName(username) {
+    console.log(Like(`%${username}%`));
+    return this.userRepository.find({ username: Like(`%${username}%`) });
   }
 
   async getUserById(id) {

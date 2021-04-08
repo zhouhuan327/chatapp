@@ -21,3 +21,10 @@ export const getFriendMessage = (params: { friendId: number }) =>
 // 群的聊天记录
 export const getGroupMessage = (params: { groupId: number }) =>
   request({ url: "/api/message/group", method: "get", params });
+
+// 搜索用户
+export const getUsers = (params: { name: string }) =>
+  request.get("/api/user", { params });
+// 添加好友
+export const addFriend = (body: { friendId: number }) =>
+  request.post("/api/friend", body);

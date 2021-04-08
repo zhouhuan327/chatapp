@@ -1,7 +1,7 @@
 import React from "react";
 import StyledChatApp, { Nav, SideBar, Content, Drawer } from "./style";
 import NavBar from "layout/NavBar";
-import Conversation from "layout/ChatPanel";
+import ChatPanel from "layout/ChatPanel";
 import Profile from "layout/Profile";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition } from "react-spring";
@@ -37,7 +37,7 @@ function ChatApp({ ...rest }) {
         ))}
       </SideBar>
       <Content>
-        <Conversation />
+        <ChatPanel />
       </Content>
       <Drawer show={show}>
         <Profile />

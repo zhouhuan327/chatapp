@@ -1,5 +1,10 @@
 export {};
 declare global {
+  interface RespType<T> {
+    code: number;
+    data: T;
+    message: string;
+  }
   // 消息内容的类型
   type ContentType = string | "text" | "image";
   // 路由结构

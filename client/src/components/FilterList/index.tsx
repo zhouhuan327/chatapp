@@ -1,5 +1,5 @@
 import React from "react";
-import { Input, Search } from "components/Input";
+import { Search } from "components/Input";
 import Select from "components/Select";
 import Option from "components/Option";
 import Button from "components/Button";
@@ -10,12 +10,14 @@ import { ReactComponent as Plus } from "assets/icons/plus.svg";
 interface FilterListProps {
   filterLabel?: string;
   actionLabel?: string;
+  onActionClick?: () => void;
   option?: Array<any>;
 }
 const FilterList: React.FC<FilterListProps> = ({
   filterLabel = "列表排序",
   actionLabel,
   option,
+  onActionClick,
   children,
   ...rest
 }) => {
@@ -36,7 +38,7 @@ const FilterList: React.FC<FilterListProps> = ({
         {actionLabel && (
           <div>
             <Text type="secondary">{actionLabel}</Text>
-            <Button size="20px">
+            <Button size="20px" onClick={onActionClick}>
               <Icon icon={Plus} width={12} height={12} />
             </Button>
           </div>

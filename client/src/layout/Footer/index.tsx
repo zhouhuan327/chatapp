@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import StyledFooter, { IconContainer, StyledPopoverContent } from "./style";
-import { Input, Search } from "components/Input";
+import { Input } from "components/Input";
 import Icon from "components/Icon";
 import { ReactComponent as ClipIcon } from "assets/icons/clip.svg";
 import { ReactComponent as SmileIcon } from "assets/icons/smile.svg";
@@ -88,7 +88,6 @@ function Footer({ userId, currentChat, setList, animeProps }) {
                 </Button>
               </IconContainer>
             }
-            onEnter={handleSubmit}
           />
         </Form.Item>
       </Form>

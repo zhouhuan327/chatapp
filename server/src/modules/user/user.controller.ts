@@ -6,6 +6,7 @@ import {
   Param,
   Patch,
   Post,
+  Query,
 } from '@nestjs/common';
 import { UserService } from './user.service';
 import { newUserDto, updateUserDto } from './dto/user.dto';
@@ -14,8 +15,8 @@ import { newUserDto, updateUserDto } from './dto/user.dto';
 export class UserController {
   constructor(private readonly userService: UserService) {}
   @Get()
-  getUsers() {
-    return this.userService.getUsers();
+  getUsers(@Query('name') username) {
+    return this.userService.getUsersByName(username);
   }
   @Post()
   addUser(@Body() user: newUserDto) {

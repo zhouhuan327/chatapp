@@ -76,7 +76,7 @@ const RecentChatList = () => {
   }, []);
   return (
     <StyledRecentChatList>
-      <FilterList filterLabel="列表排序">
+      <FilterList>
         <ChatList>
           {recentChats.map((item, index) => (
             <animated.div key={item._id} style={anime[index]}>
