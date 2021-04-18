@@ -17,15 +17,6 @@ export const recentChatsState = atom<RecentChat[]>({
   key: "recentChatsState",
   default: [],
 });
-// export const recentChatsSelector = selector<RecentChat[]>({
-//   key: "recentChatsSelector",
-//   get: async ({ get }) => {
-//     console.log("trigger selector get");
-//     const res = await getRecentMessage();
-//     return res?.code === 200 ? res.data : [];
-//   },
-// });
-
 // 当前发送的新消息
 export const newMessageState = atom<string>({
   key: "newMessageState",

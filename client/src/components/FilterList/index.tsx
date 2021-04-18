@@ -11,24 +11,29 @@ interface FilterListProps {
   filterLabel?: string;
   actionLabel?: string;
   onActionClick?: () => void;
-  option?: Array<any>;
+  // 点击搜索
+  onSearch?: (value: string) => void;
 }
+const option = ["按时间排序", "按名称排序"];
 const FilterList: React.FC<FilterListProps> = ({
   filterLabel = "列表排序",
   actionLabel,
-  option,
+  onSearch,
   onActionClick,
   children,
   ...rest
 }) => {
+  const handleFilterChange = e => {
+    console.log(e);
+  };
   return (
     <StyledFilterList {...rest}>
-      <Search />
+      <Search onSearch={onSearch} />
       <StyledFilter>
         {option && (
           <div>
             <Text type="secondary">{filterLabel}:</Text>
-            <Select>
+            <Select onChange={handleFilterChange}>
               {option.map((item, index) => (
                 <Option key={index}>{item}</Option>
               ))}

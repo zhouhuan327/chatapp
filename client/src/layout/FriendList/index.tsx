@@ -1,4 +1,4 @@
-import React, { memo, useCallback, useState } from "react";
+import React, { memo, useCallback, useEffect, useState } from "react";
 import { Modal, List, Button, message, Tag } from "antd";
 import StyledFriendList, { Friends } from "./style";
 import FilterList from "../../components/FilterList";
@@ -6,47 +6,46 @@ import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
 import face1 from "assets/images/avatar.jpeg";
 import { useAnimeList } from "hooks/useAnime";
-import { atom, selector, useRecoilValue } from "recoil";
+import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
 import { addFriend, getFriends, getUsers } from "../../api";
 import { Search } from "components/Input";
 import styled from "styled-components";
 import produce from "immer";
-const searchState = atom({
-  key: "friendsSearchState",
-  default: "",
-});
-const friendsState = selector({
-  key: "friendsState",
-  get: async ({ get }) => {
-    const param = get(searchState);
-    const res = await getFriends({ name: param });
-    if (res?.code === 200) {
-      return res.data;
-    }
-    return [];
-  },
-});
+import { scrollbar } from "../../utils/mixin";
 interface searchList extends UserInfo {
   isFriend?: boolean;
 }
 const FriendList = () => {
   const anime = useAnimeList(10);
-  const friendList = useRecoilValue(friendsState);
-  const [visible, setVisible] = useState<boolean>(false);
-  const handleCancel = useCallback(() => {
-    setVisible(false);
-  }, []);
-
+  // 列表里的用户名
+  const [param, setParam] = useState<string>("");
+  const [friendList, setFriendList] = useState<UserInfo[]>([]);
+  const fetch = useCallback(
+    (name?) => {
+      getFriends({ name: name || param }).then(res => {
+        setFriendList(res.data || []);
+      });
+    },
+    [param],
+  );
+  useEffect(() => {
+    fetch();
+  }, [fetch]);
+  // 添加好友modal显示隐藏
+  const [addModal, setAddModal] = useState<boolean>(false);
+  // 添加好友里的列表
   const [searchList, setSearchList] = useState<searchList[]>([]);
-  const handleSearch = useCallback(async value => {
-    const res: RespType<UserInfo[]> = await getUsers({ name: value });
-    const users: searchList[] = res.data;
-    users.forEach(item => {
-      item.isFriend = !!friendList.find(friend => friend.id === item.id);
-    });
-    setSearchList(users);
-  }, []);
-
+  const handleSearch = useCallback(
+    async value => {
+      const res: RespType<UserInfo[]> = await getUsers({ name: value });
+      const users: searchList[] = res.data;
+      users.forEach(item => {
+        item.isFriend = !!friendList.find(friend => friend.id === item.id);
+      });
+      setSearchList(users);
+    },
+    [friendList],
+  );
   // loading状态列表
   const [loadingList, setLoadingList] = useState<boolean[]>([]);
   const handleAddFriend = useCallback(
@@ -66,6 +65,8 @@ const FriendList = () => {
             if (target) target.isFriend = true;
           }),
         );
+        // 更新好友列表
+        fetch("");
       } finally {
         setLoadingList(state => {
           const nextState = [...state];
@@ -74,14 +75,17 @@ const FriendList = () => {
         });
       }
     },
-    [],
+    [fetch],
   );
+  const handleClickCard = (id: number) => {
+    console.log("当前点击了", id);
+  };
   return (
     <StyledFriendList>
       <FilterList
         actionLabel="添加好友"
-        option={["按姓名排序", "按添加顺序排序"]}
-        onActionClick={() => setVisible(true)}
+        onActionClick={() => setAddModal(true)}
+        onSearch={value => setParam(value)}
       >
         <Friends>
           {friendList.map((item, index) => (
@@ -90,6 +94,7 @@ const FriendList = () => {
                 avatarSrc={face1}
                 name={item.username}
                 intro={item.intro}
+                onClick={() => handleClickCard(item.id)}
               />
             </animated.div>
           ))}
@@ -97,8 +102,8 @@ const FriendList = () => {
       </FilterList>
       <Modal
         title={"添加好友"}
-        onCancel={handleCancel}
-        visible={visible}
+        onCancel={() => setAddModal(false)}
+        visible={addModal}
         footer={null}
       >
         <Search placeholder={"请输入用户名"} onSearch={handleSearch} />
@@ -142,5 +147,8 @@ const ScList = styled(List)`
   .ant-list-items {
     padding-left: 20px;
   }
+  max-height: 400px;
+  overflow-y: scroll;
+  ${scrollbar}
 `;
 export default memo(FriendList);

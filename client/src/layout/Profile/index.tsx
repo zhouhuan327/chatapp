@@ -1,29 +1,21 @@
-import React, { memo } from "react";
-import StyledProfile, {
-  SocialLinks,
-  ContactSection,
-  AlbmnSection,
-  AlbmnTitle,
-  Albmn,
-  Photo,
-  CloseIcon,
-} from "./style";
+import React, { memo, FC } from "react";
+import StyledProfile, { ContactSection, CloseIcon } from "./style";
 import "styled-components/macro";
 import Avatar from "components/Avatar";
 import avatar from "assets/images/avatar.jpeg";
 import ParaGraph from "components/ParaGraph";
 import Emoji from "components/Emoji";
-import Icon from "components/Icon";
-import { faLink } from "@fortawesome/free-solid-svg-icons";
 import Divider from "components/Divider";
 import Text from "components/Text";
-import photo1 from "assets/images/photo1.jpg";
-import photo2 from "assets/images/photo2.jpg";
-import photo3 from "assets/images/photo3.jpg";
 import { ReactComponent as Cross } from "assets/icons/cross.svg";
 import { useSetRecoilState } from "recoil";
 import { profileVisible } from "store";
-function Profile({ ...rest }) {
+import Button from "../../components/Button";
+interface ProfileProps {
+  userInfo?: UserInfo;
+  [rest: string]: any;
+}
+const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
   const setVisible = useSetRecoilState(profileVisible);
   return (
     <StyledProfile {...rest}>
@@ -32,10 +24,8 @@ function Profile({ ...rest }) {
         css={`
           margin: 26px 0;
         `}
-        src={avatar}
-        size="160px"
-        status="online"
-        statusIconSize="25px"
+        src={userInfo?.avatarSrc || avatar}
+        size="120px"
       />
       <ParaGraph
         css={`
@@ -43,7 +33,7 @@ function Profile({ ...rest }) {
         `}
         size="xlarge"
       >
-        守夜人
+        {userInfo?.username || "XXX"}
       </ParaGraph>
       <ParaGraph
         css={`
@@ -56,45 +46,37 @@ function Profile({ ...rest }) {
       </ParaGraph>
       <ParaGraph
         css={`
-          margin-bottom: 26px;
+          margin-bottom: 10px;
         `}
         size="medium"
       >
-        <Emoji label="fire">winter is comming</Emoji>
+        <Emoji label="fire">
+          {userInfo?.intro || "这个人很懒，什么也没写"}
+        </Emoji>
       </ParaGraph>
-      <SocialLinks>
-        <Icon.Social icon={faLink} bgColor="#f06767" />
-        <Icon.Social icon={faLink} bgColor="black" />
-        <Icon.Social icon={faLink} bgColor="#2438c0" />
-      </SocialLinks>
       <Divider
         css={`
-          margin: 30px;
+          margin: 10px;
         `}
       />
       <ContactSection>
-        <Description label="联系电话">123456</Description>
-        <Description label="电子邮件">zsean21598@163.com</Description>
+        <Description label="性别">{userInfo?.sex || "-"}</Description>
+        <Description label="电子邮件">{userInfo?.email || "-"}</Description>
+        <Description label="注册时间">
+          {userInfo?.createTime || "-"}
+        </Description>
       </ContactSection>
       <Divider
         css={`
           margin: 30px;
         `}
       />
-      <AlbmnSection>
-        <AlbmnTitle>
-          <Text type="secondary">相册(31)</Text>
-          {/* <a>查看全部</a> */}
-        </AlbmnTitle>
-        <Albmn>
-          <Photo src={photo1} />
-          <Photo src={photo2} />
-          <Photo src={photo3} />
-        </Albmn>
-      </AlbmnSection>
+      <ContactSection>
+        <Button shape="rect">发送消息</Button>
+      </ContactSection>
     </StyledProfile>
   );
-}
+};
 function Description({ label, children }) {
   return (
     <ParaGraph>

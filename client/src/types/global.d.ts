@@ -15,14 +15,15 @@ declare global {
     title?: string;
     component: lazyLoad<any>;
   }
-  type UserInfo = Partial<{
+  type UserInfo = {
     id: number;
     avatarSrc: string;
     username: string;
     intro: string;
     email: string;
+    sex: string;
     createTime: string;
-  }>;
+  };
   type GroupInfo = Partial<{
     id: number;
     avatarSrc: string;
