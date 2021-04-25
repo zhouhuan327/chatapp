@@ -1,5 +1,6 @@
-import React, { memo, FC } from "react";
+import React, { memo } from "react";
 import StyledProfile, { ContactSection, CloseIcon } from "./style";
+import { Modal, message } from "antd";
 import "styled-components/macro";
 import Avatar from "components/Avatar";
 import avatar from "assets/images/avatar.jpeg";
@@ -8,15 +9,28 @@ import Emoji from "components/Emoji";
 import Divider from "components/Divider";
 import Text from "components/Text";
 import { ReactComponent as Cross } from "assets/icons/cross.svg";
-import { useSetRecoilState } from "recoil";
-import { profileVisible } from "store";
+import { useRecoilValue, useSetRecoilState } from "recoil";
+import { detail, profileVisible } from "store";
 import Button from "../../components/Button";
-interface ProfileProps {
-  userInfo?: UserInfo;
-  [rest: string]: any;
-}
-const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
+import moment from "moment";
+const Profile = ({ ...rest }) => {
   const setVisible = useSetRecoilState(profileVisible);
+  const userDetail = useRecoilValue(detail);
+  const handleSend = () => {
+    console.log(userDetail.id);
+  };
+  const handleDelete = () => {
+    Modal.confirm({
+      title: "确定删除好友吗",
+      okText: "确定",
+      cancelText: "取消",
+      onOk: () => {
+        message.success("删除成功");
+        return Promise.resolve();
+      },
+      onCancel: () => Promise.reject(),
+    });
+  };
   return (
     <StyledProfile {...rest}>
       <CloseIcon icon={Cross} onClick={() => setVisible(false)} />
@@ -24,7 +38,7 @@ const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
         css={`
           margin: 26px 0;
         `}
-        src={userInfo?.avatarSrc || avatar}
+        src={userDetail?.avatarSrc || avatar}
         size="120px"
       />
       <ParaGraph
@@ -33,7 +47,7 @@ const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
         `}
         size="xlarge"
       >
-        {userInfo?.username || "XXX"}
+        {userDetail?.username || "XXX"}
       </ParaGraph>
       <ParaGraph
         css={`
@@ -51,7 +65,7 @@ const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
         size="medium"
       >
         <Emoji label="fire">
-          {userInfo?.intro || "这个人很懒，什么也没写"}
+          {userDetail?.intro || "这个人很懒，什么也没写"}
         </Emoji>
       </ParaGraph>
       <Divider
@@ -60,10 +74,10 @@ const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
         `}
       />
       <ContactSection>
-        <Description label="性别">{userInfo?.sex || "-"}</Description>
-        <Description label="电子邮件">{userInfo?.email || "-"}</Description>
+        <Description label="性别">{userDetail?.sex || "-"}</Description>
+        <Description label="电子邮件">{userDetail?.email || "-"}</Description>
         <Description label="注册时间">
-          {userInfo?.createTime || "-"}
+          {moment(userDetail?.createTime).format("YYYY-MM-DD") || "-"}
         </Description>
       </ContactSection>
       <Divider
@@ -71,9 +85,14 @@ const Profile: FC<ProfileProps> = ({ userInfo, ...rest }) => {
           margin: 30px;
         `}
       />
-      <ContactSection>
-        <Button shape="rect">发送消息</Button>
-      </ContactSection>
+      <div>
+        <Button shape="rect" onClick={handleSend}>
+          发送消息
+        </Button>
+        <Button shape="rect" style={{ marginLeft: 20 }} onClick={handleDelete}>
+          删除
+        </Button>
+      </div>
     </StyledProfile>
   );
 };

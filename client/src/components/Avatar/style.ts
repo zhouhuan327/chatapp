@@ -10,6 +10,7 @@ const circleMixin = (color, size = "8px") => css`
 
 const StyledAvatar = styled.div`
   position: relative;
+  cursor: pointer;
 `;
 const StatusIcon = styled.div<{ size: string; status: "online" | "offline" }>`
   position: absolute;

@@ -28,8 +28,13 @@ export class User {
   @Column({ default: '这个人很懒' })
   intro: string;
 
-  @Column({ default: '' })
+  @Column()
   email: string;
+
+  @Column()
+  sex: string;
+  @Column()
+  address: string;
 
   @CreateDateColumn()
   createTime: string;

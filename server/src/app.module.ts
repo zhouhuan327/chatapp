@@ -1,4 +1,4 @@
-import { Module, OnModuleInit } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { AppController } from './app.controller';
 import { UserModule } from './modules/user/user.module';
 import { AuthModule } from './modules/auth/auth.module';
@@ -9,7 +9,7 @@ import { FriendModule } from './modules/friend/friend.module';
 import { MessageModule } from './modules/message/message.module';
 import { GroupModule } from './modules/group/group.module';
 import { ChatModule } from './modules/chat/chat.module';
-import { UserService } from './modules/user/user.service';
+import { FileModule } from './modules/file/file.module';
 
 @Module({
   imports: [
@@ -31,6 +31,7 @@ import { UserService } from './modules/user/user.service';
     FriendModule,
     GroupModule,
     UserModule,
+    FileModule,
   ],
   controllers: [AppController],
   providers: [

@@ -6,12 +6,19 @@ import FriendCard from "components/FriendCard";
 import { animated } from "react-spring";
 import face1 from "assets/images/avatar.jpeg";
 import { useAnimeList } from "hooks/useAnime";
-import { atom, selector, useRecoilState, useRecoilValue } from "recoil";
-import { addFriend, getFriends, getUsers } from "../../api";
+import {
+  atom,
+  selector,
+  useRecoilState,
+  useRecoilValue,
+  useSetRecoilState,
+} from "recoil";
+import { addFriend, getFriends, getUserDetail, getUsers } from "../../api";
 import { Search } from "components/Input";
 import styled from "styled-components";
 import produce from "immer";
 import { scrollbar } from "../../utils/mixin";
+import { detail, profileVisible } from "../../store";
 interface searchList extends UserInfo {
   isFriend?: boolean;
 }
@@ -77,8 +84,13 @@ const FriendList = () => {
     },
     [fetch],
   );
-  const handleClickCard = (id: number) => {
-    console.log("当前点击了", id);
+  const setVisible = useSetRecoilState(profileVisible);
+  const setDetail = useSetRecoilState(detail);
+  const handleClickCard = async (id: number) => {
+    setVisible(true);
+
+    const res = await getUserDetail({ id });
+    setDetail(res.data);
   };
   return (
     <StyledFriendList>

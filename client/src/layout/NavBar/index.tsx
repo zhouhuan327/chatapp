@@ -1,4 +1,4 @@
-import React, { memo } from "react";
+import React, { memo, useState } from "react";
 import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from "./style";
 import Badge from "components/Badge";
 import Avatar from "components/Avatar";
@@ -6,10 +6,12 @@ import img from "assets/images/avatar.jpeg";
 import "styled-components/macro";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { routers } from "../../router";
+import EditModal from "../EditModal";
 const NavBar = () => {
+  const [editVisible, setEditVisible] = useState<boolean>(false);
   return (
     <StyledNavBar>
-      <Avatar src={img} status="online" />
+      <Avatar src={img} status="online" onClick={() => setEditVisible(true)} />
       <MenuItems>
         {routers.map(route => (
           <MenuItem
@@ -20,6 +22,11 @@ const NavBar = () => {
           />
         ))}
       </MenuItems>
+      <EditModal
+        visible={editVisible}
+        setVisible={setEditVisible}
+        type="user"
+      />
     </StyledNavBar>
   );
 };

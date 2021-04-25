@@ -9,24 +9,12 @@ import { ReactComponent as Call } from "assets/icons/call.svg";
 import { ReactComponent as Camera } from "assets/icons/camera.svg";
 import { ReactComponent as Options } from "assets/icons/options.svg";
 import face1 from "assets/images/avatar.jpeg";
-import { useSetRecoilState } from "recoil";
-import { profileVisible } from "store";
-
 function TitleBar({ name, status, animeProps }) {
-  const setVisible = useSetRecoilState(profileVisible);
-  const toggleDraw = () => {
-    setVisible(v => !v);
-  };
   return (
     <StyledTitleBar style={{ ...animeProps }}>
-      <Avatar
-        style={{ cursor: "pointer" }}
-        status={status}
-        src={face1}
-        onClick={toggleDraw}
-      />
+      <Avatar status={status} src={face1} />
       <Title>
-        <ParaGraph size="large">{name}</ParaGraph>
+    <ParaGraph size="large">{name}</ParaGraph>
         <ParaGraph type="secondary">
           <Text>{status === "online" ? "在线" : "离线"}</Text>
           <Text>~ 最后阅读： 3小时</Text>

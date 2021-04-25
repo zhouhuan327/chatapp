@@ -28,3 +28,7 @@ export const getUsers = (params: { name: string }) =>
 // 添加好友
 export const addFriend = (body: { friendId: number }) =>
   request.post("/api/friend", body);
+
+export const getUserDetail = (params: { id: number }) =>
+  request.get("/api/user/detail", { params });
+export const updateUser = (body: UserInfo) => request.patch("/api/user", body);

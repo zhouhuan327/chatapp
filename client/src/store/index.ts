@@ -3,10 +3,13 @@ import { atom, selector } from "recoil";
 import { logout } from "../utils/auth";
 // 是否显示个人信息抽屉
 export const profileVisible = atom({
-  key: "profileVisible",
+  key: "profileVisibleState",
   default: false,
 });
-
+export const detail = atom<UserInfo>({
+  key: "detailState",
+  default: {} as UserInfo,
+});
 // 当前选中的群/好友 对象
 export const currentChatState = atom({
   key: "currentChatState",
@@ -24,14 +27,14 @@ export const newMessageState = atom<string>({
 });
 
 // 用户信息
-export const userInfoState = selector({
-  key: "userInfoState",
+export const userIdState = selector({
+  key: "userIdState",
   get: () => {
-    const user = JSON.parse(localStorage.getItem("user") || "{}");
-    if (!user.id) {
+    const id = parseInt(localStorage.getItem("userId") || "");
+    if (!id || isNaN(id)) {
       logout();
-      return {};
+      return 0;
     }
-    return user;
+    return id;
   },
 });

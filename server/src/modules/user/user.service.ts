@@ -4,7 +4,6 @@ import { User } from './entity/user.entity';
 import { Like, Repository } from 'typeorm';
 import CommonException from '../../utils/common.exception';
 import { newUserDto, updateUserDto } from './dto/user.dto';
-import { formatTime } from '../../utils';
 
 @Injectable()
 export class UserService {
@@ -13,16 +12,16 @@ export class UserService {
     private readonly userRepository: Repository<User>,
   ) {}
 
-  async getUsers() {
-    return this.userRepository.find();
-  }
   async getUsersByName(username) {
     console.log(Like(`%${username}%`));
     return this.userRepository.find({ username: Like(`%${username}%`) });
   }
-
   async getUserById(id) {
     return this.userRepository.findOne({ id });
+  }
+
+  async getUsers() {
+    return this.userRepository.find();
   }
   // 默认是查不出来密码的,要加addSelect
   async getUserByName(username) {

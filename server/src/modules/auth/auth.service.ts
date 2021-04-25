@@ -25,7 +25,6 @@ export class AuthService {
     delete user.password;
     return user;
   }
-
   async login(user) {
     const payload = { id: user.id, username: user.username };
     const token = this.jwtService.sign(payload);
@@ -44,7 +43,6 @@ export class AuthService {
       await this.friendService.addFriend(user.id, 1);
       // 默认加入初始群聊
       await this.groupService.joinGroup(user.id, 1);
-
       // 第一条消息
       await this.messageService.sendFriendMessage({
         senderId: 1,

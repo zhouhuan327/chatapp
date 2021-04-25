@@ -7,8 +7,9 @@ export class newUserDto {
 
   @IsNotEmpty({ message: '密码不能为空' })
   password: string;
-
   intro: string;
+  sex: string;
+  address: string;
 }
 export class updateUserDto extends newUserDto {
   @IsNotEmpty()

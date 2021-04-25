@@ -8,6 +8,7 @@ const service = axios.create({
 service.interceptors.request.use(
   config => {
     if (authAction.get()) {
+      // 请求头带上token信息
       config.headers["Authorization"] = authAction.get();
     }
     return config;

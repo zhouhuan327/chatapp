@@ -18,12 +18,16 @@ export class UserController {
   getUsers(@Query('name') username) {
     return this.userService.getUsersByName(username);
   }
+  @Get('/detail')
+  getUserDetail(@Query('id') id) {
+    return this.userService.getUserById(id);
+  }
   @Post()
   addUser(@Body() user: newUserDto) {
     return this.userService.addUser(user);
   }
 
-  @Patch('')
+  @Patch()
   updateUser(@Body() body: updateUserDto) {
     return this.userService.updateUser(body);
   }

@@ -1,13 +1,13 @@
 import { connect } from "socket.io-client";
 import { atom, selector } from "recoil";
-import { userInfoState } from "./index";
+import { userIdState } from "./index";
 
 export const socketInstance = selector({
   key: "socketInstance",
   get: ({ get }) => {
-    const user = get(userInfoState);
+    const userId = get(userIdState);
     const socket: SocketIOClient.Socket = connect(
-      `http://localhost:3305?userId=${user.id}`,
+      `http://localhost:3305?userId=${userId}`,
     );
     socket.on("connect", () => {
       console.log("socket连接成功");

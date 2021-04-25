@@ -22,6 +22,7 @@ declare global {
     intro: string;
     email: string;
     sex: string;
+    address: string;
     createTime: string;
   };
   type GroupInfo = Partial<{

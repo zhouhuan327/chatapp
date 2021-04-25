@@ -4,7 +4,7 @@ import TitleBar from "layout/TitleBar";
 import Footer from "../Footer";
 import ChatBubble from "components/ChatBubble";
 import { useRecoilValue } from "recoil";
-import { currentChatState, userInfoState } from "store";
+import { currentChatState, userIdState } from "store";
 import { getFriendMessage, getGroupMessage } from "api";
 import moment from "moment";
 import { useChatAnime } from "hooks/useAnime";
@@ -18,7 +18,7 @@ const ChatPanel = () => {
   // 消息列表的引用
   const ref = useRef<HTMLDivElement>(null);
   // 自己的id
-  const { id: userId } = useRecoilValue<UserInfo>(userInfoState);
+  const userId = useRecoilValue<number>(userIdState);
   // 当前的好友/群
   const currentChat = useRecoilValue<RecentChat>(currentChatState as any);
   // 消息列表
@@ -117,7 +117,11 @@ const ChatPanel = () => {
   };
   return (
     <StyledChatPanel>
-      <TitleBar name="sean" status="online" animeProps={topBarAnime} />
+      <TitleBar
+        name={currentChat.name}
+        status="online"
+        animeProps={topBarAnime}
+      />
       <Panels ref={ref} style={msgAnime}>
         {renderBubbleElement(list)}
       </Panels>
