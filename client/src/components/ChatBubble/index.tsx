@@ -7,7 +7,6 @@ import StyledChatBubble, {
   Time,
 } from "./style";
 import { ReactComponent as BubbleIcon } from "assets/icons/bubbleTip.svg";
-import face1 from "assets/images/avatar.jpeg";
 export interface ChatBubbleProps {
   type?: "mine" | "others";
   time?: string;
@@ -16,12 +15,13 @@ export interface ChatBubbleProps {
 const ChatBubble: React.FC<ChatBubbleProps> = ({
   type = "others",
   time,
+  avatarSrc,
   children,
   ...rest
 }) => {
   return (
     <StyledChatBubble type={type} {...rest}>
-      <Avatar src={face1} />
+      <Avatar src={avatarSrc} />
       <div>
         <Bubble>
           <Tip icon={BubbleIcon} color="white" width={38} height={28}></Tip>

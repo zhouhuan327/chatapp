@@ -8,13 +8,12 @@ import Icon from "components/Icon";
 import { ReactComponent as Call } from "assets/icons/call.svg";
 import { ReactComponent as Camera } from "assets/icons/camera.svg";
 import { ReactComponent as Options } from "assets/icons/options.svg";
-import face1 from "assets/images/avatar.jpeg";
-function TitleBar({ name, status, animeProps }) {
+function TitleBar({ name, status, avatarSrc, animeProps }) {
   return (
     <StyledTitleBar style={{ ...animeProps }}>
-      <Avatar status={status} src={face1} />
+      <Avatar status={status} src={avatarSrc} />
       <Title>
-    <ParaGraph size="large">{name}</ParaGraph>
+        <ParaGraph size="large">{name}</ParaGraph>
         <ParaGraph type="secondary">
           <Text>{status === "online" ? "在线" : "离线"}</Text>
           <Text>~ 最后阅读： 3小时</Text>

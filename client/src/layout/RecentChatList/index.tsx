@@ -83,7 +83,7 @@ const RecentChatList = () => {
               <MessageCard
                 active={item._id === currentChat?._id}
                 replied={index % 2 === 0}
-                avatarSrc={face1}
+                avatarSrc={item.avatarSrc}
                 avatarStatus={item.onlineStatus ?? "offline"}
                 name={item.name}
                 statusText={item.onlineStatus === "online" ? "在线" : "离线"}

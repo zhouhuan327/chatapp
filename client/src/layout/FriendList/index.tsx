@@ -19,6 +19,7 @@ import styled from "styled-components";
 import produce from "immer";
 import { scrollbar } from "../../utils/mixin";
 import { detail, profileVisible } from "../../store";
+import { getFileUrl } from "../../utils";
 interface searchList extends UserInfo {
   isFriend?: boolean;
 }
@@ -92,6 +93,7 @@ const FriendList = () => {
     const res = await getUserDetail({ id });
     setDetail(res.data);
   };
+  console.log(process.env);
   return (
     <StyledFriendList>
       <FilterList
@@ -103,7 +105,7 @@ const FriendList = () => {
           {friendList.map((item, index) => (
             <animated.div key={index} style={anime[index]}>
               <FriendCard
-                avatarSrc={face1}
+                avatarSrc={item.avatarSrc}
                 name={item.username}
                 intro={item.intro}
                 onClick={() => handleClickCard(item.id)}

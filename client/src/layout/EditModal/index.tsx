@@ -1,4 +1,4 @@
-import React, { memo, useEffect } from "react";
+import React, { memo, useEffect, useState } from "react";
 import { Modal, Form, Radio, Input, message } from "antd";
 import Avatar from "../../components/Avatar";
 import { getUserDetail, updateUser } from "../../api";
@@ -15,6 +15,7 @@ const EditModal = ({ visible, setVisible, type }) => {
 
   const setForm = async () => {
     const res = await getUserDetail({ id: userId });
+    setAvatarSrc(res.data.avatarSrc);
     form.setFieldsValue(res.data);
   };
   const handleSubmit = async () => {
@@ -29,10 +30,11 @@ const EditModal = ({ visible, setVisible, type }) => {
   useEffect(() => {
     setForm();
   }, []);
+  const [avatarSrc, setAvatarSrc] = useState("");
   const userItems = (
     <>
       <Form.Item label="头像" name="avatarSrc">
-        <Avatar src="" />
+        <Avatar src={avatarSrc} />
       </Form.Item>
       <Form.Item label="用户名" name="username">
         <Input disabled={true} />

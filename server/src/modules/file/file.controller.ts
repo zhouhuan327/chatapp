@@ -1,23 +1,33 @@
 import {
   Controller,
+  Get,
+  Param,
   Post,
+  Query,
+  Req,
+  Res,
   UploadedFile,
   UseInterceptors,
 } from '@nestjs/common';
 import { FileInterceptor } from '@nestjs/platform-express';
-import { NoAuth } from '../../decorators/noAuth';
+import { FileService } from './file.service';
+import { join } from 'path';
 
-@Controller('/file')
+import { Response } from 'express';
+import { NoAuth } from '../../decorators/noAuth';
+@Controller('file')
 export class FileController {
-  constructor() {}
-  @NoAuth()
+  constructor(private readonly fileService: FileService) {}
   @Post('upload')
   @UseInterceptors(FileInterceptor('file'))
-  uploadFile(@UploadedFile() file) {
-    console.log(file);
+  uploadFile(@Req() req, @UploadedFile() file) {
+    const userId = req.user?.userId;
+    return this.fileService.saveFileRecord(userId, file.filename);
   }
-  @Post('test')
-  test() {
-    return '1';
+  @Get(':name')
+  @NoAuth()
+  viewFile(@Param('name') name, @Res() res: Response) {
+    res.sendFile(join(__dirname, '../../../assets/upload', name));
+    return '下载成功';
   }
 }

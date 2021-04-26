@@ -1,5 +1,6 @@
 import React, { FC, memo } from "react";
 import { StyledAvatar, StatusIcon, AvatarWrapper } from "./style";
+import { getFileUrl } from "../../utils";
 interface AvatarProps {
   /** 图片路径 */
   src: string;
@@ -21,7 +22,7 @@ const Avatar: FC<AvatarProps> = ({
   <StyledAvatar {...rest}>
     {status && <StatusIcon status={status} size={statusIconSize} />}
     <AvatarWrapper size={size}>
-      <img src={src} alt="" />
+      <img src={getFileUrl(src)} alt="" />
     </AvatarWrapper>
   </StyledAvatar>
 );

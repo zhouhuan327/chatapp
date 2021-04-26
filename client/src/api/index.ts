@@ -1,4 +1,5 @@
 import request from "../utils/request";
+
 // 登录
 export const login = data =>
   request({ url: "/api/auth/login", method: "post", data });

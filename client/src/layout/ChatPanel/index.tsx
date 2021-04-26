@@ -91,25 +91,30 @@ const ChatPanel = () => {
     }
   };
   const renderBubbleElement = list => {
+    console.log(list);
     return list.map(item => {
       if (item.notice) {
         return <NoticeBubble key={Math.random()}>{item.notice}</NoticeBubble>;
       }
       let isMe = false;
+      let avatarSrc = "";
       const time = moment(item.createTime).format("HH:mm");
       if (item.receiver?.id) {
         // 好友消息
         isMe = item.sender.id === userId;
+        avatarSrc = item.sender?.avatarSrc;
       } else {
         // 群消息
         isMe = item.user.id === userId;
+        avatarSrc = item.user?.avatarSrc;
       }
+
       return isMe ? (
-        <MyChatBubble key={item.id} time={time}>
+        <MyChatBubble key={item.id} time={time} avatarSrc={avatarSrc}>
           {item.content}
         </MyChatBubble>
       ) : (
-        <ChatBubble key={item.id} time={time}>
+        <ChatBubble key={item.id} time={time} avatarSrc={avatarSrc}>
           {item.content}
         </ChatBubble>
       );
@@ -119,6 +124,7 @@ const ChatPanel = () => {
     <StyledChatPanel>
       <TitleBar
         name={currentChat.name}
+        avatarSrc={currentChat.avatarSrc}
         status="online"
         animeProps={topBarAnime}
       />
