@@ -11,7 +11,7 @@ export class Group {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: '' })
+  @Column({ default: 'default_group.jpeg' })
   avatarSrc: string;
 
   @Column()

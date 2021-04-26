@@ -19,6 +19,7 @@ import { NoAuth } from '../../decorators/noAuth';
 export class FileController {
   constructor(private readonly fileService: FileService) {}
   @Post('upload')
+  @NoAuth()
   @UseInterceptors(FileInterceptor('file'))
   uploadFile(@Req() req, @UploadedFile() file) {
     const userId = req.user?.userId;

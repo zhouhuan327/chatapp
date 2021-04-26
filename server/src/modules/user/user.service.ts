@@ -38,10 +38,11 @@ export class UserService {
     return this.userRepository.save(user);
   }
   async updateUser(user: updateUserDto) {
+    console.log(user);
     const oldUser = await this.userRepository.findOne({ id: user.id });
     if (!oldUser) throw new CommonException('用户不存在');
 
-    return this.userRepository.update(oldUser, user);
+    return this.userRepository.save(user);
   }
   async deleteUser(id) {
     return this.userRepository.delete(id);

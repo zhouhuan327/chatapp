@@ -93,7 +93,6 @@ const FriendList = () => {
     const res = await getUserDetail({ id });
     setDetail(res.data);
   };
-  console.log(process.env);
   return (
     <StyledFriendList>
       <FilterList

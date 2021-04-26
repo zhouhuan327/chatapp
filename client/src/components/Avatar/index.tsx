@@ -3,7 +3,7 @@ import { StyledAvatar, StatusIcon, AvatarWrapper } from "./style";
 import { getFileUrl } from "../../utils";
 interface AvatarProps {
   /** 图片路径 */
-  src: string;
+  src?: string;
   /** 尺寸 默认48px */
   size?: string;
   /** 状态 online在线 offline不在线 */
@@ -13,7 +13,7 @@ interface AvatarProps {
   [rest: string]: any;
 }
 const Avatar: FC<AvatarProps> = ({
-  src,
+  src = "default_avatar1.jpeg",
   size = "48px",
   status,
   statusIconSize = "6px",

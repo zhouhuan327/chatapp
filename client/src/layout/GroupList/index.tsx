@@ -32,7 +32,7 @@ const GroupList = () => {
           {groupList.map((item, index) => (
             <animated.div key={index} style={anime[index]}>
               <FriendCard
-                avatarSrc={face1}
+                avatarSrc={item.avatarSrc}
                 name={item.groupName}
                 intro={item.intro}
               />

@@ -13,6 +13,6 @@ export class FileService {
     this.assetDir = path.join(__dirname + 'assets');
   }
   async saveFileRecord(userId: number, fileName: string) {
-    return await this.fileRepository.save({ userId, fileName });
+    return await this.fileRepository.save({ userId: userId || 0, fileName });
   }
 }

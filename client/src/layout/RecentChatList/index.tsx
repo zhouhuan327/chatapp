@@ -84,9 +84,15 @@ const RecentChatList = () => {
                 active={item._id === currentChat?._id}
                 replied={index % 2 === 0}
                 avatarSrc={item.avatarSrc}
-                avatarStatus={item.onlineStatus ?? "offline"}
+                avatarStatus={
+                  (item.type === "friend" && item.onlineStatus) ?? "offline"
+                }
                 name={item.name}
-                statusText={item.onlineStatus === "online" ? "在线" : "离线"}
+                statusText={
+                  item.type === "friend" && item.onlineStatus === "online"
+                    ? "在线"
+                    : "离线"
+                }
                 time={item.time}
                 message={item.content}
                 unreadCount={item.unreadCount}

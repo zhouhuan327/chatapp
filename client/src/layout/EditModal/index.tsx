@@ -1,10 +1,9 @@
 import React, { memo, useEffect, useState } from "react";
-import { Modal, Form, Radio, Input, message } from "antd";
+import { Modal, Form, Radio, Input, message, Upload } from "antd";
 import Avatar from "../../components/Avatar";
 import { getUserDetail, updateUser } from "../../api";
 import { useRecoilValue } from "recoil";
 import { userIdState } from "../../store";
-
 const EditModal = ({ visible, setVisible, type }) => {
   const [form] = Form.useForm();
   const userId = useRecoilValue<number>(userIdState);
@@ -31,10 +30,26 @@ const EditModal = ({ visible, setVisible, type }) => {
     setForm();
   }, []);
   const [avatarSrc, setAvatarSrc] = useState("");
+  const handleUpload = info => {
+    const res = info?.file.response;
+    if (res?.code === 200) {
+      setAvatarSrc(res?.data?.fileName);
+      form.setFieldsValue({ avatarSrc: res?.data?.fileName });
+    }
+  };
   const userItems = (
     <>
-      <Form.Item label="头像" name="avatarSrc">
-        <Avatar src={avatarSrc} />
+      <Form.Item label="头像">
+        <Upload
+          action="http://localhost:3305/api/file/upload"
+          name="file"
+          maxCount={1}
+          onChange={handleUpload}
+        >
+          <Form.Item noStyle name="avatarSrc">
+            <Avatar src={avatarSrc} />
+          </Form.Item>
+        </Upload>
       </Form.Item>
       <Form.Item label="用户名" name="username">
         <Input disabled={true} />
@@ -50,8 +65,8 @@ const EditModal = ({ visible, setVisible, type }) => {
       </Form.Item>
       <Form.Item label="性别" name="sex">
         <Radio.Group>
-          <Radio value={1}>男</Radio>
-          <Radio value={0}>女</Radio>
+          <Radio value="男">男</Radio>
+          <Radio value="女">女</Radio>
         </Radio.Group>
       </Form.Item>
     </>

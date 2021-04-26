@@ -5,7 +5,8 @@ export const authAction = {
   get: () => localStorage.getItem("Authorization"),
   set: data => {
     localStorage.setItem("Authorization", "Bearer " + data.token);
-    localStorage.setItem("userId", JSON.stringify(data.user.id));
+    localStorage.setItem("userId", data.user.id);
+    localStorage.setItem("avatarSrc", data.user.avatarSrc);
   },
   remove: () => {
     localStorage.removeItem("Authorization");
