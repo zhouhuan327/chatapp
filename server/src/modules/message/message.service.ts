@@ -104,7 +104,6 @@ export class MessageService {
     message.receiver = receiverUser;
     message.content = content;
     message.type = type;
-
     return this.friendMessageRepository.save(message);
   }
 

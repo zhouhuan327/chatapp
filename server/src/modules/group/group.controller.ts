@@ -44,4 +44,12 @@ export class GroupController {
   getGroupMMembers(@Query('groupId') groupId) {
     return this.groupService.getGroupMembers(groupId);
   }
+  @Get('/search')
+  getAllGroups(@Query('name') name) {
+    return this.groupService.getAllGroups(name);
+  }
+  @Get('/detail')
+  getGroupDetail(@Query('id') id) {
+    return this.groupService.getGroupById(id);
+  }
 }

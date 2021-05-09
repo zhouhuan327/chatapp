@@ -7,25 +7,48 @@ import StyledChatBubble, {
   Time,
 } from "./style";
 import { ReactComponent as BubbleIcon } from "assets/icons/bubbleTip.svg";
+import { getFileUrl } from "../../utils";
+import { AvatarWrapper } from "../Avatar/style";
 export interface ChatBubbleProps {
   type?: "mine" | "others";
+  contentType: "text" | "file";
   time?: string;
   [rest: string]: any;
 }
 const ChatBubble: React.FC<ChatBubbleProps> = ({
   type = "others",
+  contentType = "text",
   time,
   avatarSrc,
   children,
   ...rest
 }) => {
+  const handleImgError = e => {
+    console.log(e);
+    const img = e.target;
+    img.src = getFileUrl("file_icon.png");
+    img.οnerrοr = null;
+  };
+  let content;
+  if (contentType === "text") {
+    content = children;
+  }
+  if (contentType === "file") {
+    content = (
+      <img
+        style={{ width: 200, height: "auto" }}
+        src={getFileUrl(children)}
+        alt="该文件不支持预览"
+      />
+    );
+  }
   return (
     <StyledChatBubble type={type} {...rest}>
       <Avatar src={avatarSrc} />
       <div>
         <Bubble>
           <Tip icon={BubbleIcon} color="white" width={38} height={28}></Tip>
-          <MessageText>{children}</MessageText>
+          <MessageText>{content}</MessageText>
         </Bubble>
         <Time>{time}</Time>
       </div>

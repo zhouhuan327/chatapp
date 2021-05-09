@@ -6,7 +6,7 @@ declare global {
     message: string;
   }
   // 消息内容的类型
-  type ContentType = string | "text" | "image";
+  type ContentType = "text" | "file";
   // 路由结构
   interface Route {
     path: string;

@@ -15,6 +15,7 @@ import { socketInstance } from "store/socket";
 import { recentChatsState } from "../../store";
 import { Form, message } from "antd";
 import produce from "immer";
+import { Upload } from "antd";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -66,13 +67,41 @@ function Footer({ userId, currentChat, setList, animeProps }) {
     // 发送后清空消息栏
     form.resetFields();
   };
+  // 发送图片/文件
+  const handleUpload = info => {
+    const res = info?.file.response;
+    if (res?.code === 200) {
+      const filename = res.data.fileName || "";
+      const { id, type } = currentChat;
+      if (!id) return;
+      const sendObj = {
+        senderId: userId,
+        [type === "friend" ? "receiverId" : "groupId"]: id,
+        content: filename,
+        type: "file",
+      };
+      socket.emit(`${type}ChatMessage`, sendObj);
+      form.resetFields();
+    }
+  };
   return (
     <StyledFooter style={{ ...animeProps }}>
       <Form form={form}>
         <Form.Item noStyle name="content">
           <Input
             placeholder="输入想要说的话"
-            prefix={<Icon icon={ClipIcon} />}
+            prefix={
+              <Upload
+                action="http://localhost:3305/api/file/upload"
+                name="file"
+                // accept=".jpg, .jpeg, .png"
+                showUploadList={false}
+                maxCount={1}
+                onChange={handleUpload}
+              >
+                <Icon style={{ cursor: "pointer" }} icon={ClipIcon} />
+              </Upload>
+            }
             suffix={
               <IconContainer>
                 <Popover offset={{ x: "-25%" }} content={<PopoverContent />}>

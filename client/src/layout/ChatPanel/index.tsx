@@ -110,11 +110,21 @@ const ChatPanel = () => {
       }
 
       return isMe ? (
-        <MyChatBubble key={item.id} time={time} avatarSrc={avatarSrc}>
+        <MyChatBubble
+          key={item.id}
+          time={time}
+          avatarSrc={avatarSrc}
+          contentType={item.type}
+        >
           {item.content}
         </MyChatBubble>
       ) : (
-        <ChatBubble key={item.id} time={time} avatarSrc={avatarSrc}>
+        <ChatBubble
+          key={item.id}
+          time={time}
+          avatarSrc={avatarSrc}
+          contentType={item.type}
+        >
           {item.content}
         </ChatBubble>
       );

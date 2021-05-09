@@ -13,7 +13,7 @@ import {
   useRecoilValue,
   useSetRecoilState,
 } from "recoil";
-import { addFriend, getFriends, getUserDetail, getUsers } from "../../api";
+import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
 import { Search } from "components/Input";
 import styled from "styled-components";
 import produce from "immer";
@@ -45,7 +45,7 @@ const FriendList = () => {
   const [searchList, setSearchList] = useState<searchList[]>([]);
   const handleSearch = useCallback(
     async value => {
-      const res: RespType<UserInfo[]> = await getUsers({ name: value });
+      const res: RespType<UserInfo[]> = await searchUsers({ name: value });
       const users: searchList[] = res.data;
       users.forEach(item => {
         item.isFriend = !!friendList.find(friend => friend.id === item.id);
@@ -136,7 +136,6 @@ const FriendList = () => {
               ]}
             >
               <List.Item.Meta
-                avatar={item.avatarSrc || ""}
                 title={
                   <span>
                     {item?.username}

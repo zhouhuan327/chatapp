@@ -24,12 +24,19 @@ export const getGroupMessage = (params: { groupId: number }) =>
   request({ url: "/api/message/group", method: "get", params });
 
 // 搜索用户
-export const getUsers = (params: { name: string }) =>
+export const searchUsers = (params: { name: string }) =>
   request.get("/api/user", { params });
+// 搜索用户
+export const searchGroups = (params: { name: string }) =>
+  request.get("/api/group/search", { params });
 // 添加好友
 export const addFriend = (body: { friendId: number }) =>
   request.post("/api/friend", body);
-
+// 加入群
+export const joinGroup = (body: { groupId: number }) =>
+  request.post("/api/group/join", body);
 export const getUserDetail = (params: { id: number }) =>
   request.get("/api/user/detail", { params });
+export const getGroupDetail = (params: { id: number }) =>
+  request.get("/api/group/detail", { params });
 export const updateUser = (body: UserInfo) => request.patch("/api/user", body);

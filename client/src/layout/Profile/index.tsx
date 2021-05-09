@@ -8,16 +8,32 @@ import ParaGraph from "components/ParaGraph";
 import Emoji from "components/Emoji";
 import Divider from "components/Divider";
 import Text from "components/Text";
+import { useHistory } from "react-router-dom";
 import { ReactComponent as Cross } from "assets/icons/cross.svg";
 import { useRecoilValue, useSetRecoilState } from "recoil";
 import { detail, profileVisible } from "store";
 import Button from "../../components/Button";
 import moment from "moment";
 const Profile = ({ ...rest }) => {
+  const history = useHistory();
   const setVisible = useSetRecoilState(profileVisible);
-  const userDetail = useRecoilValue(detail);
+  const userDetail: any = useRecoilValue(detail);
+  const type = userDetail.username ? "user" : "group";
   const handleSend = () => {
-    console.log(userDetail.id);
+    const { id, avatarSrc, username } = userDetail;
+    const newChat: RecentChat = {
+      id,
+      avatarSrc,
+      name: username,
+      time: "0 分钟前",
+      type: "friend",
+      unreadCount: 0,
+      onlineStatus: "offline",
+      intro: "",
+      content: "",
+      contentType: "text",
+    };
+    history.push("/chat/message", { newChat });
   };
   const handleDelete = () => {
     Modal.confirm({
@@ -28,7 +44,7 @@ const Profile = ({ ...rest }) => {
         message.success("删除成功");
         return Promise.resolve();
       },
-      onCancel: () => Promise.reject(),
+      onCancel: () => Promise.resolve(),
     });
   };
   return (
@@ -47,7 +63,7 @@ const Profile = ({ ...rest }) => {
         `}
         size="xlarge"
       >
-        {userDetail?.username || "XXX"}
+        {userDetail?.username || userDetail.groupName || "xxx"}
       </ParaGraph>
       <ParaGraph
         css={`
@@ -56,7 +72,7 @@ const Profile = ({ ...rest }) => {
         size="medium"
         type="secondary"
       >
-        杭州市 滨江区
+        {userDetail?.address}
       </ParaGraph>
       <ParaGraph
         css={`
@@ -74,9 +90,16 @@ const Profile = ({ ...rest }) => {
         `}
       />
       <ContactSection>
-        <Description label="性别">{userDetail?.sex || "-"}</Description>
-        <Description label="电子邮件">{userDetail?.email || "-"}</Description>
-        <Description label="注册时间">
+        {type === "user" && (
+          <>
+            <Description label="性别">{userDetail?.sex || "-"}</Description>
+            <Description label="电子邮件">
+              {userDetail?.email || "-"}
+            </Description>
+          </>
+        )}
+
+        <Description label="创建时间">
           {moment(userDetail?.createTime).format("YYYY-MM-DD") || "-"}
         </Description>
       </ContactSection>
@@ -90,7 +113,7 @@ const Profile = ({ ...rest }) => {
           发送消息
         </Button>
         <Button shape="rect" style={{ marginLeft: 20 }} onClick={handleDelete}>
-          删除
+          {type === "user" ? "删除" : "退出"}
         </Button>
       </div>
     </StyledProfile>

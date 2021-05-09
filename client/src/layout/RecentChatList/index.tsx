@@ -1,7 +1,6 @@
 import React, { memo, useCallback, useEffect, useRef } from "react";
 import StyledRecentChatList, { ChatList } from "./style";
 import MessageCard from "components/MessageCard";
-import face1 from "assets/images/avatar.jpeg";
 import FilterList from "../../components/FilterList";
 import { animated } from "react-spring";
 import { useAnimeList } from "hooks/useAnime";
@@ -11,7 +10,7 @@ import { socketInstance } from "store/socket";
 import { getRecentMessage } from "../../api";
 import useSyncListStatus from "hooks/useSyncListStatus";
 import produce from "immer";
-
+import { useLocation } from "react-router-dom";
 const RecentChatList = () => {
   // socket实例
   const socket = useRecoilValue(socketInstance);
@@ -74,6 +73,20 @@ const RecentChatList = () => {
       return newState;
     });
   }, []);
+  const location = useLocation<{ newChat?: RecentChat }>();
+  useEffect(() => {
+    const newChat = location.state?.newChat;
+    if (!newChat) return;
+    console.log(newChat);
+    // 查看这个是否已经在最近聊天列表中
+    const target = recentChats.find(item => item.id === newChat.id);
+    if (target) {
+      setCurrentChat(target);
+    } else {
+      const currentIndexId = recentChats.length;
+      setRecentChats(old => [{ ...newChat, _id: currentIndexId + 1 }, ...old]);
+    }
+  }, [location, recentChats, setCurrentChat]);
   return (
     <StyledRecentChatList>
       <FilterList>

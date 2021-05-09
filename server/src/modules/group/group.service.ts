@@ -3,7 +3,7 @@ import { InjectRepository } from '@nestjs/typeorm';
 import { Group } from './entity/group.entity';
 import CommonException from '../../utils/common.exception';
 import { newGroupDto } from './dto/newGroup.dto';
-import { Repository } from 'typeorm';
+import { Like, Repository } from 'typeorm';
 import { GroupRelation } from './entity/groupRelation.entity';
 import { UserService } from '../user/user.service';
 import { formatTime } from '../../utils';
@@ -108,5 +108,8 @@ export class GroupService {
       return obj;
     });
     return recentChatGroup;
+  }
+  async getAllGroups(groupName) {
+    return this.groupRepository.find({ groupName: Like(`%${groupName}%`) });
   }
 }
