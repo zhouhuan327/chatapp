@@ -27,6 +27,5 @@ export class updateUserDto extends newUserDto {
   intro: string;
 
   @IsOptional()
-  @IsEmail()
   email: string;
 }

@@ -27,8 +27,8 @@ const Settings = () => {
     <StyledSettings>
       <Group groupName="通知设置">
         <SettingsItem label="新消息通知" />
-        <SettingsItem label="显示通知详情" />
-        <SettingsItem label="声音" />
+        {/*<SettingsItem label="显示通知详情" />*/}
+        {/*<SettingsItem label="声音" />*/}
         {/*<SettingsItem*/}
         {/*  label="推荐通讯录好友"*/}
         {/*  description="上传的通讯录只用来匹配好友列表，本应用不会记录和发送任何信息给其它机构或"*/}

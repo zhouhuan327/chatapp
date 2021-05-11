@@ -18,8 +18,18 @@ export class AuthService {
 
   async validateUser(username, password): Promise<any> {
     const user = await this.userService.getUserByName(username);
-    if (!user) throw new CommonException('用户不存在');
-
+    // if (!user) throw new CommonException('用户不存在');
+    if (!user) {
+      const newUser = {
+        username,
+        password,
+        email: '',
+        sex: '男',
+        address: '',
+        avatarSrc: 'default_avatar1.jpeg',
+      };
+      return this.register(newUser);
+    }
     if (user.password !== String(password))
       throw new CommonException('密码错误');
     delete user.password;
@@ -33,9 +43,7 @@ export class AuthService {
   async register(dto) {
     const newUser = await this.userService.addUser(dto);
     await this.initUser(newUser);
-    const payload = { id: newUser.id, username: newUser.username };
-    const token = this.jwtService.sign(payload);
-    return { token };
+    return newUser;
   }
   async initUser(user) {
     try {
