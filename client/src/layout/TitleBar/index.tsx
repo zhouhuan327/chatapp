@@ -20,9 +20,9 @@ function TitleBar({ name, status, avatarSrc, animeProps }) {
         </ParaGraph>
       </Title>
       <Actions>
-        <Icon opacity={0.3} icon={Call} />
-        <Icon opacity={0.3} icon={Camera} />
-        <Icon opacity={0.3} icon={Options} />
+        {/*<Icon opacity={0.3} icon={Call} />*/}
+        {/*<Icon opacity={0.3} icon={Camera} />*/}
+        {/*<Icon opacity={0.3} icon={Options} />*/}
       </Actions>
     </StyledTitleBar>
   );

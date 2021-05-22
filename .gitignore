@@ -3,7 +3,6 @@
 
 /**/build
 /**/dist
-
 *.DS_Store
 .eslintcache
 npm-debug.log*

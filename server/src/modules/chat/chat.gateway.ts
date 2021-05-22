@@ -47,11 +47,6 @@ export class ChatGateway
       this.server.emit('onlineStatus', Array.from(this.liveUserIds));
       Logger.log(`id = ${id}的用户上线了`);
     }
-    // const live = Object.values((this.server.engine as any).clients).map(
-    //   item => {
-    //     return (item as any).request._query.userId;
-    //   },
-    // );
   }
 
   handleDisconnect(client: any) {

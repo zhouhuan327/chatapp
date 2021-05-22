@@ -1,7 +1,7 @@
 import request from "../utils/request";
 
 export const url =
-  process.env.NODE_ENV === "development" ? "http://192.168.31.159:3305" : "";
+  process.env.NODE_ENV === "development" ? "http://localhost:3305" : "";
 
 // 登录
 export const login = data =>

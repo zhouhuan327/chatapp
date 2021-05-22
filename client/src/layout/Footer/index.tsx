@@ -107,7 +107,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
                 <Popover offset={{ x: "-25%" }} content={<PopoverContent />}>
                   <Icon icon={SmileIcon} />
                 </Popover>
-                <Icon icon={MicrophoneIcon} />
+
                 <Button size="52px" onClick={handleSubmit}>
                   <Icon
                     color="white"

@@ -6,6 +6,7 @@ const useSyncListStatus = (socket, list, setList) => {
   // 实时拿到在线人数,更新列表在线状态
   useEffect(() => {
     socket.on("onlineStatus", onlineUser => {
+      console.log("online user", onlineUser);
       const filter = listRef.current.map(item => {
         if (item.type === "group") return item;
         if (onlineUser.includes(String(item.id))) {
@@ -32,7 +33,7 @@ const useSyncListStatus = (socket, list, setList) => {
     // 定时器,5s更新一次列表的在线状态
     const timer = setInterval(() => {
       setList(listRef.current);
-    }, 5000);
+    }, 3000);
     return () => clearInterval(timer);
   }, []);
 
