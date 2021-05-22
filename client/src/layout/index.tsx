@@ -1,13 +1,12 @@
 import React from "react";
 import StyledChatApp, { Nav, SideBar, Content, Drawer } from "./style";
-import NavBar from "layout/NavBar";
-import ChatPanel from "layout/ChatPanel";
-import Profile from "layout/Profile";
+import NavBar from "/@/layout/NavBar";
+import ChatPanel from "/@/layout/ChatPanel";
+import Profile from "/@/layout/Profile";
 import { Route, Switch, useLocation } from "react-router-dom";
-import { useTransition } from "react-spring";
-import { animated } from "react-spring";
+import { useTransition, animated } from "react-spring";
 import { useRecoilValue } from "recoil";
-import { profileVisible } from "store";
+import { profileVisible } from "/@/store";
 import { routers } from "../router";
 function ChatApp({ ...rest }) {
   const location = useLocation();

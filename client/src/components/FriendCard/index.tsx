@@ -1,6 +1,6 @@
 import React, { memo } from "react";
 import StyledFriendCard, { Name, Intro } from "./style";
-import Avatar from "components/Avatar";
+import Avatar from "/@/components/Avatar";
 interface FriendCardProps {
   avatarSrc: string;
   status?: "online" | "offline";

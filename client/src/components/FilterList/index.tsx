@@ -1,12 +1,12 @@
 import React from "react";
-import { Search } from "components/Input";
-import Select from "components/Select";
-import Option from "components/Option";
-import Button from "components/Button";
-import Text from "components/Text";
-import Icon from "components/Icon";
+import { Search } from "/@/components/Input";
+import Select from "/@/components/Select";
+import Option from "/@/components/Option";
+import Button from "/@/components/Button";
+import Text from "/@/components/Text";
+import Icon from "/@/components/Icon";
 import styled from "styled-components";
-import { ReactComponent as Plus } from "assets/icons/plus.svg";
+import { ReactComponent as Plus } from "/@/assets/icons/plus.svg";
 interface FilterListProps {
   filterLabel?: string;
   actionLabel?: string;

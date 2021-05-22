@@ -7,10 +7,10 @@ import StyledMessageCard, {
   MessageText,
   UnreadBadge,
 } from "./style";
-import Avatar from "components/Avatar";
+import Avatar from "/@/components/Avatar";
 import { useTheme } from "styled-components";
-import Icon from "components/Icon";
-import { ReactComponent as Replied } from "assets/icons/replied.svg";
+import Icon from "/@/components/Icon";
+import { ReactComponent as Replied } from "/@/assets/icons/replied.svg";
 interface MessageCardProps {
   avatarSrc: string;
   avatarStatus: any;

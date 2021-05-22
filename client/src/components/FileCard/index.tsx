@@ -1,7 +1,7 @@
 import React, { memo } from "react";
 import PropTypes from "prop-types";
 import StyledContactCard, { FileName, FileSize, Time, FileIcon } from "./style";
-import { ReactComponent as zip } from "assets/icons/fileZip.svg";
+import { ReactComponent as zip } from "/@/assets/icons/fileZip.svg";
 function FileCard({ ...rest }) {
   return (
     <StyledContactCard {...rest}>

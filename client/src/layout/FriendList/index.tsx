@@ -2,10 +2,10 @@ import React, { memo, useCallback, useEffect, useState } from "react";
 import { Modal, List, Button, message, Tag } from "antd";
 import StyledFriendList, { Friends } from "./style";
 import FilterList from "../../components/FilterList";
-import FriendCard from "components/FriendCard";
+import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
-import face1 from "assets/images/avatar.jpeg";
-import { useAnimeList } from "hooks/useAnime";
+import face1 from "/@/assets/images/avatar.jpeg";
+import { useAnimeList } from "/@/hooks/useAnime";
 import {
   atom,
   selector,
@@ -14,7 +14,7 @@ import {
   useSetRecoilState,
 } from "recoil";
 import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
-import { Search } from "components/Input";
+import { Search } from "/@/components/Input";
 import styled from "styled-components";
 import produce from "immer";
 import { scrollbar } from "../../utils/mixin";

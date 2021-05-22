@@ -1,7 +1,6 @@
-import { memo, useState } from "react";
+import React, { memo } from "react";
 import ScLogin, { Card } from "./style";
 import { Form, Input } from "antd";
-// import InputText from "../../components/Input/InputText";
 import Button from "../../components/Button";
 import { message } from "antd";
 import { authAction } from "../../utils/auth";

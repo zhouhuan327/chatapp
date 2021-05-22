@@ -1,8 +1,8 @@
 import styled, { css } from "styled-components";
-import ParaGraph from "components/ParaGraph";
-import Icon from "components/Icon";
-import Text from "components/Text";
-import Avatar from "components/Avatar";
+import ParaGraph from "/@/components/ParaGraph";
+import Icon from "/@/components/Icon";
+import Text from "/@/components/Text";
+import Avatar from "/@/components/Avatar";
 import { ChatBubbleProps } from ".";
 const Ava = styled(Avatar)`
   margin: 0 10px;

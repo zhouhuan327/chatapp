@@ -1,8 +1,8 @@
-import Icon from "components/Icon";
-import ParaGraph from "components/ParaGraph";
-import Popover from "components/Popover";
+import Icon from "/@/components/Icon";
+import ParaGraph from "/@/components/ParaGraph";
+import Popover from "/@/components/Popover";
 import styled from "styled-components";
-import { card } from "utils/mixin";
+import { card } from "/@/utils/mixin";
 
 const StyledFileCard = styled.div`
   ${card()};

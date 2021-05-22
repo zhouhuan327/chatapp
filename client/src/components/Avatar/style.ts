@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { circle } from "utils/mixin";
+import { circle } from "/@/utils/mixin";
 
 const circleMixin = (color, size = "8px") => css`
   content: "";

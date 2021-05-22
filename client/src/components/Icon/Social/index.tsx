@@ -1,5 +1,5 @@
 import React, { FC } from "react";
-import Button from "components/Button";
+import Button from "/@/components/Button";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 export interface SocialIconProps {
   icon?: any;

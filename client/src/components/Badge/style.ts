@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import { circle } from "utils/mixin";
+import { circle } from "/@/utils/mixin";
 import { BadgePros } from ".";
 interface Badge extends BadgePros {
   /** 传入了children则为一个左上角的红点，默认为数字圆圈 */

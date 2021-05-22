@@ -4,10 +4,10 @@ import StyledSettings, {
   SettingsItemControl,
   StyledGroup,
 } from "./style";
-import { ReactComponent as ArrowMenuRight } from "assets/icons/arrowMenuRight.svg";
-import Paragraph from "components/ParaGraph";
-import Switch from "components/Switch";
-import Icon from "components/Icon";
+import { ReactComponent as ArrowMenuRight } from "/@/assets/icons/arrowMenuRight.svg";
+import Paragraph from "/@/components/ParaGraph";
+import Switch from "/@/components/Switch";
+import Icon from "/@/components/Icon";
 import { authAction } from "../../utils/auth";
 import { useHistory } from "react-router-dom";
 import { message } from "antd";

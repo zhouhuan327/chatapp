@@ -1,7 +1,0 @@
-@import '../src/index.css';
-.row {
-    display: flex;
-}
-.row > * {
-    margin: 8px;
-}

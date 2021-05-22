@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import { scrollbar } from "utils/mixin";
+import { scrollbar } from "/@/utils/mixin";
 
 const StyledGroupList = styled.div``;
 const Groups = styled.div`
