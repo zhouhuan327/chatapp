@@ -6,7 +6,7 @@ import StyledChatBubble, {
   MessageText,
   Time,
 } from "./style";
-import { ReactComponent as BubbleIcon } from "assets/icons/bubbleTip.svg";
+import { ReactComponent as BubbleIcon } from "/@/assets/icons/bubbleTip.svg";
 import { getFileUrl } from "../../utils";
 import { AvatarWrapper } from "../Avatar/style";
 export interface ChatBubbleProps {

@@ -1,6 +1,6 @@
 import React from "react";
 import StyledSelect from "./style";
-import LabelContainer from "components/LabelContainer";
+import LabelContainer from "/@/components/LabelContainer";
 interface SelectPros {
   label?: string;
   [rest: string]: any;

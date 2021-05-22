@@ -1,7 +1,7 @@
-import { StyledAvatar } from "components/Avatar/style";
-import ParaGraph from "components/ParaGraph";
+import { StyledAvatar } from "/@/components/Avatar/style";
+import ParaGraph from "/@/components/ParaGraph";
 import styled from "styled-components";
-import { card } from "utils/mixin";
+import { card } from "/@/utils/mixin";
 
 const Name = styled(ParaGraph).attrs({ size: "large" })`
   grid-area: name;

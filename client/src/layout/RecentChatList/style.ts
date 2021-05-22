@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import StyledMessageCard from "components/MessageCard/style";
-import { scrollbar } from "utils/mixin";
+import StyledMessageCard from "/@/components/MessageCard/style";
+import { scrollbar } from "/@/utils/mixin";
 const ChatList = styled.div`
   ${StyledMessageCard} {
     margin-bottom: 20px;

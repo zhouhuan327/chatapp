@@ -1,6 +1,6 @@
 import styled from "styled-components";
-import ChatBubble from "components/ChatBubble";
-import { scrollbar } from "utils/mixin";
+import ChatBubble from "/@/components/ChatBubble";
+import { scrollbar } from "/@/utils/mixin";
 import { animated } from "react-spring";
 export const Panels = styled(animated.div)`
   display: flex;

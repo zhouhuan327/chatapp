@@ -1,14 +1,14 @@
 import React, { memo, useCallback, useEffect, useRef, useState } from "react";
 import StyledChatPanel, { Panels, MyChatBubble, NoticeBubble } from "./style";
-import TitleBar from "layout/TitleBar";
+import TitleBar from "/@/layout/TitleBar";
 import Footer from "../Footer";
-import ChatBubble from "components/ChatBubble";
+import ChatBubble from "/@/components/ChatBubble";
 import { useRecoilValue } from "recoil";
-import { currentChatState, userIdState } from "store";
-import { getFriendMessage, getGroupMessage } from "api";
+import { currentChatState, userIdState } from "/@/store";
+import { getFriendMessage, getGroupMessage } from "/@/api";
 import moment from "moment";
-import { useChatAnime } from "hooks/useAnime";
-import { socketInstance } from "store/socket";
+import { useChatAnime } from "/@/hooks/useAnime";
+import { socketInstance } from "/@/store/socket";
 import produce from "immer";
 const ChatPanel = () => {
   // 动画参数

@@ -5,7 +5,7 @@ import { Router, Route, Switch, Redirect } from "react-router-dom";
 import { RecoilRoot } from "recoil";
 import { pageRouters } from "./router";
 import "antd/dist/antd.css";
-import history from "router/history";
+import history from "/@/router/history";
 function App() {
   return (
     <Router history={history}>

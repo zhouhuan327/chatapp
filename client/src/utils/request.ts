@@ -1,7 +1,7 @@
 import axios from "axios";
 import { message } from "antd";
 import { authAction } from "./auth";
-import history from "router/history";
+import history from "/@/router/history";
 const service = axios.create({
   timeout: 50000,
 });

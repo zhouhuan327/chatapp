@@ -1,5 +1,5 @@
 import styled, { css } from "styled-components";
-import SytledText from "components/Text/style";
+import SytledText from "/@/components/Text/style";
 
 const StyledParaGraph = styled(SytledText)`
   ${({ ellipsis }) =>

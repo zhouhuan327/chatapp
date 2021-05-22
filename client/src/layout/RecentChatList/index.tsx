@@ -1,14 +1,14 @@
 import React, { memo, useCallback, useEffect, useRef } from "react";
 import StyledRecentChatList, { ChatList } from "./style";
-import MessageCard from "components/MessageCard";
+import MessageCard from "/@/components/MessageCard";
 import FilterList from "../../components/FilterList";
 import { animated } from "react-spring";
-import { useAnimeList } from "hooks/useAnime";
+import { useAnimeList } from "/@/hooks/useAnime";
 import { useRecoilState, useRecoilValue } from "recoil";
-import { currentChatState, recentChatsState } from "store";
-import { socketInstance } from "store/socket";
+import { currentChatState, recentChatsState } from "/@/store";
+import { socketInstance } from "/@/store/socket";
 import { getRecentMessage } from "../../api";
-import useSyncListStatus from "hooks/useSyncListStatus";
+import useSyncListStatus from "/@/hooks/useSyncListStatus";
 import produce from "immer";
 import { useLocation } from "react-router-dom";
 const RecentChatList = () => {

@@ -1,8 +1,6 @@
 import request from "../utils/request";
 
-export const url =
-  process.env.NODE_ENV === "development" ? "http://localhost:3305" : "";
-
+export const url = "http://localhost:3305";
 // 登录
 export const login = data =>
   request({ url: "/api/auth/login", method: "post", data });

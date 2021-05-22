@@ -1,9 +1,9 @@
 import React, { memo, useCallback, useState } from "react";
 import StyledGroupList, { Groups } from "./style";
 import FilterList from "../../components/FilterList";
-import FriendCard from "components/FriendCard";
+import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
-import { useAnimeList } from "hooks/useAnime";
+import { useAnimeList } from "/@/hooks/useAnime";
 import { atom, selector, useRecoilValue, useSetRecoilState } from "recoil";
 import {
   getGroupDetail,

@@ -1,11 +1,11 @@
 import React from "react";
 import StyledVoiceMessage from "./style";
-import { ReactComponent as Play } from "assets/icons/play.svg";
-import { ReactComponent as Wave } from "assets/icons/wave.svg";
+import { ReactComponent as Play } from "/@/assets/icons/play.svg";
+import { ReactComponent as Wave } from "/@/assets/icons/wave.svg";
 import { useTheme } from "styled-components";
-import Button from "components/Button";
-import Icon from "components/Icon";
-import Text from "components/Text";
+import Button from "/@/components/Button";
+import Icon from "/@/components/Icon";
+import Text from "/@/components/Text";
 interface Props {
   type?: string;
   time?: string;

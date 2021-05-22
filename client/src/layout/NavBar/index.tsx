@@ -1,7 +1,7 @@
 import React, { memo, useEffect, useState } from "react";
 import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from "./style";
-import Badge from "components/Badge";
-import Avatar from "components/Avatar";
+import Badge from "/@/components/Badge";
+import Avatar from "/@/components/Avatar";
 import "styled-components/macro";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { routers } from "../../router";

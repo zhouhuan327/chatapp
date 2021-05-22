@@ -1,9 +1,9 @@
 import styled, { css } from "styled-components";
-import Text from "components/Text";
-import ParaGraph from "components/ParaGraph";
-import Badge from "components/Badge";
-import { card, activeBar } from "utils/mixin";
-import { StyledAvatar } from "components/Avatar/style";
+import Text from "/@/components/Text";
+import ParaGraph from "/@/components/ParaGraph";
+import Badge from "/@/components/Badge";
+import { card, activeBar } from "/@/utils/mixin";
+import { StyledAvatar } from "/@/components/Avatar/style";
 
 const Name = styled(Text).attrs({ size: "large" })`
   grid-area: name;

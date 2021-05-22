@@ -1,6 +1,6 @@
 import React, { FC } from "react";
 import StyledRadio, { Circle, RadioButton, StyledRadioGroup } from "./style";
-import LabelContainer from "components/LabelContainer";
+import LabelContainer from "/@/components/LabelContainer";
 interface RadioProps {
   name: string;
   [rest: string]: any;

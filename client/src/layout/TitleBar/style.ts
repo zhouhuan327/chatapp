@@ -1,5 +1,5 @@
 import styled from "styled-components";
-import StyledIcon from "components/Icon/style";
+import StyledIcon from "/@/components/Icon/style";
 import { animated } from "react-spring";
 export const Title = styled.div`
   display: grid;
