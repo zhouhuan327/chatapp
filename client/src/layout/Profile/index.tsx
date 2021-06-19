@@ -1,7 +1,6 @@
 import React, { memo } from "react";
 import StyledProfile, { ContactSection, CloseIcon } from "./style";
 import { Modal, message } from "antd";
-import "styled-components/macro";
 import Avatar from "/@/components/Avatar";
 import avatar from "/@/assets/images/avatar.jpeg";
 import ParaGraph from "/@/components/ParaGraph";
