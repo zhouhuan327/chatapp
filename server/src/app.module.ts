@@ -18,7 +18,7 @@ import { FileModule } from './modules/file/file.module';
       host: 'localhost',
       port: 3306,
       username: 'root',
-      password: '',
+      password: '123',
       database: 'chat',
       autoLoadEntities: true,
       charset: 'utf8mb4',
