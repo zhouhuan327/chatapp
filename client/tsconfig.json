@@ -19,13 +19,13 @@
     "isolatedModules": true,
     "noEmit": true,
     "jsx": "react-jsx",
-    "baseUrl": "./src",
+    "paths": {
+      "/@/*": ["src/*"],
+    },
+    "baseUrl": "./",
     "noFallthroughCasesInSwitch": true
   },
   "include": [
     "./src"
   ],
-  "paths": {
-    "/@/*": ["src/*"],
-  }
 }
