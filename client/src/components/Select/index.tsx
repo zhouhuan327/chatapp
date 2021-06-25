@@ -7,11 +7,7 @@ interface SelectPros {
 }
 const Select: React.FC<SelectPros> = ({ label, children, ...rest }) => {
   const select = <StyledSelect {...rest}>{children}</StyledSelect>;
-  return label ? (
-    <LabelContainer label={label}>{select}</LabelContainer>
-  ) : (
-    select
-  );
+  return label ? <LabelContainer label={label}>{select}</LabelContainer> : select;
 };
 
 export default Select;

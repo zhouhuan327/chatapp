@@ -1,9 +1,5 @@
 import React, { memo } from "react";
-import StyledSettings, {
-  StyledSettingsItem,
-  SettingsItemControl,
-  StyledGroup,
-} from "./style";
+import StyledSettings, { StyledSettingsItem, SettingsItemControl, StyledGroup } from "./style";
 import { ReactComponent as ArrowMenuRight } from "/@/assets/icons/arrowMenuRight.svg";
 import Paragraph from "/@/components/ParaGraph";
 import Switch from "/@/components/Switch";
@@ -50,12 +46,7 @@ function Group({ groupName, children }) {
   );
 }
 
-export function SettingsItem({
-  type = "switch",
-  label = "",
-  description = "",
-  ...rest
-}) {
+export function SettingsItem({ type = "switch", label = "", description = "", ...rest }) {
   return (
     <StyledSettingsItem {...rest}>
       <SettingsItemControl>

@@ -6,13 +6,7 @@ import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import face1 from "/@/assets/images/avatar.jpeg";
 import { useAnimeList } from "/@/hooks/useAnime";
-import {
-  atom,
-  selector,
-  useRecoilState,
-  useRecoilValue,
-  useSetRecoilState,
-} from "recoil";
+import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
 import { Search } from "/@/components/Input";
 import styled from "styled-components";

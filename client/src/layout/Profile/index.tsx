@@ -79,9 +79,7 @@ const Profile = ({ ...rest }) => {
         `}
         size="medium"
       >
-        <Emoji label="fire">
-          {userDetail?.intro || "这个人很懒，什么也没写"}
-        </Emoji>
+        <Emoji label="fire">{userDetail?.intro || "这个人很懒，什么也没写"}</Emoji>
       </ParaGraph>
       <Divider
         css={`
@@ -92,9 +90,7 @@ const Profile = ({ ...rest }) => {
         {type === "user" && (
           <>
             <Description label="性别">{userDetail?.sex || "-"}</Description>
-            <Description label="电子邮件">
-              {userDetail?.email || "-"}
-            </Description>
+            <Description label="电子邮件">{userDetail?.email || "-"}</Description>
           </>
         )}
 

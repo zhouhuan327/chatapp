@@ -8,13 +8,7 @@ interface FriendCardProps {
   intro: string;
   [rest: string]: any;
 }
-const FriendCard: React.FC<FriendCardProps> = ({
-  avatarSrc,
-  name,
-  intro,
-  status,
-  ...rest
-}) => {
+const FriendCard: React.FC<FriendCardProps> = ({ avatarSrc, name, intro, status, ...rest }) => {
   return (
     <StyledFriendCard {...rest}>
       <Avatar src={avatarSrc} status={status} />

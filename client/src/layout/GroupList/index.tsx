@@ -5,13 +5,7 @@ import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import { useAnimeList } from "/@/hooks/useAnime";
 import { atom, selector, useRecoilValue, useSetRecoilState } from "recoil";
-import {
-  getGroupDetail,
-  getGroups,
-  getUserDetail,
-  joinGroup,
-  searchGroups,
-} from "../../api";
+import { getGroupDetail, getGroups, getUserDetail, joinGroup, searchGroups } from "../../api";
 import { Search } from "../../components/Input";
 import { Button, List, Modal, Tag, message } from "antd";
 import { detail, profileVisible } from "../../store";
@@ -61,10 +55,7 @@ const GroupList = () => {
   };
   return (
     <StyledGroupList>
-      <FilterList
-        actionLabel="加入群聊"
-        onActionClick={() => setAddModal(true)}
-      >
+      <FilterList actionLabel="加入群聊" onActionClick={() => setAddModal(true)}>
         <Groups>
           {groupList.map((item, index) => (
             <animated.div key={index} style={anime[index]}>

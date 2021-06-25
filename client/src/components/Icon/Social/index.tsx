@@ -8,11 +8,7 @@ export interface SocialIconProps {
 }
 const SocialIcon: FC<SocialIconProps> = ({ icon = "plus", bgColor, href }) => {
   return (
-    <Button
-      size="30px"
-      bgColor={bgColor}
-      onClick={() => href && window.open(href, "_blank")}
-    >
+    <Button size="30px" bgColor={bgColor} onClick={() => href && window.open(href, "_blank")}>
       <FontAwesomeIcon icon={icon} style={{ fontSize: 16 }} />
     </Button>
   );
