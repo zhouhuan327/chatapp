@@ -1,5 +1,4 @@
 import React, { useEffect } from "react";
-import produce from "immer";
 
 const useSyncListStatus = (socket, list, setList) => {
   const listRef = React.useRef<RecentChat[]>(list);
