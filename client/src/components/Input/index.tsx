@@ -25,10 +25,7 @@ const Input: FC<InputProps> = props => {
   );
 };
 
-const Search: FC<SearchProps> = ({
-  onSearch,
-  placeholder = "请输入搜索内容...",
-}) => {
+const Search: FC<SearchProps> = ({ onSearch, placeholder = "请输入搜索内容..." }) => {
   const theme: any = useTheme();
   const [value, setValue] = useState<string>("");
   return (

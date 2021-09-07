@@ -6,13 +6,7 @@ export interface BadgePros {
   showZero?: boolean;
   [rest: string]: any;
 }
-const Badge: FC<BadgePros> = ({
-  children,
-  show = false,
-  count = 0,
-  showZero = false,
-  ...rest
-}) => {
+const Badge: FC<BadgePros> = ({ children, show = false, count = 0, showZero = false, ...rest }) => {
   return (
     <StyledBadge
       variant={children ? "dot" : "default"}

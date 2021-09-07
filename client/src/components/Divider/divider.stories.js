@@ -1,8 +1,8 @@
-import React from 'react';
-import Divider from '.';
+import React from "react";
+import Divider from ".";
 
 export default {
-  title: 'UI组件/Divider',
+  title: "UI组件/Divider",
   component: Divider,
 };
 

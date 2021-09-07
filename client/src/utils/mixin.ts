@@ -6,10 +6,7 @@ export const circle = (color, size = "8px") => css`
   background-color: ${color};
 `;
 
-export const activeBar = ({
-  barWidth = "6px",
-  shadowWidth = "18px",
-} = {}) => css`
+export const activeBar = ({ barWidth = "6px", shadowWidth = "18px" } = {}) => css`
   position: relative;
   &::after,
   &::before {
@@ -22,19 +19,11 @@ export const activeBar = ({
   }
   &::before {
     width: ${barWidth};
-    background: linear-gradient(
-      180deg,
-      rgba(142, 197, 242, 1) 0%,
-      rgba(79, 157, 222, 1) 100%
-    );
+    background: linear-gradient(180deg, rgba(142, 197, 242, 1) 0%, rgba(79, 157, 222, 1) 100%);
   }
   &::after {
     width: ${shadowWidth};
-    background: linear-gradient(
-      270deg,
-      rgba(41, 47, 76, 1) 0%,
-      rgba(142, 197, 242, 1) 100%
-    );
+    background: linear-gradient(270deg, rgba(41, 47, 76, 1) 0%, rgba(142, 197, 242, 1) 100%);
     opacity: 0.6;
   }
 `;

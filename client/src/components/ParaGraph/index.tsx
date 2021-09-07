@@ -5,11 +5,7 @@ interface ParaGraphProps {
   ellipsis?: boolean;
   [rest: string]: any;
 }
-const ParaGraph: React.FC<ParaGraphProps> = ({
-  children,
-  ellipsis,
-  ...rest
-}) => {
+const ParaGraph: React.FC<ParaGraphProps> = ({ children, ellipsis, ...rest }) => {
   return (
     <StyledParaGraph as="p" ellipsis={ellipsis} {...rest}>
       {children}

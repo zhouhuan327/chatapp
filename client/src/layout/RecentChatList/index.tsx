@@ -16,14 +16,10 @@ const RecentChatList = () => {
   const socket = useRecoilValue(socketInstance);
   const anime = useAnimeList(6);
   // 最近消息列表
-  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(
-    recentChatsState,
-  );
+  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(recentChatsState);
 
   // 当前选中的聊天
-  const [currentChat, setCurrentChat] = useRecoilState<RecentChat>(
-    currentChatState as any,
-  );
+  const [currentChat, setCurrentChat] = useRecoilState<RecentChat>(currentChatState as any);
   useSyncListStatus(socket, recentChats, setRecentChats);
 
   useEffect(() => {
@@ -97,14 +93,10 @@ const RecentChatList = () => {
                 active={item._id === currentChat?._id}
                 replied={index % 2 === 0}
                 avatarSrc={item.avatarSrc}
-                avatarStatus={
-                  (item.type === "friend" && item.onlineStatus) ?? "offline"
-                }
+                avatarStatus={(item.type === "friend" && item.onlineStatus) ?? "offline"}
                 name={item.name}
                 statusText={
-                  item.type === "friend" && item.onlineStatus === "online"
-                    ? "在线"
-                    : "离线"
+                  item.type === "friend" && item.onlineStatus === "online" ? "在线" : "离线"
                 }
                 time={item.time}
                 message={item.content}

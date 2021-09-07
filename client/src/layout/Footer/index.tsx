@@ -4,7 +4,6 @@ import { Input } from "/@/components/Input";
 import Icon from "/@/components/Icon";
 import { ReactComponent as ClipIcon } from "/@/assets/icons/clip.svg";
 import { ReactComponent as SmileIcon } from "/@/assets/icons/smile.svg";
-import { ReactComponent as MicrophoneIcon } from "/@/assets/icons/microphone.svg";
 import { ReactComponent as PlaneIcon } from "/@/assets/icons/plane.svg";
 import { ReactComponent as OptionsIcon } from "/@/assets/icons/options.svg";
 import Button from "/@/components/Button";
@@ -30,9 +29,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
   const [form] = Form.useForm();
   const socket = useRecoilValue(socketInstance);
   // 最近消息列表
-  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(
-    recentChatsState,
-  );
+  const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(recentChatsState);
   const handleSubmit = () => {
     const { content } = form.getFieldsValue();
     if (content?.length === 0) {
@@ -109,11 +106,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
                 </Popover>
 
                 <Button size="52px" onClick={handleSubmit}>
-                  <Icon
-                    color="white"
-                    icon={PlaneIcon}
-                    style={{ transform: "translateX(-2px)" }}
-                  />
+                  <Icon color="white" icon={PlaneIcon} style={{ transform: "translateX(-2px)" }} />
                 </Button>
               </IconContainer>
             }

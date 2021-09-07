@@ -1,11 +1,11 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React from 'react';
-import ChatBubble from '.';
-import VoiceMessage from 'components/VoiceMessage';
-import Emoji from 'components/Emoji';
+import React from "react";
+import ChatBubble from ".";
+import VoiceMessage from "components/VoiceMessage";
+import Emoji from "components/Emoji";
 
 export default {
-  title: 'UI组件/ChatBubble',
+  title: "UI组件/ChatBubble",
   component: ChatBubble,
 };
 

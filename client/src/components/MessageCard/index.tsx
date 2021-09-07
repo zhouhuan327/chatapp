@@ -1,12 +1,5 @@
 import React, { memo } from "react";
-import StyledMessageCard, {
-  Name,
-  Status,
-  Time,
-  Message,
-  MessageText,
-  UnreadBadge,
-} from "./style";
+import StyledMessageCard, { Name, Status, Time, Message, MessageText, UnreadBadge } from "./style";
 import Avatar from "/@/components/Avatar";
 import { useTheme } from "styled-components";
 import Icon from "/@/components/Icon";

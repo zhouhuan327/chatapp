@@ -1,8 +1,8 @@
-import React from 'react';
-import MessageCard from '.';
-import face1 from 'assets/images/avatar.jpeg';
+import React from "react";
+import MessageCard from ".";
+import face1 from "assets/images/avatar.jpeg";
 export default {
-  title: 'UI组件/MessageCard',
+  title: "UI组件/MessageCard",
   component: MessageCard,
 };
 

@@ -1,10 +1,5 @@
 import { lazyLoad } from "../utils/lodable";
-import {
-  faCog,
-  faCommentDots,
-  faUsers,
-  faObjectGroup,
-} from "@fortawesome/free-solid-svg-icons";
+import { faCog, faCommentDots, faUsers, faObjectGroup } from "@fortawesome/free-solid-svg-icons";
 export const pageRouters: Array<Route> = [
   {
     path: "/chat",

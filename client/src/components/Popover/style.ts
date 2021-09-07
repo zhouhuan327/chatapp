@@ -6,8 +6,7 @@ export const Content = styled.div<any>`
   background-color: ${({ theme }) => theme.bakcground};
   padding: 12px 30px;
   bottom: calc(100% + 12px);
-  ${({ offset }) =>
-    offset && `transform: translate(${offset.x || 0},${offset.y || 0})`};
+  ${({ offset }) => offset && `transform: translate(${offset.x || 0},${offset.y || 0})`};
   ${({ visible }) => !visible && `display:none`}
 `;
 export const Triangle = styled.div<any>`
@@ -16,8 +15,7 @@ export const Triangle = styled.div<any>`
   height: 0;
   border-style: solid;
   border-width: 6px 6px 0 6px;
-  border-color: ${({ theme }) => theme.bakcground} transparent transparent
-    transparent;
+  border-color: ${({ theme }) => theme.bakcground} transparent transparent transparent;
   left: calc(50% - 6px);
   bottom: calc(100% + 12px - 5px);
   ${({ offset }) => offset && `transform: translateY(${offset.y || 0})`};

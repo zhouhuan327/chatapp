@@ -1,11 +1,5 @@
 import React, { memo } from "react";
-import StyledChatBubble, {
-  Avatar,
-  Bubble,
-  Tip,
-  MessageText,
-  Time,
-} from "./style";
+import StyledChatBubble, { Avatar, Bubble, Tip, MessageText, Time } from "./style";
 import { ReactComponent as BubbleIcon } from "/@/assets/icons/bubbleTip.svg";
 import { getFileUrl } from "../../utils";
 import { AvatarWrapper } from "../Avatar/style";

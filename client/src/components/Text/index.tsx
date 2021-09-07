@@ -2,15 +2,7 @@ import React from "react";
 import StyledText from "./style";
 interface TextPrps {
   type?: "primary" | "secondary" | "danger";
-  size?:
-    | "xxsmall"
-    | "xsmall"
-    | "small"
-    | "normal"
-    | "medium"
-    | "large"
-    | "xlarge"
-    | "xxlarge";
+  size?: "xxsmall" | "xsmall" | "small" | "normal" | "medium" | "large" | "xlarge" | "xxlarge";
   bold?: boolean;
   [rest: string]: any;
 }

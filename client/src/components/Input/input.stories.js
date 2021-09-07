@@ -12,9 +12,7 @@ export const Default = () => {
 };
 export const Search = () => <Input.Search />;
 
-export const WithSurffix = () => (
-  <Input.Search suffix={<Icon color="gray" icon={smileIcon} />} />
-);
+export const WithSurffix = () => <Input.Search suffix={<Icon color="gray" icon={smileIcon} />} />;
 
 export const InputTextWithLabel = () => <Input.Text label="昵称" />;
 

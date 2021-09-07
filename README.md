@@ -24,7 +24,7 @@
 ```shell
 cd client
 
-npm run install
+npm  install
 
 npm run start
 ```
@@ -36,7 +36,7 @@ npm run start
 ```shell
 cd server
 
-npm run install
+npm  install
 
 npm run start
 ```
@@ -49,7 +49,8 @@ npm run start
 
 TODO LIST
 
-- [ ] 迁移到 Vite
+- [x] 迁移到 Vite
+- [ ] 优化整理代码
 - [ ] 替换状态管理
 - [ ] 完善类型声明
 - [ ] 前后端仓库合并

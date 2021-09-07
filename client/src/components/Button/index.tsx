@@ -16,13 +16,7 @@ const Button: React.FC<ButtonProps> = ({
   ...rest
 }) => {
   return (
-    <StyledButton
-      shape={shape}
-      type={type}
-      size={size}
-      bgColor={bgColor}
-      {...rest}
-    >
+    <StyledButton shape={shape} type={type} size={size} bgColor={bgColor} {...rest}>
       {children}
     </StyledButton>
   );

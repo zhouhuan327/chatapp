@@ -1,9 +1,9 @@
 /* eslint-disable jsx-a11y/accessible-emoji */
-import React from 'react';
-import Emoji from '.';
+import React from "react";
+import Emoji from ".";
 
 export default {
-  title: 'UI组件/Emoji',
+  title: "UI组件/Emoji",
   component: Emoji,
 };
 

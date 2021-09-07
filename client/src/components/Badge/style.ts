@@ -23,8 +23,7 @@ const variants = {
     display: flex;
     align-items: center;
     justify-content: center;
-    box-shadow: 0px 18px 40px 0px rgba(0, 0, 0, 0.04),
-      0px 6px 12px 0px rgba(0, 0, 0, 0.08);
+    box-shadow: 0px 18px 40px 0px rgba(0, 0, 0, 0.04), 0px 6px 12px 0px rgba(0, 0, 0, 0.08);
     ${({ showZero, count }) => !showZero && count === 0 && `visibility:hidden`}
   `,
 };

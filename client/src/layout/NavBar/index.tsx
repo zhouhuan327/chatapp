@@ -11,26 +11,13 @@ const NavBar = () => {
   console.log(avatarSrc);
   return (
     <StyledNavBar>
-      <Avatar
-        src={avatarSrc}
-        status="online"
-        onClick={() => setEditVisible(true)}
-      />
+      <Avatar src={avatarSrc} status="online" onClick={() => setEditVisible(true)} />
       <MenuItems>
         {routers.map(route => (
-          <MenuItem
-            key={route.path}
-            to={route.path}
-            icon={route.icon}
-            title={route.title}
-          />
+          <MenuItem key={route.path} to={route.path} icon={route.icon} title={route.title} />
         ))}
       </MenuItems>
-      <EditModal
-        visible={editVisible}
-        setVisible={setEditVisible}
-        type="user"
-      />
+      <EditModal visible={editVisible} setVisible={setEditVisible} type="user" />
     </StyledNavBar>
   );
 };
