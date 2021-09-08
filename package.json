@@ -1,7 +1,35 @@
 {
+  "name": "chatapp",
   "private": true,
-  "workspaces": [
-    "client",
-    "server"
-  ]
+  "usingWorkspances": true,
+  "npmClient": "yarn",
+  "workspaces": {
+    "packages": [
+      "packages/*"
+    ],
+    "nohoist": [
+      "**/*",
+      "**/**"
+    ]
+  },
+  "scripts": {
+    "start": "concurrently \"yarn:start:*\"",
+    "start:server": "yarn --cwd packages/server start",
+    "start:client": "yarn --cwd packages/client start",
+    "format": "prettier --write \"packages/server/**/*.ts\" \"test/**/*.ts\""
+  },
+  "devDependencies": {
+    "concurrently": "^6.2.0",
+    "dotenv": "^10.0.0",
+    "eslint": "^7.18.0",
+    "eslint-config-prettier": "7.2.0",
+    "eslint-plugin-prettier": "3.3.1",
+    "eslint-plugin-react": "^7.23.2",
+    "eslint-plugin-react-hooks": "^4.2.0",
+    "lerna": "^4.0.0",
+    "prettier": "^2.2.1"
+  },
+  "dependencies": {
+    "@typescript-eslint/parser": "^4.31.0"
+  }
 }
