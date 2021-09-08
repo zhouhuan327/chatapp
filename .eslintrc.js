@@ -4,9 +4,6 @@ const prettierOptions = JSON.parse(fs.readFileSync(path.resolve(__dirname, ".pre
 
 module.exports = {
   parser: "@typescript-eslint/parser",
-  parserOptions: {
-    project: "./tsconfig.json",
-  },
   extends: ["prettier/@typescript-eslint"],
   plugins: ["prettier", "react-hooks"],
   rules: {

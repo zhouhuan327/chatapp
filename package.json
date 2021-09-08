@@ -16,7 +16,8 @@
     "start": "concurrently \"yarn:start:*\"",
     "start:server": "yarn --cwd packages/server start",
     "start:client": "yarn --cwd packages/client start",
-    "format": "prettier --write \"packages/server/**/*.ts\" \"test/**/*.ts\""
+    "format": "prettier --write \"packages/**/*.ts?(x)\"",
+    "lint": "eslint . -c ./.eslintrc.js --fix --quiet 'packages/**/*.{ts,tsx,js,jsx}'"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
@@ -27,9 +28,10 @@
     "eslint-plugin-react": "^7.23.2",
     "eslint-plugin-react-hooks": "^4.2.0",
     "lerna": "^4.0.0",
-    "prettier": "^2.2.1"
+    "prettier": "2.0.1"
   },
   "dependencies": {
-    "@typescript-eslint/parser": "^4.31.0"
+    "@typescript-eslint/parser": "^4.31.0",
+    "typescript": "^4.4.2"
   }
 }
