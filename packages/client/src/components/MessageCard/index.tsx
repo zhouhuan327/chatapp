@@ -5,25 +5,25 @@ import { useTheme } from "styled-components";
 import Icon from "/@/components/Icon";
 import { ReactComponent as Replied } from "/@/assets/icons/replied.svg";
 interface MessageCardProps {
-  avatarSrc: string;
+  avatarSrc?: string;
   avatarStatus: any;
   statusText: any;
   name: any;
   time: any;
   message: any;
-  unreadCount: number;
+  unreadCount?: number;
   active: boolean;
   replied: boolean; // 是否回复
   [rest: string]: any;
 }
 const MessageCard: React.FC<MessageCardProps> = ({
-  avatarSrc,
+  avatarSrc = "",
   avatarStatus,
   statusText,
   name,
   time,
   message,
-  unreadCount,
+  unreadCount = 0,
   active,
   replied,
   ...rest

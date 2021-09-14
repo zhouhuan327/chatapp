@@ -5,7 +5,7 @@ import FilterList from "../../components/FilterList";
 import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import { useAnimeList } from "/@/hooks/useAnime";
-import {  useSetRecoilState } from "recoil";
+import { useSetRecoilState } from "recoil";
 import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
 import { Search } from "/@/components/Input";
 import styled from "styled-components";

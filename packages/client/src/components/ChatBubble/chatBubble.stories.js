@@ -1,4 +1,4 @@
-/* eslint-disable jsx-a11y/accessible-emoji */
+
 import React from "react";
 import ChatBubble from ".";
 import VoiceMessage from "components/VoiceMessage";
@@ -26,12 +26,12 @@ export const FromMine = () => {
 };
 export const VoiceFromOhters = () => (
   <ChatBubble time="昨天 下午12：23">
-    <VoiceMessage time="01:24"></VoiceMessage>
+    <VoiceMessage time="01:24" />
   </ChatBubble>
 );
 
 export const VoiceFromMine = () => (
   <ChatBubble type="mine" time="昨天 下午12：23">
-    <VoiceMessage type="mine" time="01:24"></VoiceMessage>
+    <VoiceMessage type="mine" time="01:24" />
   </ChatBubble>
 );

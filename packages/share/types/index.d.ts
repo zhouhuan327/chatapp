@@ -8,7 +8,7 @@ export interface Response<T> {
 type MessageType = "text" | "file" | "emoji";
 
 // 最近聊天的群/好友
-type RecentChat = Partial<{
+type RecentChat = {
   _id?: number; // 好友id和群id可能重复,需要额外的唯一值
   id: number; // groupId或者userId
   avatarSrc: string;
@@ -16,8 +16,8 @@ type RecentChat = Partial<{
   intro: string;
   content: string;
   contentType: MessageType;
-  onlineStatus: string;
+  onlineStatus?: string;
   time: string;
   type: "friend" | "group";
   unreadCount: number; // 未读消息
-}>;
+};

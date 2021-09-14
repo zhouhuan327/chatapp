@@ -1,6 +1,7 @@
 // 这里只定义一些通用的状态,大部分状态在具体组件中定义
 import { atom, selector } from "recoil";
 import { logout } from "../utils/auth";
+import { RecentChat } from "share/types";
 // 是否显示个人信息抽屉
 export const profileVisible = atom({
   key: "profileVisibleState",

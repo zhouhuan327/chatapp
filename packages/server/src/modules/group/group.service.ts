@@ -101,6 +101,7 @@ export class GroupService {
         content: recentGroupMessage.content,
         contentType: recentGroupMessage.type,
         time: formatTime(recentGroupMessage.createTime),
+        unreadCount: 0,
         type: "group",
       };
       return obj;
