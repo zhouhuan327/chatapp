@@ -8,7 +8,7 @@ const useSyncListStatus = (socket, list, setList) => {
       console.log("online user", onlineUser);
       const filter = listRef.current.map(item => {
         if (item.type === "group") return item;
-             if (onlineUser.includes(String(item.id))) {
+        if (onlineUser.includes(String(item.id))) {
           return { ...item, onlineStatus: "online" };
         }
         return { ...item, onlineStatus: "offline" };

@@ -22,12 +22,12 @@ export class User {
   @Column({ default: "这个人很懒" })
   intro: string;
 
-  @Column()
+  @Column({ default: "" })
   email: string;
 
-  @Column()
+  @Column({ default: "男" })
   sex: string;
-  @Column()
+  @Column({ default: "" })
   address: string;
 
   @CreateDateColumn()

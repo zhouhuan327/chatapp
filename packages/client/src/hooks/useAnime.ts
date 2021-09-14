@@ -14,7 +14,7 @@ const useAnimeList = number => {
 };
 // 聊天框 三个部分的动画
 const useChatAnime = () => {
-       const topBarAnime = useSpring({
+  const topBarAnime = useSpring({
     opacity: 1,
     transform: "translate3d(0px, 0px, 0px)",
     from: { opacity: 0, transform: "translate3d(0px, -50px, 0px)" },

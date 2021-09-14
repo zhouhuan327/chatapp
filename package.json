@@ -17,7 +17,7 @@
     "start:server": "yarn --cwd packages/server start",
     "start:client": "yarn --cwd packages/client start",
     "format": "prettier --write \"packages/**/*.ts?(x)\"",
-    "lint": "eslint . -c ./.eslintrc.js --fix --quiet 'packages/**/*.{ts,tsx,js,jsx}'"
+    "lint": "eslint . -c ./.eslintrc.js --fix  'packages/**/*.{ts,tsx,js,jsx}'"
   },
   "devDependencies": {
     "concurrently": "^6.2.0",
