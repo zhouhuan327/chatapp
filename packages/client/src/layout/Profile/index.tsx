@@ -13,6 +13,7 @@ import { useRecoilValue, useSetRecoilState } from "recoil";
 import { detail, profileVisible } from "/@/store";
 import Button from "../../components/Button";
 import moment from "moment";
+import { RecentChat } from "share/types";
 const Profile = ({ ...rest }) => {
   const history = useHistory();
   const setVisible = useSetRecoilState(profileVisible);

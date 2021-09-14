@@ -8,6 +8,7 @@ import CommonException from "../../utils/common.exception";
 import { GroupService } from "../group/group.service";
 import * as moment from "moment";
 import { formatTime, genRoomId, getTimeDiff } from "../../utils";
+import { MessageType, RecentChat } from "share/types";
 @Injectable()
 export class MessageService {
   constructor(
@@ -121,7 +122,7 @@ export class MessageService {
     message.user = user;
     message.group = group;
     message.content = content;
-    message.type = type;
+    message.type = "text" as MessageType;
     return this.groupMessageRepository.save(message);
   }
 

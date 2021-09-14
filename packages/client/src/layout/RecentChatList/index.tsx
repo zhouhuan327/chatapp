@@ -11,6 +11,7 @@ import { getRecentMessage } from "../../api";
 import useSyncListStatus from "/@/hooks/useSyncListStatus";
 import produce from "immer";
 import { useLocation } from "react-router-dom";
+import { RecentChat } from "share/types";
 const RecentChatList = () => {
   // socket实例
   const socket = useRecoilValue(socketInstance);

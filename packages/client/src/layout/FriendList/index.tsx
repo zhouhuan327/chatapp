@@ -4,16 +4,15 @@ import StyledFriendList, { Friends } from "./style";
 import FilterList from "../../components/FilterList";
 import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
-import face1 from "/@/assets/images/avatar.jpeg";
 import { useAnimeList } from "/@/hooks/useAnime";
-import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
+import {  useSetRecoilState } from "recoil";
 import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
 import { Search } from "/@/components/Input";
 import styled from "styled-components";
 import produce from "immer";
 import { scrollbar } from "../../utils/mixin";
 import { detail, profileVisible } from "../../store";
-import { getFileUrl } from "../../utils";
+import { Response } from "share/types";
 interface searchList extends UserInfo {
   isFriend?: boolean;
 }
@@ -39,7 +38,7 @@ const FriendList = () => {
   const [searchList, setSearchList] = useState<searchList[]>([]);
   const handleSearch = useCallback(
     async value => {
-      const res: RespType<UserInfo[]> = await searchUsers({ name: value });
+      const res: Response<UserInfo[]> = await searchUsers({ name: value });
       const users: searchList[] = res.data;
       users.forEach(item => {
         item.isFriend = !!friendList.find(friend => friend.id === item.id);

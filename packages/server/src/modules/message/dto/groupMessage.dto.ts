@@ -1,4 +1,5 @@
 import { IsNotEmpty } from "class-validator";
+import { MessageType } from "share/types";
 
 export class GroupMessageDto {
   @IsNotEmpty()

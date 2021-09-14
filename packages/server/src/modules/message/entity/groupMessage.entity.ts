@@ -8,6 +8,7 @@ import {
 } from "typeorm";
 import { User } from "../../user/entity/user.entity";
 import { Group } from "../../group/entity/group.entity";
+import { MessageType } from "share/types";
 
 @Entity()
 export class GroupMessage {

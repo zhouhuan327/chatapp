@@ -1,0 +1,11 @@
+{
+  "name": "share",
+  "version": "0.0.1",
+  "description": "common assets package",
+  "author": "sean",
+  "private": true,
+  "license": "UNLICENSED",
+  "scripts": {},
+  "dependencies": {},
+  "devDependencies": {}
+}

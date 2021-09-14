@@ -5,12 +5,13 @@ import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import { useAnimeList } from "/@/hooks/useAnime";
 import { atom, selector, useRecoilValue, useSetRecoilState } from "recoil";
-import { getGroupDetail, getGroups, getUserDetail, joinGroup, searchGroups } from "../../api";
+import { getGroupDetail, getGroups, joinGroup, searchGroups } from "../../api";
 import { Search } from "../../components/Input";
 import { Button, List, Modal, Tag, message } from "antd";
 import { detail, profileVisible } from "../../store";
 import styled from "styled-components";
 import { scrollbar } from "../../utils/mixin";
+import { Response } from "share/types";
 const searchState = atom({
   key: "groupSearchState",
   default: "",
@@ -34,7 +35,7 @@ const GroupList = () => {
   // 添加好友里的列表
   const [searchList, setSearchList] = useState<GroupInfo[]>([]);
   const handleSearch = useCallback(async value => {
-    const res: RespType<GroupInfo[]> = await searchGroups({ name: value });
+    const res: Response<GroupInfo[]> = await searchGroups({ name: value });
     const groups: any = res.data;
     groups.forEach(item => {
       item.isMember = !!groupList.find(friend => friend.id === item.id);

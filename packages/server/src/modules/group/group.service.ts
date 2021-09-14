@@ -7,6 +7,7 @@ import { Like, Repository } from "typeorm";
 import { GroupRelation } from "./entity/groupRelation.entity";
 import { UserService } from "../user/user.service";
 import { formatTime } from "../../utils";
+import { RecentChat } from "share/types";
 @Injectable()
 export class GroupService {
   constructor(
