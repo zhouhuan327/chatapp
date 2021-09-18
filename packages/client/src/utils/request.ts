@@ -30,11 +30,11 @@ service.interceptors.response.use(
     if (typeof data === "object") {
       // 请求已发出，但是不在2xx的范围
       if (data.code === 401) {
-        message.warning("登录已过期,将重新登录...", 1, () => {
-          // 移除登录状态
-          authAction.remove();
-          history.push("/login");
-        });
+        // message.warning("登录已过期,将重新登录...", 1, () => {
+        //   // 移除登录状态
+        //   authAction.remove();
+        //   history.push("/login");
+        // });
       } else {
         message.error(data.message);
       }

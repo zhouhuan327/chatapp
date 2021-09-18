@@ -13,7 +13,6 @@ export class UserService {
   ) {}
 
   async getUsersByName(username) {
-    console.log(Like(`%${username}%`));
     return this.userRepository.find({ username: Like(`%${username}%`) });
   }
   async getUserById(id) {

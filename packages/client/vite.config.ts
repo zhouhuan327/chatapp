@@ -1,7 +1,10 @@
 import { defineConfig } from "vite";
 import reactRefresh from "@vitejs/plugin-react-refresh";
 import svgr from "vite-plugin-svgr";
+import { API } from "./src/constants";
+// @ts-ignore
 import builtins from "rollup-plugin-node-builtins";
+// @ts-ignore
 import globals from "rollup-plugin-node-globals";
 const builtinsPlugin = {
   ...builtins({ jsesc: true }),
@@ -29,12 +32,10 @@ export default defineConfig({
     // Buffer: {},
   },
   server: {
+    port: 2333,
     proxy: {
-      // 字符串简写写法
-      // "/api": "http://localhost:3305/",
-      // 选项写法
       "/api": {
-        target: "http://localhost:3305/",
+        target: API,
         changeOrigin: true,
         rewrite: path => path.replace(/^\/api/, "/api"),
       },

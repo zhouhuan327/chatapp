@@ -1,6 +1,8 @@
 import request from "../utils/request";
+import { API } from "/@/constants";
 
-export const url = "http://localhost:3305";
+export const getDownloadUrl = name => `${API}/api/file/${name}`;
+export const getUploadUrl = () => `${API}/api/file`;
 // 登录
 export const login = data => request({ url: "/api/auth/login", method: "post", data });
 
@@ -21,9 +23,11 @@ export const getFriendMessage = (params: { friendId: number }) =>
 export const getGroupMessage = (params: { groupId: number }) =>
   request({ url: "/api/message/group", method: "get", params });
 
+// 自己的信息
+export const getUserInfo = () => request.get("/api/user");
 // 搜索用户
 export const searchUsers = (params: { name: string }) => request.get("/api/user", { params });
-// 搜索用户
+// 搜索群
 export const searchGroups = (params: { name: string }) =>
   request.get("/api/group/search", { params });
 // 添加好友

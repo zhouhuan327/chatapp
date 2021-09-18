@@ -14,7 +14,7 @@
   },
   "scripts": {
     "start": "concurrently \"yarn:start:*\"",
-    "start:server": "yarn --cwd packages/server start",
+    "start:server": "yarn --cwd packages/server start:dev",
     "start:client": "yarn --cwd packages/client start",
     "format": "prettier --write \"packages/**/*.ts?(x)\"",
     "lint": "eslint . -c ./.eslintrc.js --fix  'packages/**/*.{ts,tsx,js,jsx}'"

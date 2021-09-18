@@ -11,10 +11,12 @@ import Emoji from "/@/components/Emoji";
 import Popover from "/@/components/Popover";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { socketInstance } from "/@/store/socket";
-import { recentChatsState } from "../../store";
+import { recentChatsState } from "/@/store";
 import { Form, message } from "antd";
 import produce from "immer";
 import { Upload } from "antd";
+import { RecentChat } from "share/types";
+import { getUploadUrl } from "/@/api";
 
 const PopoverContent = () => (
   <StyledPopoverContent>
@@ -89,7 +91,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
             placeholder="输入想要说的话"
             prefix={
               <Upload
-                action="http://localhost:3305/api/file/upload"
+                action={getUploadUrl()}
                 name="file"
                 // accept=".jpg, .jpeg, .png"
                 showUploadList={false}

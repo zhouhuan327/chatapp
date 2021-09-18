@@ -1,7 +1,12 @@
 // 这里只定义一些通用的状态,大部分状态在具体组件中定义
-import { atom, selector } from "recoil";
-import { logout } from "../utils/auth";
+import { atom } from "recoil";
 import { RecentChat } from "share/types";
+
+export const userInfoAtom = atom<UserInfo>({
+  key: "userInfoAtom",
+  default: {} as UserInfo,
+});
+
 // 是否显示个人信息抽屉
 export const profileVisible = atom({
   key: "profileVisibleState",
@@ -25,17 +30,4 @@ export const recentChatsState = atom<RecentChat[]>({
 export const newMessageState = atom<string>({
   key: "newMessageState",
   default: "",
-});
-
-// 用户信息
-export const userIdState = selector({
-  key: "userIdState",
-  get: () => {
-    const id = parseInt(localStorage.getItem("userId") || "");
-    if (!id || isNaN(id)) {
-      logout();
-      return 0;
-    }
-    return id;
-  },
 });

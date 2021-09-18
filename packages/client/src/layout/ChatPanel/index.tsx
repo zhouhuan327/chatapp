@@ -4,12 +4,13 @@ import TitleBar from "/@/layout/TitleBar";
 import Footer from "../Footer";
 import ChatBubble from "/@/components/ChatBubble";
 import { useRecoilValue } from "recoil";
-import { currentChatState, userIdState } from "/@/store";
+import { currentChatState, userInfoAtom } from "/@/store";
 import { getFriendMessage, getGroupMessage } from "/@/api";
 import moment from "moment";
 import { useChatAnime } from "/@/hooks/useAnime";
 import { socketInstance } from "/@/store/socket";
 import produce from "immer";
+import { RecentChat } from "share/types";
 const ChatPanel = () => {
   // 动画参数
   const { topBarAnime, msgAnime, footerAnime } = useChatAnime();
@@ -18,7 +19,7 @@ const ChatPanel = () => {
   // 消息列表的引用
   const ref = useRef<HTMLDivElement>(null);
   // 自己的id
-  const userId = useRecoilValue<number>(userIdState);
+  const { id: userId } = useRecoilValue(userInfoAtom);
   // 当前的好友/群
   const currentChat = useRecoilValue<RecentChat>(currentChatState as any);
   // 消息列表
@@ -53,7 +54,7 @@ const ChatPanel = () => {
     socket.on("groupChatMessage", res => {
       addMessage(res.data);
     });
-  }, []);
+  }, [socket]);
 
   useEffect(() => {
     if (!currentChat.id) return;
@@ -71,7 +72,7 @@ const ChatPanel = () => {
     }
     // 切换聊天时,请求拿到聊天记录
     fetchList(currentChat).then(() => scrollToBottom());
-  }, [currentChat]);
+  }, [currentChat, socket]);
 
   // 加入连接,发送消息时也要将轮动条拉到最低
   useEffect(() => {
@@ -91,7 +92,6 @@ const ChatPanel = () => {
     }
   };
   const renderBubbleElement = list => {
-    console.log(list);
     return list.map(item => {
       if (item.notice) {
         return <NoticeBubble key={Math.random()}>{item.notice}</NoticeBubble>;

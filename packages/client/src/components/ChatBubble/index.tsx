@@ -1,8 +1,7 @@
 import React, { memo } from "react";
 import StyledChatBubble, { Avatar, Bubble, Tip, MessageText, Time } from "./style";
 import { ReactComponent as BubbleIcon } from "/@/assets/icons/bubbleTip.svg";
-import { getFileUrl } from "../../utils";
-import { AvatarWrapper } from "../Avatar/style";
+import { getDownloadUrl } from "/@/api";
 export interface ChatBubbleProps {
   type?: "mine" | "others";
   contentType: "text" | "file";
@@ -20,7 +19,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
   const handleImgError = e => {
     console.log(e);
     const img = e.target;
-    img.src = getFileUrl("file_icon.png");
+    img.src = getDownloadUrl("file_icon.png");
     img.οnerrοr = null;
   };
   let content;
@@ -31,7 +30,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
     content = (
       <img
         style={{ width: 200, height: "auto" }}
-        src={getFileUrl(children)}
+        src={getDownloadUrl(children)}
         alt="该文件不支持预览"
       />
     );
@@ -41,7 +40,7 @@ const ChatBubble: React.FC<ChatBubbleProps> = ({
       <Avatar src={avatarSrc} />
       <div>
         <Bubble>
-          <Tip icon={BubbleIcon} color="white" width={38} height={28}></Tip>
+          <Tip icon={BubbleIcon} color="white" width={38} height={28} />
           <MessageText>{content}</MessageText>
         </Bubble>
         <Time>{time}</Time>

@@ -3,10 +3,8 @@ import { message } from "antd";
 
 export const authAction = {
   get: () => localStorage.getItem("Authorization"),
-  set: data => {
-    localStorage.setItem("Authorization", "Bearer " + data.token);
-    localStorage.setItem("userId", data.user.id);
-    localStorage.setItem("avatarSrc", data.user.avatarSrc);
+  set: token => {
+    localStorage.setItem("Authorization", "Bearer " + token);
   },
   remove: () => {
     localStorage.removeItem("Authorization");

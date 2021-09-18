@@ -3,7 +3,6 @@ import {
   Get,
   Param,
   Post,
-  Query,
   Req,
   Res,
   UploadedFile,
@@ -12,7 +11,7 @@ import {
 import { FileInterceptor } from "@nestjs/platform-express";
 import { FileService } from "./file.service";
 import { join } from "path";
-
+import { existsSync } from "fs";
 import { Response } from "express";
 import { NoAuth } from "../../decorators/noAuth";
 @Controller("file")
@@ -28,7 +27,13 @@ export class FileController {
   @Get(":name")
   @NoAuth()
   viewFile(@Param("name") name, @Res() res: Response) {
-    res.sendFile(join(__dirname, "../../../assets/upload", name));
+    const filePath = join(__dirname, "../../../assets/upload", name);
+    if (existsSync(filePath)) {
+      res.sendFile(filePath);
+    } else {
+      res.sendFile(join(__dirname, "../../../assets/default", "default_avatar1.jpg"));
+    }
+
     return "下载成功";
   }
 }

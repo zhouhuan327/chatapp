@@ -1,34 +1,36 @@
 import React, { memo, useEffect, useState } from "react";
 import { Modal, Form, Radio, Input, message, Upload } from "antd";
 import Avatar from "../../components/Avatar";
-import { getUserDetail, updateUser } from "../../api";
-import { useRecoilValue } from "recoil";
-import { userIdState } from "../../store";
+import { getUploadUrl, updateUser } from "/@/api";
+import { userInfoAtom } from "/@/store";
+import { useRecoilState } from "recoil";
+const layout = {
+  labelCol: { span: 4 },
+  wrapperCol: { span: 16 },
+};
 const EditModal = ({ visible, setVisible, type }) => {
   const [form] = Form.useForm();
-  const userId = useRecoilValue<number>(userIdState);
-  const layout = {
-    labelCol: { span: 4 },
-    wrapperCol: { span: 16 },
-  };
+  const [userInfo, setUserInfo] = useRecoilState(userInfoAtom);
 
-  const setForm = async () => {
-    const res = await getUserDetail({ id: userId });
-    setAvatarSrc(res.data.avatarSrc);
-    form.setFieldsValue(res.data);
-  };
+  useEffect(() => {
+    if (userInfo.id) {
+      form.setFieldsValue(userInfo);
+      setAvatarSrc(userInfo.avatarSrc);
+    }
+  }, [form, userInfo]);
+
   const handleSubmit = async () => {
     const fields = form.getFieldsValue();
-    fields.id = userId;
+    fields.id = userInfo.id;
     const res = await updateUser(fields);
     if (res.code === 200) {
       message.success("保存成功");
-      setForm();
+      setUserInfo(res.data);
+
+      setVisible(false);
     }
   };
-  useEffect(() => {
-    setForm();
-  }, []);
+
   const [avatarSrc, setAvatarSrc] = useState("");
   const handleUpload = info => {
     const res = info?.file.response;
@@ -40,12 +42,7 @@ const EditModal = ({ visible, setVisible, type }) => {
   const userItems = (
     <>
       <Form.Item label="头像">
-        <Upload
-          action="http://localhost:3305/api/file/upload"
-          name="file"
-          maxCount={1}
-          onChange={handleUpload}
-        >
+        <Upload action={getUploadUrl()} name="file" maxCount={1} onChange={handleUpload}>
           <Form.Item noStyle name="avatarSrc">
             <Avatar src={avatarSrc} />
           </Form.Item>
@@ -77,6 +74,7 @@ const EditModal = ({ visible, setVisible, type }) => {
       visible={visible}
       onCancel={() => setVisible(false)}
       onOk={handleSubmit}
+      forceRender
       okText="确定"
       cancelText="取消"
     >

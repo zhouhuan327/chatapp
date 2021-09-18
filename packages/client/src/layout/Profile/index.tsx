@@ -2,7 +2,6 @@ import React, { memo } from "react";
 import StyledProfile, { ContactSection, CloseIcon } from "./style";
 import { Modal, message } from "antd";
 import Avatar from "/@/components/Avatar";
-import avatar from "/@/assets/images/avatar.jpeg";
 import ParaGraph from "/@/components/ParaGraph";
 import Emoji from "/@/components/Emoji";
 import Divider from "/@/components/Divider";
@@ -54,7 +53,7 @@ const Profile = ({ ...rest }) => {
         css={`
           margin: 26px 0;
         `}
-        src={userDetail?.avatarSrc || avatar}
+        src={userDetail?.avatarSrc}
         size="120px"
       />
       <ParaGraph

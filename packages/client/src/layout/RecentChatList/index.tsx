@@ -56,7 +56,7 @@ const RecentChatList = () => {
         }),
       );
     });
-  }, []);
+  }, [socket]);
   const handleClick = useCallback(current => {
     setCurrentChat(current);
     currentChatRef.current = current;

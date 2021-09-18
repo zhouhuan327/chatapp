@@ -5,13 +5,14 @@ import Avatar from "/@/components/Avatar";
 import { Link, matchPath, useLocation } from "react-router-dom";
 import { routers } from "../../router";
 import EditModal from "../EditModal";
+import { useRecoilValue } from "recoil";
+import { userInfoAtom } from "/@/store";
 const NavBar = () => {
   const [editVisible, setEditVisible] = useState<boolean>(false);
-  const avatarSrc = localStorage.getItem("avatarSrc") || "";
-  console.log(avatarSrc);
+  const userInfo = useRecoilValue(userInfoAtom);
   return (
     <StyledNavBar>
-      <Avatar src={avatarSrc} status="online" onClick={() => setEditVisible(true)} />
+      <Avatar src={userInfo.avatarSrc} status="online" onClick={() => setEditVisible(true)} />
       <MenuItems>
         {routers.map(route => (
           <MenuItem key={route.path} to={route.path} icon={route.icon} title={route.title} />

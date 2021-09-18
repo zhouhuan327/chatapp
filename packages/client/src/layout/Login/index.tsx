@@ -3,18 +3,18 @@ import ScLogin, { Card } from "./style";
 import { Form, Input } from "antd";
 import Button from "../../components/Button";
 import { message } from "antd";
-import { authAction } from "../../utils/auth";
-import { login } from "../../api";
+import { authAction } from "/@/utils/auth";
+import { login } from "/@/api";
 import { useHistory } from "react-router-dom";
 import styled from "styled-components";
-// TODO 临时登录页
 const Index = () => {
   const history = useHistory();
   const [form] = Form.useForm();
   const submit = async () => {
     const res = await login(form.getFieldsValue());
     if (res.code === 200) {
-      authAction.set(res.data);
+      authAction.set(res.data.token);
+
       message.success("登陆成功");
       history.push("/chat/message");
     }

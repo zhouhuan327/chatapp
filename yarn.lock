@@ -2,6 +2,14 @@
 # yarn lockfile v1
 
 
+"@ahooksjs/use-request@^2.8.10":
+  version "2.8.10"
+  resolved "https://registry.nlark.com/@ahooksjs/use-request/download/@ahooksjs/use-request-2.8.10.tgz?cache=0&sync_timestamp=1627285936052&other_urls=https%3A%2F%2Fregistry.nlark.com%2F%40ahooksjs%2Fuse-request%2Fdownload%2F%40ahooksjs%2Fuse-request-2.8.10.tgz#643ea1a3c025fc7d0ff6a41621f11c03eed9ac22"
+  integrity sha1-ZD6ho8Al/H0P9qQWIfEcA+7ZrCI=
+  dependencies:
+    lodash.debounce "^4.0.8"
+    lodash.throttle "^4.1.1"
+
 "@angular-devkit/core@11.2.4":
   version "11.2.4"
   resolved "https://registry.nlark.com/@angular-devkit/core/download/@angular-devkit/core-11.2.4.tgz#4404b86d8dbdb41a0e3f94cb08ff8604e0c49a2e"
@@ -3614,6 +3622,11 @@
     jest-diff "^26.0.0"
     pretty-format "^26.0.0"
 
+"@types/js-cookie@^2.2.6":
+  version "2.2.7"
+  resolved "https://registry.nlark.com/@types/js-cookie/download/@types/js-cookie-2.2.7.tgz#226a9e31680835a6188e887f3988e60c04d3f6a3"
+  integrity sha1-ImqeMWgINaYYjoh/OYjmDATT9qM=
+
 "@types/json-schema@*", "@types/json-schema@^7.0.3", "@types/json-schema@^7.0.4", "@types/json-schema@^7.0.5", "@types/json-schema@^7.0.7", "@types/json-schema@^7.0.8":
   version "7.0.9"
   resolved "https://registry.nlark.com/@types/json-schema/download/@types/json-schema-7.0.9.tgz#97edc9037ea0c38585320b28964dde3b39e4660d"
@@ -4446,6 +4459,22 @@ aggregate-error@^3.0.0:
   dependencies:
     clean-stack "^2.0.0"
     indent-string "^4.0.0"
+
+ahooks@^2.10.9:
+  version "2.10.9"
+  resolved "https://registry.nlark.com/ahooks/download/ahooks-2.10.9.tgz?cache=0&sync_timestamp=1627286179259&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fahooks%2Fdownload%2Fahooks-2.10.9.tgz#531fa1c11bfa1a2aa2697a051ac499147a3a7e0a"
+  integrity sha1-Ux+hwRv6GiqiaXoFGsSZFHo6fgo=
+  dependencies:
+    "@ahooksjs/use-request" "^2.8.10"
+    "@types/js-cookie" "^2.2.6"
+    dayjs "^1.9.1"
+    intersection-observer "^0.7.0"
+    js-cookie "^2.2.1"
+    lodash.debounce "^4.0.8"
+    lodash.isequal "^4.5.0"
+    lodash.throttle "^4.1.1"
+    resize-observer-polyfill "^1.5.1"
+    screenfull "^5.0.0"
 
 airbnb-js-shims@^2.2.1:
   version "2.2.1"
@@ -7290,6 +7319,11 @@ dayjs@1.x:
   version "1.10.6"
   resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.6.tgz#288b2aa82f2d8418a6c9d4df5898c0737ad02a63"
   integrity sha1-KIsqqC8thBimydTfWJjAc3rQKmM=
+
+dayjs@^1.9.1:
+  version "1.10.7"
+  resolved "https://registry.nlark.com/dayjs/download/dayjs-1.10.7.tgz?cache=0&sync_timestamp=1631266519235&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdayjs%2Fdownload%2Fdayjs-1.10.7.tgz#2cf5f91add28116748440866a0a1d26f3a6ce468"
+  integrity sha1-LPX5Gt0oEWdIRAhmoKHSbzps5Gg=
 
 debug@2.6.9, debug@^2.2.0, debug@^2.3.3, debug@^2.6.0, debug@^2.6.9:
   version "2.6.9"
@@ -10192,6 +10226,11 @@ interpret@^2.0.0:
   resolved "https://registry.nlark.com/interpret/download/interpret-2.2.0.tgz?cache=0&sync_timestamp=1624607963441&other_urls=https%3A%2F%2Fregistry.nlark.com%2Finterpret%2Fdownload%2Finterpret-2.2.0.tgz#1a78a0b5965c40a5416d007ad6f50ad27c417df9"
   integrity sha1-GnigtZZcQKVBbQB61vUK0nxBffk=
 
+intersection-observer@^0.7.0:
+  version "0.7.0"
+  resolved "https://registry.nlark.com/intersection-observer/download/intersection-observer-0.7.0.tgz#ee16bee978db53516ead2f0a8154b09b400bbdc9"
+  integrity sha1-7ha+6XjbU1FurS8KgVSwm0ALvck=
+
 invariant@^2.2.3, invariant@^2.2.4:
   version "2.2.4"
   resolved "https://registry.nlark.com/invariant/download/invariant-2.2.4.tgz#610f3c92c9359ce1db616e538008d23ff35158e6"
@@ -11266,6 +11305,11 @@ jest@^26.6.3:
     import-local "^3.0.2"
     jest-cli "^26.6.3"
 
+js-cookie@^2.2.1:
+  version "2.2.1"
+  resolved "https://registry.nlark.com/js-cookie/download/js-cookie-2.2.1.tgz?cache=0&sync_timestamp=1630493008410&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fjs-cookie%2Fdownload%2Fjs-cookie-2.2.1.tgz#69e106dc5d5806894562902aa5baec3744e9b2b8"
+  integrity sha1-aeEG3F1YBolFYpAqpbrsN0Tpsrg=
+
 "js-tokens@^3.0.0 || ^4.0.0", js-tokens@^4.0.0:
   version "4.0.0"
   resolved "https://registry.nlark.com/js-tokens/download/js-tokens-4.0.0.tgz#19203fb59991df98e3a287050d4647cdeaf32499"
@@ -11850,6 +11894,11 @@ lodash.isboolean@^3.0.3:
   version "3.0.3"
   resolved "https://registry.nlark.com/lodash.isboolean/download/lodash.isboolean-3.0.3.tgz#6c2e171db2a257cd96802fd43b01b20d5f5870f6"
   integrity sha1-bC4XHbKiV82WgC/UOwGyDV9YcPY=
+
+lodash.isequal@^4.5.0:
+  version "4.5.0"
+  resolved "https://registry.nlark.com/lodash.isequal/download/lodash.isequal-4.5.0.tgz?cache=0&sync_timestamp=1624608000138&other_urls=https%3A%2F%2Fregistry.nlark.com%2Flodash.isequal%2Fdownload%2Flodash.isequal-4.5.0.tgz#415c4478f2bcc30120c22ce10ed3226f7d3e18e0"
+  integrity sha1-QVxEePK8wwEgwizhDtMib30+GOA=
 
 lodash.isinteger@^4.0.4:
   version "4.0.4"
@@ -16332,6 +16381,11 @@ schema-utils@^3.0.0, schema-utils@^3.1.1:
     "@types/json-schema" "^7.0.8"
     ajv "^6.12.5"
     ajv-keywords "^3.5.2"
+
+screenfull@^5.0.0:
+  version "5.1.0"
+  resolved "https://registry.nlark.com/screenfull/download/screenfull-5.1.0.tgz#85c13c70f4ead4c1b8a935c70010dfdcd2c0e5c8"
+  integrity sha1-hcE8cPTq1MG4qTXHABDf3NLA5cg=
 
 scroll-into-view-if-needed@^2.2.25:
   version "2.2.28"

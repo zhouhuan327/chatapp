@@ -1,4 +1,5 @@
 import React, { useEffect } from "react";
+import { RecentChat } from "share/types";
 
 const useSyncListStatus = (socket, list, setList) => {
   const listRef = React.useRef<RecentChat[]>(list);
