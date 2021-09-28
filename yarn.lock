@@ -2506,7 +2506,7 @@
 
 "@nestjs/platform-socket.io@^7.2.0":
   version "7.6.18"
-  resolved "https://registry.nlark.com/@nestjs/platform-socket.io/download/@nestjs/platform-socket.io-7.6.18.tgz#7c866d4fa6eae2e2f2b17b7555afee31c34facbb"
+  resolved "https://registry.npmmirror.com/@nestjs/platform-socket.io/download/@nestjs/platform-socket.io-7.6.18.tgz#7c866d4fa6eae2e2f2b17b7555afee31c34facbb"
   integrity sha1-fIZtT6bq4uLysXt1Va/uMcNPrLs=
   dependencies:
     socket.io "2.4.1"
@@ -4433,7 +4433,7 @@ adjust-sourcemap-loader@3.0.0:
 
 after@0.8.2:
   version "0.8.2"
-  resolved "https://registry.npm.taobao.org/after/download/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
+  resolved "https://registry.nlark.com/after/download/after-0.8.2.tgz#fedb394f9f0e02aa9768e702bda23b505fae7e1f"
   integrity sha1-/ts5T58OAqqXaOcCvaI7UF+ufh8=
 
 agent-base@6, agent-base@^6.0.2:
@@ -6556,7 +6556,7 @@ component-emitter@^1.2.1, component-emitter@^1.3.0, component-emitter@~1.3.0:
 
 component-inherit@0.0.3:
   version "0.0.3"
-  resolved "https://registry.npm.taobao.org/component-inherit/download/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
+  resolved "https://registry.nlark.com/component-inherit/download/component-inherit-0.0.3.tgz#645fc4adf58b72b649d5cae65135619db26ff143"
   integrity sha1-ZF/ErfWLcrZJ1crmUTVhnbJv8UM=
 
 compose-function@3.0.3:
@@ -7348,14 +7348,14 @@ debug@^3.0.0, debug@^3.1.1, debug@^3.2.5, debug@^3.2.7:
 
 debug@~3.1.0:
   version "3.1.0"
-  resolved "https://registry.nlark.com/debug/download/debug-3.1.0.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdebug%2Fdownload%2Fdebug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
+  resolved "https://registry.nlark.com/debug/download/debug-3.1.0.tgz#5bb5a0672628b64149566ba16819e61518c67261"
   integrity sha1-W7WgZyYotkFJVmuhaBnmFRjGcmE=
   dependencies:
     ms "2.0.0"
 
 debug@~4.1.0:
   version "4.1.1"
-  resolved "https://registry.nlark.com/debug/download/debug-4.1.1.tgz?cache=0&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fdebug%2Fdownload%2Fdebug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
+  resolved "https://registry.nlark.com/debug/download/debug-4.1.1.tgz#3b72260255109c6b589cee050f1d516139664791"
   integrity sha1-O3ImAlUQnGtYnO4FDx1RYTlmR5E=
   dependencies:
     ms "^2.1.1"
@@ -7922,7 +7922,7 @@ endent@^2.0.1:
 
 engine.io-client@~3.5.0:
   version "3.5.2"
-  resolved "https://registry.nlark.com/engine.io-client/download/engine.io-client-3.5.2.tgz?cache=0&sync_timestamp=1630218163928&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fengine.io-client%2Fdownload%2Fengine.io-client-3.5.2.tgz#0ef473621294004e9ceebe73cef0af9e36f2f5fa"
+  resolved "https://registry.nlark.com/engine.io-client/download/engine.io-client-3.5.2.tgz?cache=0&sync_timestamp=1630218500449&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fengine.io-client%2Fdownload%2Fengine.io-client-3.5.2.tgz#0ef473621294004e9ceebe73cef0af9e36f2f5fa"
   integrity sha1-DvRzYhKUAE6c7r5zzvCvnjby9fo=
   dependencies:
     component-emitter "~1.3.0"
@@ -7950,7 +7950,7 @@ engine.io-parser@~2.2.0:
 
 engine.io@~3.5.0:
   version "3.5.0"
-  resolved "https://registry.nlark.com/engine.io/download/engine.io-3.5.0.tgz?cache=0&sync_timestamp=1630218940352&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fengine.io%2Fdownload%2Fengine.io-3.5.0.tgz#9d6b985c8a39b1fe87cd91eb014de0552259821b"
+  resolved "https://registry.nlark.com/engine.io/download/engine.io-3.5.0.tgz#9d6b985c8a39b1fe87cd91eb014de0552259821b"
   integrity sha1-nWuYXIo5sf6HzZHrAU3gVSJZghs=
   dependencies:
     accepts "~1.3.4"
@@ -9576,7 +9576,7 @@ has-bigints@^1.0.1:
 
 has-binary2@~1.0.2:
   version "1.0.3"
-  resolved "https://registry.npm.taobao.org/has-binary2/download/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
+  resolved "https://registry.nlark.com/has-binary2/download/has-binary2-1.0.3.tgz#7776ac627f3ea77250cfc332dab7ddf5e4f5d11d"
   integrity sha1-d3asYn8+p3JQz8My2rfd9eT10R0=
   dependencies:
     isarray "2.0.1"
@@ -10745,7 +10745,7 @@ isarray@1.0.0, isarray@^1.0.0, isarray@~1.0.0:
 
 isarray@2.0.1:
   version "2.0.1"
-  resolved "https://registry.nlark.com/isarray/download/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
+  resolved "https://registry.npm.taobao.org/isarray/download/isarray-2.0.1.tgz#a37d94ed9cda2d59865c9f76fe596ee1f338741e"
   integrity sha1-o32U7ZzaLVmGXJ92/llu4fM4dB4=
 
 isarray@^2.0.5:
@@ -16732,10 +16732,10 @@ snapdragon@^0.8.1:
 
 socket.io-adapter@~1.1.0:
   version "1.1.2"
-  resolved "https://registry.nlark.com/socket.io-adapter/download/socket.io-adapter-1.1.2.tgz?cache=0&sync_timestamp=1630131663074&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsocket.io-adapter%2Fdownload%2Fsocket.io-adapter-1.1.2.tgz#ab3f0d6f66b8fc7fca3959ab5991f82221789be9"
+  resolved "https://registry.nlark.com/socket.io-adapter/download/socket.io-adapter-1.1.2.tgz?cache=0&sync_timestamp=1630131946246&other_urls=https%3A%2F%2Fregistry.nlark.com%2Fsocket.io-adapter%2Fdownload%2Fsocket.io-adapter-1.1.2.tgz#ab3f0d6f66b8fc7fca3959ab5991f82221789be9"
   integrity sha1-qz8Nb2a4/H/KOVmrWZH4IiF4m+k=
 
-socket.io-client@2.4.0, socket.io-client@^2.3.0:
+socket.io-client@2.4.0, socket.io-client@^2.4.0:
   version "2.4.0"
   resolved "https://registry.nlark.com/socket.io-client/download/socket.io-client-2.4.0.tgz#aafb5d594a3c55a34355562fc8aea22ed9119a35"
   integrity sha1-qvtdWUo8VaNDVVYvyK6iLtkRmjU=
@@ -16763,7 +16763,7 @@ socket.io-parser@*:
 
 socket.io-parser@~3.3.0:
   version "3.3.2"
-  resolved "https://registry.nlark.com/socket.io-parser/download/socket.io-parser-3.3.2.tgz#ef872009d0adcf704f2fbe830191a14752ad50b6"
+  resolved "https://registry.npm.taobao.org/socket.io-parser/download/socket.io-parser-3.3.2.tgz?cache=0&sync_timestamp=1610669809014&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsocket.io-parser%2Fdownload%2Fsocket.io-parser-3.3.2.tgz#ef872009d0adcf704f2fbe830191a14752ad50b6"
   integrity sha1-74cgCdCtz3BPL76DAZGhR1KtULY=
   dependencies:
     component-emitter "~1.3.0"
@@ -16772,7 +16772,7 @@ socket.io-parser@~3.3.0:
 
 socket.io-parser@~3.4.0:
   version "3.4.1"
-  resolved "https://registry.nlark.com/socket.io-parser/download/socket.io-parser-3.4.1.tgz#b06af838302975837eab2dc980037da24054d64a"
+  resolved "https://registry.npm.taobao.org/socket.io-parser/download/socket.io-parser-3.4.1.tgz?cache=0&sync_timestamp=1610669809014&other_urls=https%3A%2F%2Fregistry.npm.taobao.org%2Fsocket.io-parser%2Fdownload%2Fsocket.io-parser-3.4.1.tgz#b06af838302975837eab2dc980037da24054d64a"
   integrity sha1-sGr4ODApdYN+qy3JgAN9okBU1ko=
   dependencies:
     component-emitter "1.2.1"

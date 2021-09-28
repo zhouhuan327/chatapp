@@ -6,7 +6,9 @@ export const socketInstance = selector({
   key: "socketInstance",
   get: ({ get }) => {
     const { id } = get(userInfoAtom);
-    const socket: SocketIOClient.Socket = connect(`${API}?userId=${id}`);
+    const socket: SocketIOClient.Socket = connect(`${API}?userId=${id}`, {
+      transports: ["websocket"],
+    });
     socket.on("connect", () => {
       console.log("socket连接成功");
     });

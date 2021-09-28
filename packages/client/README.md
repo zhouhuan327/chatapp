@@ -32,3 +32,6 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
 和 process 为空对象它竟然就可以了。 非常的 Amazing :laughing:
 
 之后再研究研究
+
+- socket.io-client 在vite环境下很多版本都无法成功连接
+ 具体原因未知,从 [vite issue](https://github.com/vitejs/vite/issues/4798) 中找到了解决方法
