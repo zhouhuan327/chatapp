@@ -1,6 +1,7 @@
 /**/node_modules
 /**/build
 /**/dist
+/**/upload/
 *.DS_Store
 .eslintcache
 npm-debug.log*
