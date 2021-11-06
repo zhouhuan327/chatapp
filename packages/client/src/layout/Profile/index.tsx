@@ -8,18 +8,18 @@ import Divider from "/@/components/Divider";
 import Text from "/@/components/Text";
 import { useHistory } from "react-router-dom";
 import { ReactComponent as Cross } from "/@/assets/icons/cross.svg";
-import { useRecoilValue, useSetRecoilState } from "recoil";
-import { detail, profileVisible } from "/@/store";
+import { useRecoilState } from "recoil";
+import { detailDrawerAtom } from "/@/store";
 import Button from "../../components/Button";
 import moment from "moment";
 import { RecentChat } from "share/types";
 const Profile = ({ ...rest }) => {
   const history = useHistory();
-  const setVisible = useSetRecoilState(profileVisible);
-  const userDetail: any = useRecoilValue(detail);
-  const type = userDetail.username ? "user" : "group";
+  const [detailDrawer, setDetailDrawer] = useRecoilState(detailDrawerAtom);
+  const userDetail = detailDrawer.data;
+  const type = detailDrawer.data?.username ? "user" : "group";
   const handleSend = () => {
-    const { id, avatarSrc, username } = userDetail;
+    const { id, avatarSrc, username } = detailDrawer.data;
     const newChat: RecentChat = {
       id,
       avatarSrc,
@@ -48,7 +48,12 @@ const Profile = ({ ...rest }) => {
   };
   return (
     <StyledProfile {...rest}>
-      <CloseIcon icon={Cross} onClick={() => setVisible(false)} />
+      <CloseIcon
+        icon={Cross}
+        onClick={() => {
+          setDetailDrawer({ visible: false, data: {} });
+        }}
+      />
       <Avatar
         css={`
           margin: 26px 0;
@@ -62,7 +67,7 @@ const Profile = ({ ...rest }) => {
         `}
         size="xlarge"
       >
-        {userDetail?.username || userDetail.groupName || "xxx"}
+        {userDetail?.username || userDetail.groupName || "-"}
       </ParaGraph>
       <ParaGraph
         css={`

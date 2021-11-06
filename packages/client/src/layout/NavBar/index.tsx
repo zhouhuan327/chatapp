@@ -3,7 +3,7 @@ import StyledNavBar, { StyledMenuItem, MenuItems, MenuIcon } from "./style";
 import Badge from "/@/components/Badge";
 import Avatar from "/@/components/Avatar";
 import { Link, matchPath, useLocation } from "react-router-dom";
-import { routers } from "../../router";
+import { routers } from "/@/router";
 import EditModal from "../EditModal";
 import { useRecoilValue } from "recoil";
 import { userInfoAtom } from "/@/store";

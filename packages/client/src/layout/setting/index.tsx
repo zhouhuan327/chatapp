@@ -21,7 +21,7 @@ const Settings = () => {
   };
   return (
     <StyledSettings>
-      <Group groupName="通知设置">
+      <Group name="通知设置">
         <SettingsItem label="新消息通知" />
         {/*<SettingsItem label="显示通知详情" />*/}
         {/*<SettingsItem label="声音" />*/}
@@ -35,11 +35,11 @@ const Settings = () => {
   );
 };
 
-function Group({ groupName, children }) {
+function Group({ name, children }) {
   return (
     <StyledGroup>
       <Paragraph size="xxlarge" style={{ paddingBottom: "24px" }}>
-        {groupName}
+        {name}
       </Paragraph>
       {children}
     </StyledGroup>

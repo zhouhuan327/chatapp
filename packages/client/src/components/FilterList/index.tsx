@@ -1,7 +1,5 @@
 import React from "react";
 import { Search } from "/@/components/Input";
-import Select from "/@/components/Select";
-import Option from "/@/components/Option";
 import Button from "/@/components/Button";
 import Text from "/@/components/Text";
 import Icon from "/@/components/Icon";
@@ -14,32 +12,18 @@ interface FilterListProps {
   // 点击搜索
   onSearch?: (value: string) => void;
 }
-const option = ["按时间排序", "按名称排序"];
+
 const FilterList: React.FC<FilterListProps> = ({
-  filterLabel = "列表排序",
   actionLabel,
   onSearch,
   onActionClick,
   children,
   ...rest
 }) => {
-  const handleFilterChange = e => {
-    console.log(e);
-  };
   return (
     <StyledFilterList {...rest}>
       <Search onSearch={onSearch} />
       <StyledFilter>
-        {option && (
-          <div>
-            <Text type="secondary">{filterLabel}:</Text>
-            <Select onChange={handleFilterChange}>
-              {option.map((item, index) => (
-                <Option key={index}>{item}</Option>
-              ))}
-            </Select>
-          </div>
-        )}
         {actionLabel && (
           <div>
             <Text type="secondary">{actionLabel}</Text>
@@ -62,7 +46,7 @@ const StyledFilterList = styled.div`
 `;
 const StyledFilter = styled.div`
   display: flex;
-  justify-content: space-between;
+  justify-content: end;
   margin: 10px 0;
   span {
     padding: 0 10px;

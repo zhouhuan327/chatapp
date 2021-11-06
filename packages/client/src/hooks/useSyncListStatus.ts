@@ -6,7 +6,6 @@ const useSyncListStatus = (socket, list, setList) => {
   // 实时拿到在线人数,更新列表在线状态
   useEffect(() => {
     socket.on("onlineStatus", onlineUser => {
-      console.log("online user", onlineUser);
       const filter = listRef.current.map(item => {
         if (item.type === "group") return item;
         if (onlineUser.includes(String(item.id))) {

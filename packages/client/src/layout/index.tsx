@@ -6,13 +6,13 @@ import Profile from "/@/layout/Profile";
 import { Route, Switch, useLocation } from "react-router-dom";
 import { useTransition, animated } from "react-spring";
 import { useRecoilValue, useSetRecoilState } from "recoil";
-import { profileVisible, userInfoAtom } from "/@/store";
+import { userInfoAtom, detailDrawerAtom } from "/@/store";
 import { routers } from "../router";
 import { getUserInfo } from "/@/api";
 function ChatApp({ ...rest }) {
   const setUserInfo = useSetRecoilState(userInfoAtom);
   const location = useLocation();
-  const show = useRecoilValue(profileVisible);
+  const visible = useRecoilValue(detailDrawerAtom).visible;
   useEffect(() => {
     getUserInfo().then(res => {
       setUserInfo(res.data);
@@ -44,7 +44,7 @@ function ChatApp({ ...rest }) {
       <Content>
         <ChatPanel />
       </Content>
-      <Drawer show={show}>
+      <Drawer show={visible}>
         <Profile />
       </Drawer>
     </StyledChatApp>

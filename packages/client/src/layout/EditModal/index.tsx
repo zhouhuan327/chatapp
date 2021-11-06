@@ -31,7 +31,7 @@ const EditModal = ({ visible, setVisible, type }) => {
     }
   };
 
-  const [avatarSrc, setAvatarSrc] = useState("");
+  const [avatarSrc, setAvatarSrc] = useState("xxx");
   const handleUpload = info => {
     const res = info?.file.response;
     if (res?.code === 200) {
@@ -48,7 +48,7 @@ const EditModal = ({ visible, setVisible, type }) => {
           </Form.Item>
         </Upload>
       </Form.Item>
-      <Form.Item label="用户名" name="username">
+      <Form.Item label="用户名" name="name">
         <Input disabled={true} />
       </Form.Item>
       <Form.Item label="个人介绍" name="intro">

@@ -5,13 +5,13 @@ import FilterList from "../../components/FilterList";
 import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import { useAnimeList } from "/@/hooks/useAnime";
-import { useSetRecoilState } from "recoil";
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { addFriend, getFriends, getUserDetail, searchUsers } from "../../api";
 import { Search } from "/@/components/Input";
 import styled from "styled-components";
 import produce from "immer";
 import { scrollbar } from "../../utils/mixin";
-import { detail, profileVisible } from "../../store";
+import { detailDrawerAtom } from "../../store";
 import { Response } from "share/types";
 interface searchList extends UserInfo {
   isFriend?: boolean;
@@ -78,13 +78,10 @@ const FriendList = () => {
     },
     [fetch],
   );
-  const setVisible = useSetRecoilState(profileVisible);
-  const setDetail = useSetRecoilState(detail);
+  const setDetailDrawer = useSetRecoilState(detailDrawerAtom);
   const handleClickCard = async (id: number) => {
-    setVisible(true);
-
-    const res = await getUserDetail({ id });
-    setDetail(res.data);
+    const { data } = await getUserDetail({ id });
+    setDetailDrawer({ visible: true, data });
   };
   return (
     <StyledFriendList>

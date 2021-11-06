@@ -23,7 +23,7 @@ declare global {
   type GroupInfo = Partial<{
     id: number;
     avatarSrc: string;
-    groupName: string;
+    name: string;
     intro: string;
     createTime: string;
   }>;

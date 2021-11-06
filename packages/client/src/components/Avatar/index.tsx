@@ -13,7 +13,7 @@ interface AvatarProps {
   [rest: string]: any;
 }
 const Avatar: FC<AvatarProps> = ({
-  src,
+  src = "123",
   size = "48px",
   status,
   statusIconSize = "6px",

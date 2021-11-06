@@ -4,11 +4,11 @@ import FilterList from "../../components/FilterList";
 import FriendCard from "/@/components/FriendCard";
 import { animated } from "react-spring";
 import { useAnimeList } from "/@/hooks/useAnime";
-import { atom, selector, useRecoilValue, useSetRecoilState } from "recoil";
+import { atom, selector, useRecoilState, useRecoilValue, useSetRecoilState } from "recoil";
 import { getGroupDetail, getGroups, joinGroup, searchGroups } from "../../api";
 import { Search } from "../../components/Input";
 import { Button, List, Modal, Tag, message } from "antd";
-import { detail, profileVisible } from "../../store";
+import { detailDrawerAtom } from "../../store";
 import styled from "styled-components";
 import { scrollbar } from "../../utils/mixin";
 import { Response } from "share/types";
@@ -46,13 +46,10 @@ const GroupList = () => {
     await joinGroup({ groupId });
     message.success("加入成功");
   };
-  const setVisible = useSetRecoilState(profileVisible);
-  const setDetail = useSetRecoilState(detail);
+  const [detailDrawer, setDetailDrawer] = useRecoilState(detailDrawerAtom);
   const handleClickCard = async (id: number) => {
-    setVisible(true);
-
-    const res = await getGroupDetail({ id });
-    setDetail(res.data);
+    const { data } = await getGroupDetail({ id });
+    setDetailDrawer({ visible: true, data });
   };
   return (
     <StyledGroupList>
@@ -62,7 +59,7 @@ const GroupList = () => {
             <animated.div key={index} style={anime[index]}>
               <FriendCard
                 avatarSrc={item.avatarSrc}
-                name={item.groupName}
+                name={item.name}
                 intro={item.intro}
                 onClick={() => handleClickCard(item.id)}
               />
@@ -91,7 +88,7 @@ const GroupList = () => {
               <List.Item.Meta
                 title={
                   <span>
-                    {item?.groupName}{" "}
+                    {item?.name}{" "}
                     {item.isMember && (
                       <Tag style={{ marginLeft: 10 }} color="cyan">
                         已加入

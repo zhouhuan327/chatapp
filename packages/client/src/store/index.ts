@@ -6,15 +6,13 @@ export const userInfoAtom = atom<UserInfo>({
   key: "userInfoAtom",
   default: {} as UserInfo,
 });
-
-// 是否显示个人信息抽屉
-export const profileVisible = atom({
-  key: "profileVisibleState",
-  default: false,
-});
-export const detail = atom<UserInfo>({
-  key: "detailState",
-  default: {} as UserInfo,
+// 详情抽屉
+export const detailDrawerAtom = atom<{ visible: boolean; data?: any }>({
+  key: "detailDrawer",
+  default: {
+    visible: false,
+    data: {},
+  },
 });
 // 当前选中的群/好友 对象
 export const currentChatState = atom({
