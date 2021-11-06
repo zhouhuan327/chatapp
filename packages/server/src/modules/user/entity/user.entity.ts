@@ -10,7 +10,7 @@ export class User {
   @PrimaryGeneratedColumn()
   id: number;
 
-  @Column({ default: "default_avatar1.jpeg" })
+  @Column({ default: `default_user_avatar1.png` })
   avatarSrc: string;
 
   @Column("text")

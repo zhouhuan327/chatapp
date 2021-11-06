@@ -24,10 +24,7 @@ export class AuthService {
       const newUser = {
         username,
         password,
-        email: "",
-        sex: "男",
-        address: "",
-        avatarSrc: "default_avatar1.jpeg",
+        avatarSrc: `default_user_avatar${Math.ceil(Math.random() * 5)}.png`,
       };
       return this.register(newUser);
     }

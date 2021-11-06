@@ -16,7 +16,10 @@ export class UserService {
     return this.userRepository.find({ username: Like(`%${username}%`) });
   }
   async getUserById(id) {
-    return this.userRepository.findOne({ id });
+    const user = await this.userRepository.findOne({ id });
+
+    if (!user) throw new CommonException(`用户不存在`, 401);
+    return user;
   }
 
   async getUsers() {
