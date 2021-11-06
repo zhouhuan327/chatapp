@@ -75,7 +75,6 @@ export class ChatGateway implements OnGatewayInit, OnGatewayConnection, OnGatewa
   async friendChatMessage(client: Socket, data: FriendMessageDto) {
     const { senderId, receiverId } = data;
     const roomId = genRoomId(senderId, receiverId);
-
     try {
       const message = await this.messageService.sendFriendMessage(data);
       // 通知正在聊天的两个人

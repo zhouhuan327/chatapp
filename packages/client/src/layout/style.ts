@@ -7,7 +7,7 @@ const Nav = styled.nav`
 `;
 const SideBar = styled.aside`
   max-width: 448px;
-  min-width: 322px;
+  min-width: 252px;
   height: 100vh;
   flex: 1;
   background-color: ${props => props.theme.grediantGray};

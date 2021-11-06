@@ -10,7 +10,6 @@ import { userInfoAtom, detailDrawerAtom } from "/@/store";
 import { routers } from "../router";
 import { getUserInfo } from "/@/api";
 function ChatApp({ ...rest }) {
-  const history = useHistory();
   const setUserInfo = useSetRecoilState(userInfoAtom);
   const location = useLocation();
   const visible = useRecoilValue(detailDrawerAtom).visible;

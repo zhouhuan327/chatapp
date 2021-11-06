@@ -12,29 +12,35 @@ import Popover from "/@/components/Popover";
 import { useRecoilState, useRecoilValue } from "recoil";
 import { socketInstance } from "/@/store/socket";
 import { recentChatsState } from "/@/store";
-import { Form, message } from "antd";
+import { Form, message, Space } from "antd";
 import produce from "immer";
 import { Upload } from "antd";
 import { RecentChat } from "share/types";
 import { getUploadUrl } from "/@/api";
-
-const PopoverContent = () => (
-  <StyledPopoverContent>
-    <Emoji label="smile">😁</Emoji>
-    <Emoji label="cry">😢</Emoji>
-    <Emoji label="ok">👌</Emoji>
-    <Emoji label="cool">😎</Emoji>
-    <Icon icon={OptionsIcon} style={{ marginLeft: "24px" }} />
-  </StyledPopoverContent>
-);
+const emojiArray = {
+  sweat_smile: "😅",
+  smile: "😁",
+  cry: "😢",
+  ok: "👌",
+  cool: "😎",
+};
 function Footer({ userId, currentChat, setList, animeProps }) {
   const [form] = Form.useForm();
   const inputRef = React.useRef<any>(null);
   const socket = useRecoilValue(socketInstance);
   // 最近消息列表
   const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(recentChatsState);
+  const focus = () => {
+    setTimeout(() => {
+      // 自动聚焦
+      inputRef.current!.focus({
+        cursor: "end",
+      });
+    });
+  };
   const handleSubmit = () => {
     const { content } = form.getFieldsValue();
+
     if (!content) {
       message.warn("请输入内容");
       return;
@@ -66,12 +72,13 @@ function Footer({ userId, currentChat, setList, animeProps }) {
     });
     // 发送后清空消息栏
     form.resetFields();
-    setTimeout(() => {
-      // 自动聚焦
-      inputRef.current!.focus({
-        cursor: "start",
-      });
-    });
+    focus();
+  };
+
+  const handleEmojiSelect = emoji => {
+    const { content } = form.getFieldsValue();
+    form.setFieldsValue({ content: content ? content + emoji : emoji });
+    focus();
   };
   // 发送图片/文件
   const handleUpload = info => {
@@ -98,23 +105,37 @@ function Footer({ userId, currentChat, setList, animeProps }) {
             ref={inputRef}
             placeholder="输入想要说的话"
             prefix={
-              <Upload
-                action={getUploadUrl()}
-                name="file"
-                // accept=".jpg, .jpeg, .png"
-                showUploadList={false}
-                maxCount={1}
-                onChange={handleUpload}
-              >
-                <Icon style={{ cursor: "pointer" }} icon={ClipIcon} />
-              </Upload>
+              <Space>
+                <Upload
+                  action={getUploadUrl()}
+                  name="file"
+                  // accept=".jpg, .jpeg, .png"
+                  showUploadList={false}
+                  maxCount={1}
+                  onChange={handleUpload}
+                >
+                  <Icon style={{ cursor: "pointer" }} icon={ClipIcon} />
+                </Upload>
+                <Popover
+                  offset={{ x: "-25%" }}
+                  content={
+                    <StyledPopoverContent>
+                      {Object.entries(emojiArray).map(([label, emoji]) => (
+                        <Emoji onClick={() => handleEmojiSelect(emoji)} label={label}>
+                          {emoji}
+                        </Emoji>
+                      ))}
+
+                      {/*<Icon icon={OptionsIcon} style={{ marginLeft: "24px" }} />*/}
+                    </StyledPopoverContent>
+                  }
+                >
+                  <Icon icon={SmileIcon} />
+                </Popover>
+              </Space>
             }
             suffix={
               <IconContainer>
-                <Popover offset={{ x: "-25%" }} content={<PopoverContent />}>
-                  <Icon icon={SmileIcon} />
-                </Popover>
-
                 <Button size="52px" onClick={handleSubmit}>
                   <Icon color="white" icon={PlaneIcon} style={{ transform: "translateX(-2px)" }} />
                 </Button>

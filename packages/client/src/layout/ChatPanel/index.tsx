@@ -93,6 +93,7 @@ const ChatPanel = () => {
   };
   const renderBubbleElement = list => {
     return list.map(item => {
+      if (!item) return null;
       if (item.notice) {
         return <NoticeBubble key={Math.random()}>{item.notice}</NoticeBubble>;
       }

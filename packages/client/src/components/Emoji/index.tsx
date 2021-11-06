@@ -1,6 +1,6 @@
 import React from "react";
 import styled from "styled-components";
-const Emoji: React.FC<{ label: string }> = ({ children, label, ...rest }) => {
+const Emoji = ({ children, label, ...rest }) => {
   return (
     <StyledEmoji role="img" aria-label={label} {...rest}>
       {children}
