@@ -29,10 +29,11 @@ export class FileController {
   @NoAuth()
   viewFile(@Param("name") name, @Res() res: Response) {
     const filePath = join(__dirname, "../../../assets/upload", name);
+    console.log(filePath, existsSync(filePath));
     if (existsSync(filePath)) {
       res.sendFile(filePath);
     } else {
-      res.sendFile(join(__dirname, "../../../assets/default", "default_avatar1.jpg"));
+      res.sendFile(join(__dirname, "../../../assets/default", "placeholder.png"));
     }
 
     return "下载成功";
