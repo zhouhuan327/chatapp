@@ -88,7 +88,7 @@ const GroupList = () => {
               <List.Item.Meta
                 title={
                   <span>
-                    {item?.name}{" "}
+                    {item?.groupName}
                     {item.isMember && (
                       <Tag style={{ marginLeft: 10 }} color="cyan">
                         已加入

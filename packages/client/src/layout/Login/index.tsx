@@ -32,7 +32,7 @@ const Index = () => {
           </Form.Item>
         </Form>
         <Button shape="rect" onClick={submit}>
-          登录
+          登录 / 注册为新用户
         </Button>
       </Card>
     </ScLogin>

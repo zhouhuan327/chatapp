@@ -48,7 +48,7 @@ const EditModal = ({ visible, setVisible, type }) => {
           </Form.Item>
         </Upload>
       </Form.Item>
-      <Form.Item label="用户名" name="name">
+      <Form.Item label="用户名" name="username">
         <Input disabled={true} />
       </Form.Item>
       <Form.Item label="个人介绍" name="intro">

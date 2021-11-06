@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { Input } from "antd";
-const StyledInput = styled<any>(Input)`
+const StyledInput = styled<typeof Input>(Input)`
   width: 100%;
   height: 48px;
   border: none;

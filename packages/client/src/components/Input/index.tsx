@@ -1,4 +1,4 @@
-import React, { FC, useState } from "react";
+import React, { FC, forwardRef, useState } from "react";
 import StyledInput, { InputContainer, Prefix, Suffx } from "./style";
 import Icon from "/@/components/Icon";
 import { ReactComponent as SearchIcon } from "/@/assets/icons/search.svg";
@@ -14,16 +14,16 @@ interface SearchProps {
   placeholder?: string;
   onSearch?: (value: string) => void;
 }
-const Input: FC<InputProps> = props => {
+const Input: FC<InputProps> = forwardRef((props, ref) => {
   const { form, placeholder = "请输入文字", prefix, suffix, ...rest } = props;
   return (
     <InputContainer>
       {prefix && <Prefix>{prefix}</Prefix>}
-      <StyledInput placeholder={placeholder} {...rest} />
+      <StyledInput placeholder={placeholder} ref={ref} {...rest} />
       {suffix && <Suffx>{suffix}</Suffx>}
     </InputContainer>
   );
-};
+});
 
 const Search: FC<SearchProps> = ({ onSearch, placeholder = "请输入搜索内容..." }) => {
   const theme: any = useTheme();

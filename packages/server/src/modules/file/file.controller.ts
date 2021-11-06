@@ -17,6 +17,7 @@ import { NoAuth } from "../../decorators/noAuth";
 @Controller("file")
 export class FileController {
   constructor(private readonly fileService: FileService) {}
+
   @Post("upload")
   @NoAuth()
   @UseInterceptors(FileInterceptor("file"))

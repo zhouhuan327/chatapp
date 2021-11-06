@@ -29,12 +29,13 @@ const PopoverContent = () => (
 );
 function Footer({ userId, currentChat, setList, animeProps }) {
   const [form] = Form.useForm();
+  const inputRef = React.useRef<any>(null);
   const socket = useRecoilValue(socketInstance);
   // 最近消息列表
   const [recentChats, setRecentChats] = useRecoilState<RecentChat[]>(recentChatsState);
   const handleSubmit = () => {
     const { content } = form.getFieldsValue();
-    if (content?.length === 0) {
+    if (!content) {
       message.warn("请输入内容");
       return;
     }
@@ -65,6 +66,12 @@ function Footer({ userId, currentChat, setList, animeProps }) {
     });
     // 发送后清空消息栏
     form.resetFields();
+    setTimeout(() => {
+      // 自动聚焦
+      inputRef.current!.focus({
+        cursor: "start",
+      });
+    });
   };
   // 发送图片/文件
   const handleUpload = info => {
@@ -88,6 +95,7 @@ function Footer({ userId, currentChat, setList, animeProps }) {
       <Form form={form}>
         <Form.Item noStyle name="content">
           <Input
+            ref={inputRef}
             placeholder="输入想要说的话"
             prefix={
               <Upload

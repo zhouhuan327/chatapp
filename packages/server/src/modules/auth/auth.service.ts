@@ -18,8 +18,9 @@ export class AuthService {
 
   async validateUser(username, password): Promise<any> {
     const user = await this.userService.getUserByName(username);
-    // if (!user) throw new CommonException('用户不存在');
+
     if (!user) {
+      // 用户不存在则直接注册
       const newUser = {
         username,
         password,

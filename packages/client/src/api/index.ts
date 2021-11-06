@@ -2,7 +2,7 @@ import request from "../utils/request";
 import { API } from "/@/constants";
 
 export const getDownloadUrl = name => `${API}/api/file/${name}`;
-export const getUploadUrl = () => `${API}/api/file`;
+export const getUploadUrl = () => `${API}/api/file/upload`;
 // 登录
 export const login = data => request({ url: "/api/auth/login", method: "post", data });
 
@@ -34,8 +34,11 @@ export const searchGroups = (params: { name: string }) =>
 export const addFriend = (body: { friendId: number }) => request.post("/api/friend", body);
 // 加入群
 export const joinGroup = (body: { groupId: number }) => request.post("/api/group/join", body);
+
 export const getUserDetail = (params: { id: number }) =>
   request.get("/api/user/detail", { params });
+
 export const getGroupDetail = (params: { id: number }) =>
   request.get("/api/group/detail", { params });
+
 export const updateUser = (body: UserInfo) => request.patch("/api/user", body);
