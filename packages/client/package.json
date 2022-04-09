@@ -15,7 +15,7 @@
     "customize-cra": "^1.0.0",
     "http-proxy-middleware": "^1.0.5",
     "immer": ">=8.0.1",
-    "moment": "^2.29.1",
+    "moment": "^2.29.2",
     "react": "^16.13.1",
     "react-app-rewired": "^2.1.8",
     "react-dom": "^16.13.1",
